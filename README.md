@@ -61,6 +61,15 @@ Install polybar
 
 ## Tools
 
+Install VimPlug
+
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+Copy .vimrc
+
+    cp home/.vimrc ~
+
 Install vscode
 
     sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
