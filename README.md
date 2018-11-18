@@ -61,4 +61,16 @@ Install polybar
 
 ## Tools
 
+Install vscode
 
+    sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+    sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+    sudo dnf install code
+
+Copy vscode config
+
+    cp home/.config/Code/User/settings.json ~/.config/Code/User/
+
+Install vscode extensions
+
+    cat home/extensions.list | xargs -L1 code --install-extension
