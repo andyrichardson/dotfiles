@@ -1,9 +1,15 @@
 {
-    "workbench.iconTheme": "material-icon-theme",
-    "vsicons.projectDetection.autoReload": true,
-    "workbench.startupEditor": "newUntitledFile",
-    "editor.tabSize": 2,
-    "editor.formatOnSave": true,
-    "editor.detectIndentation": false,
-    "editor.lineNumbers": "relative"
+  "workbench.iconTheme": "material-icon-theme",
+  "vsicons.projectDetection.autoReload": true,
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.detectIndentation": false,
+  "editor.lineNumbers": "relative",
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ]
 }
