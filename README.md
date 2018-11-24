@@ -92,6 +92,11 @@ Install
 
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
+Install node version and set default
+
+    nvm install 11
+    nvm alias default 11
+
 ## Editors
 
 ### Neovim
