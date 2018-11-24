@@ -66,6 +66,15 @@ Install VimPlug
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+Install Neovim
+
+    # Fedora
+    sudo dnf -y install neovim
+    sudo dnf -y install python2-neovim python3-neovim
+
+    # macOS
+    brew install neovim
+
 Copy .vimrc
 
     cp home/.vimrc ~
