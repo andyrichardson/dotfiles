@@ -14,6 +14,12 @@ Install development tools
 
 ## Terminal
 
+### Gnome terminal
+
+Set colors
+
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/denysdovhan/gnome-terminal-one/master/one-dark.sh)"
+
 ### Fish shell
 
 Install ([source](https://software.opensuse.org/download.html?project=shells%3Afish%3Arelease%3A2&package=fish))
