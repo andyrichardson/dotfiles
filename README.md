@@ -119,9 +119,13 @@ Install package manager
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+Copy config
+
+    cp home/.config/nvim ~/.config/
+
 Copy .vimrc
 
-    cp home/.vimrc ~
+    cp home/.vimrc ~/
 
 Install plugins
 
