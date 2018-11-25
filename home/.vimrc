@@ -1,6 +1,7 @@
 " Display
 set relativenumber
 syntax on
+set termguicolors
 
 " Mappings
 imap jj <Esc>
@@ -47,4 +48,5 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 " Linting
 let g:ale_lint_on_save = 1
 
+" Theming
 colorscheme onedark
