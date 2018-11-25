@@ -41,8 +41,12 @@ Install powerline fonts
 
 Install
 
+    # Fedora
     sudo dnf install tmux
     cp home/.tmux.conf ~/
+
+    # macOS
+    cat home/.tmux.conf | sed 's|/usr/bin/fish|/usr/local/bin/fish|g' > ~/.tmux.conf 
 
 Install package manager
 
