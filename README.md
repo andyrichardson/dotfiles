@@ -12,6 +12,16 @@ Install development tools
 
     sudo dnf install @development-tools
 
+## Keyboard wizardry (macOs)
+
+Install Karabiner Elements ([source](https://pqrs.org/osx/karabiner/))
+
+Copy config
+
+```
+    cp -r home/.config/karabiner ~/.config
+```
+
 ## Terminal
 
 ### Gnome terminal
