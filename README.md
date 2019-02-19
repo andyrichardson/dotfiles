@@ -14,6 +14,11 @@ Install development tools
 
 ## Keyboard wizardry (macOs)
 
+Keyboard remappings
+
+ * caps_lock => control
+ * control + ; => control + b
+
 Install Karabiner Elements ([source](https://pqrs.org/osx/karabiner/))
 
 Copy config

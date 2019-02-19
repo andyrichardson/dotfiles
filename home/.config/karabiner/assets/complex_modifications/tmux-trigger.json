@@ -1,0 +1,25 @@
+{
+  "title": "Remap left_control + semicolon to default tmux binding",
+  "rules": [
+    {
+      "description": "remap to control b",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "semicolon",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "b",
+              "modifiers": ["control"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
