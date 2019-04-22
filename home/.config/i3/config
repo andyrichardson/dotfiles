@@ -29,7 +29,7 @@ font pango:San Francisco Text Light 8
 floating_modifier $mod
 
 # start a terminal
-bindsym Control+Mod1+t exec gnome-terminal
+bindsym Control+Mod1+t exec terminator
 
 # kill focused window
 bindsym $mod+BackSpace kill
