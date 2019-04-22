@@ -4,10 +4,10 @@ function bobthefish_colors -S -d 'Define a custom bobthefish color scheme'
   set magenta "#C678DD"
   set green "#98C379"
   set bright_black "#5C6370"
-  set white "#ABB2BF"
+  set white "#9CA8BA"
   set blue "#61AFEF"
   set yellow "#D19A66"
-  set selection "#3A3F4B"
+  set selection "#363b46"
   set background "#1E2127"
 
   # Optionally include a base color scheme
