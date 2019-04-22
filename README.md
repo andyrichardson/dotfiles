@@ -118,6 +118,12 @@ Install polybar [[source]](https://github.com/jaagr/polybar/wiki/Compiling)
     # Copy config
     cp -r home/.config/polybar ~/.config
 
+### DPI scaling
+
+For macbook pro / HIDPI displays
+
+    echo "Xft.dpi: 192" >> ~/.Xresources
+
 ## Tools
 
 ### Nvm
