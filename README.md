@@ -10,41 +10,29 @@ Configure root password (for single user mode)
 
 Install development tools
 
-    sudo dnf install @development-tools
-
-## Keyboard wizardry (macOs)
-
-Keyboard remappings
-
- * caps_lock => control
- * control + ; => control + b
-
-Install Karabiner Elements ([source](https://pqrs.org/osx/karabiner/))
-
-Copy config
-
-```
-    cp -r home/.config/karabiner ~/.config
-```
+    sudo dnf install -y @development-tools
 
 ## Terminal
 
-### Gnome terminal
+### Terminator
 
-Set colors
-
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/denysdovhan/gnome-terminal-one/master/one-dark.sh)"
+    sudo dnf install -y terminator
+    cp -r home/.config/terminator ~/.config/
 
 ### Fish shell
 
 Install ([source](https://software.opensuse.org/download.html?project=shells%3Afish%3Arelease%3A2&package=fish))
 
     # Fedora
-    sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/shells:fish:release:2/Fedora_27/shells:fish:release:2.repo
+    sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/shells:fish:release:3/Fedora_29/shells:fish:release:3.repo
     sudo dnf install fish
 
     # macOS
     brew install fish
+
+Copy config
+
+    cp -r home/.config/fish ~/.config/
 
 Install omf ([source](https://github.com/oh-my-fish/oh-my-fish))
 
@@ -56,7 +44,11 @@ Install omf packages
 
 Install powerline fonts
 
-    sudo dnf install powerline-fonts
+    sudo dnf install -y powerline-fonts
+
+Copy config
+
+    cp -r home/.config/fish ~/.config/
 
 ### Tmux
 
@@ -67,11 +59,15 @@ Install
     cp home/.tmux.conf ~/
 
     # macOS
-    cat home/.tmux.conf | sed 's|/usr/bin/fish|/usr/local/bin/fish|g' > ~/.tmux.conf 
+    cat home/.tmux.conf | sed 's|/usr/bin/fish|/usr/local/bin/fish|g' > ~/.tmux.conf
 
 Install package manager
 
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+Install tmux packages
+
+_Run tmux and hit ctrl+b then shift+i_
 
 ### Git
 
@@ -104,9 +100,22 @@ Install compton
     sudo dnf install compton
     cp home/.config/compton.conf ~/.config
 
-Install polybar
+Install polybar [[source]](https://github.com/jaagr/polybar/wiki/Compiling)
 
-    sudo dnf install polybar
+    # Build dependencies
+    sudo dnf install -y gcc gcc-c++ cmake python3-sphinx cairo-devel xcb-util-devel libxcb-devel xcb-proto xcb-util-image-devel xcb-util-wm-devel
+
+    # Build from source
+    cd /tmp
+    git clone --recursive https://github.com/jaagr/polybar
+    cd polybar
+    mkdir build
+    cd build
+    cmake ..
+    make -j$(nproc)
+    sudo make install
+
+    # Copy config
     cp -r home/.config/polybar ~/.config
 
 ## Tools
