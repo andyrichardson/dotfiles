@@ -43,10 +43,10 @@ bindsym $mod+BackSpace kill
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -55,10 +55,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -67,10 +67,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+#bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+#bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -122,10 +122,10 @@ bindsym $mod+Shift+9 move container to workspace number 9; workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10; workspace number 10
 
 # Move workspace l/r
-bindsym Control+$mod+j workspace prev
-bindsym Control+$mod+semicolon workspace next
-bindsym $mod+Mod1+j move container to workspace prev; workspace prev
-bindsym $mod+Mod1+semicolon move container to workspace next; workspace next
+bindsym Control+$mod+h workspace prev
+bindsym Control+$mod+l workspace next
+bindsym $mod+Mod1+h move container to workspace prev; workspace prev
+bindsym $mod+Mod1+l move container to workspace next; workspace next
 
 bindsym Control+$mod+Left workspace prev
 bindsym Control+$mod+Right workspace next
@@ -180,6 +180,8 @@ bindsym $mod+r mode "resize"
 
 # Configure gaps
 gaps inner 15
+default_border pixel 3
+default_floating_border pixel 3
 
 # Gnome settings
 exec --no-startup-id /usr/libexec/gnome-settings-daemon
@@ -222,4 +224,4 @@ exec_always --no-startup-id compton -f -D 2 --backend glx --vsync opengl-swc
 exec_always  nitrogen --set-tiled ~/Pictures/Wallpapers/wallpaper.jpg 
 exec --no-startup-id albert
 
-new_window pixel 0
+new_window pixel 4
