@@ -83,6 +83,10 @@ Configure push & pull policy
 
 ## Desktop Environment
 
+### Key remapping
+
+    cp home/.Xmodmap ~/
+
 ### i3wm
 
 Install i3 (gaps) and rofi
