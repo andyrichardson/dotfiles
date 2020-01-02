@@ -12,6 +12,12 @@ setupGit() {
     git config --global pull.default current
 }
 
+# Setup terminator
+setupTerminator() {
+  sudo dnf install -y terminator
+  cp -r home/.config/terminator ~/.config/
+}
+
 # Setup zsh
 setupZsh() {
   echo "Installing zsh"
@@ -19,8 +25,12 @@ setupZsh() {
 
   # zsh
   sudo dnf install -y zsh
+  
   # Antigen package manager
   curl -L git.io/antigen > ~/.zsh/antigen.zsh
+
+  # Copy config across
+  cp home/.zshrc ~/.zshrc
 }
 
 # Setup desktop environment
