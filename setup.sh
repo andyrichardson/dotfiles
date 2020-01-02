@@ -64,7 +64,7 @@ setupDesktopEnv() {
   sudo dnf groupinstall -y "Xfce Desktop"
   sudo dnf copr enable fusion809/Rofi
   sudo dnf copr enable nforro/i3-gaps
-  sudo dnf install -y i3-gaps nitrogen rofi
+  sudo dnf install -y i3-gaps nitrogen rofi jq
 
 
   # Install workspace plugin dependencies
