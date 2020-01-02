@@ -218,8 +218,6 @@ bindsym $mod+Return exec rofi -show drun -modi drun -display-drun Apps
 exec ~/bin/monitor-update
 
 # theming
-exec polybar top
-exec polybar bottom
 exec_always --no-startup-id compton -f -D 2 --backend glx --vsync opengl-swc 
 exec_always  nitrogen --set-tiled ~/Pictures/Wallpapers/wallpaper.jpg 
 exec --no-startup-id albert
