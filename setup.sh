@@ -33,11 +33,39 @@ setupZsh() {
   cp home/.zshrc ~/.zshrc
 }
 
+# Setup tmux
+setupTmux() {
+  # Fedora
+  sudo dnf install tmux
+  cp home/.tmux.conf ~/
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  ~/.tmux/plugins/tpm/bin/install_plugins
+  chsh -s /usr/bin/tmux
+}
+
+# Setup neovim
+setupNeovim() {
+  sudo dnf -y install neovim
+  sudo dnf -y install python2-neovim python3-neovim
+
+  # Install package manager
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  
+  # Copy config
+  cp home/.config/nvim ~/.config/
+  cp home/.vimrc ~/
+  nvim -c PlugInstall -c q -c q
+}
+
 # Setup desktop environment
 setupDesktopEnv() {
-  # Install xfce and i3
+  # Install xfce, i3, rofi
   sudo dnf groupinstall -y "Xfce Desktop"
-  sudo dnf install -y i3 nitrogen
+  sudo dnf copr enable fusion809/Rofi
+  sudo dnf copr enable nforro/i3-gaps
+  sudo dnf install -y i3-gaps nitrogen rofi
+
 
   # Install workspace plugin dependencies
   sudo dnf install -y intltool gtk3-devel gtk2-devel libxfce4ui-devel xfce4-panel-devel xfce4-dev-tools json-glib-devel
@@ -60,4 +88,6 @@ setupDesktopEnv() {
   # Copy config files across
   cp home/.config/autostart ~/.config/
   cp home/.config/xfce4 ~/.config/
+
+  # Setup a
 }
