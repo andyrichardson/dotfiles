@@ -86,8 +86,8 @@ setupDesktopEnv() {
   sudo sed -i -e 's/^xfdesktop/# DISABLED: &/' /etc/xdg/xfce4/xinitrc 
 
   # Copy config files across
-  cp home/.config/autostart ~/.config/
-  cp home/.config/xfce4 ~/.config/
+  cp -r home/.config/autostart ~/.config/
+  cp -r home/.config/xfce4 ~/.config/
 }
 
 setupGit
