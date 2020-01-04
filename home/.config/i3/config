@@ -183,9 +183,6 @@ gaps inner 15
 default_border pixel 3
 default_floating_border pixel 3
 
-# Gnome settings
-exec --no-startup-id /usr/libexec/gnome-settings-daemon
-
 # Configure trackpad
 exec --no-startup-id xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Natural Scrolling Enabled" 1
 exec --no-startup-id xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Tapping Enabled" 1  
@@ -200,11 +197,10 @@ bindsym XF86MonBrightnessUp exec brightnessctl s +20% # increase screen brightne
 bindsym XF86MonBrightnessDown exec brightnessctl s 20%- # decrease screen brightness
 
 # Print screen
-bindsym Print exec gnome-screenshot
-bindsym Shift+Print exec gnome-screenshot -a
+bindsym Print exec xfce4-screenshooter
 
-# Gnome utilities
-bindsym Control+$mod+period exec gnome-control-center
+# XFCE
+exec_always --no-startup-id bash -c "killall xfce4-panel && xfce4-panel"
 
 # Window overview
 bindsym $mod+Tab exec skippy-xd
