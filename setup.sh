@@ -65,7 +65,7 @@ setupDesktopEnv() {
   sudo dnf remove -y xfdesktop
   sudo dnf copr enable -y fusion809/Rofi
   sudo dnf copr enable -y nforro/i3-gaps
-  sudo dnf install -y i3-gaps nitrogen rofi jq
+  sudo dnf install -y i3-gaps nitrogen rofi jq compton
 
   # Install workspace plugin dependencies
   sudo dnf install -y intltool gtk3-devel gtk2-devel libxfce4ui-devel xfce4-panel-devel xfce4-dev-tools json-glib-devel
@@ -88,6 +88,7 @@ setupDesktopEnv() {
   # Copy config files across
   cp -r home/.config/autostart ~/.config/
   cp -r home/.config/xfce4 ~/.config/
+  cp -r home/.config/i3 ~/.config/
 }
 
 setupGit
