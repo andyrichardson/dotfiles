@@ -76,10 +76,6 @@ setupDesktopEnv() {
   # Install xfce i3 workspace plugin
   curl -L https://github.com/denesb/xfce4-i3-workspaces-plugin/releases/download/1.2.0/xfce4-i3-workspaces-plugin-1.2.0.tar.gz | tar -xzv -C /tmp
   ( cd /tmp/xfce4-i3-workspaces-plugin && ./configure --prefix=/usr && make && sudo make install )
-  cd xfce4-i3-workspaces-plugin.tar.gz
-  ./configure --prefix=/usr
-  make
-  sudo make install
 
   # Remove DE startup processes
   sudo sed -i -e 's/^xfwm4/# DISABLED: &/' /etc/xdg/xfce4/xinitrc 
