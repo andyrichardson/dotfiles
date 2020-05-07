@@ -1,6 +1,6 @@
 #!/bin/bash
-$GIT_USER_NAME="Andy Richardson"
-$GIT_EMAIL="email@email.com"
+GIT_USER_NAME="Andy Richardson"
+GIT_EMAIL="email@email.com"
 
 
 # Setup git
@@ -53,7 +53,7 @@ setupNeovim() {
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   
   # Copy config
-  cp home/.config/nvim ~/.config/
+  cp -r home/.config/nvim ~/.config/
   cp home/.vimrc ~/
   nvim -c PlugInstall -c q -c q
 }
