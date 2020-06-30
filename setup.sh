@@ -96,6 +96,12 @@ setupGnomeShell() {
 
   dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-left "['<Super><Control>Left', '<Super><Control>h']"
   dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-left "['<Super><Control>Right', '<Super><Control>l']"
+  dconf write /org/gnome/mutter/keybindings/toggle-tiled-left "['']"
+  dconf write /org/gnome/mutter/keybindings/toggle-tiled-right "['']"
+  dconf write /org/gnome/desktop/wm/keybindings/maximize "['']"
+  dconf write /org/gnome/desktop/wm/keybindings/unmaximize "['']"
+  dconf write /org/gnome/desktop/wm/keybindings/move-to-monitor-left "['']"
+  dconf write /org/gnome/desktop/wm/keybindings/move-to-monitor-right "['']"
 
   dconf write /org/gnome/desktop/wm/preferences/focus-mode "'sloppy'"
   dconf write /org/gnome/mutter/dynamic-workspaces false
