@@ -14,7 +14,7 @@ setupGit() {
 
 # Setup terminator
 setupTerminator() {
-  sudo dnf install -y terminator
+  sudo pacman -Sy --noconfirm terminator
   cp -r home/.config/terminator ~/.config/
 }
 
@@ -24,7 +24,7 @@ setupZsh() {
   mkdir -p ~/.zsh
 
   # zsh
-  sudo dnf install -y zsh
+  sudo pacman -Sy --noconfirm zsh
   
   # Antigen package manager
   curl -L git.io/antigen > ~/.zsh/antigen.zsh
@@ -35,8 +35,7 @@ setupZsh() {
 
 # Setup tmux
 setupTmux() {
-  # Fedora
-  sudo dnf install tmux
+  sudo pacman -Sy --noconfirm tmux
   cp home/.tmux.conf ~/
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   ~/.tmux/plugins/tpm/bin/install_plugins
@@ -45,8 +44,7 @@ setupTmux() {
 
 # Setup neovim
 setupNeovim() {
-  sudo dnf -y install neovim
-  sudo dnf -y install python2-neovim python3-neovim
+  sudo pacman -Sy --noconfirm neovim python-pynvim
 
   # Install package manager
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -58,38 +56,51 @@ setupNeovim() {
   nvim -c PlugInstall -c q -c q
 }
 
-# Setup desktop environment
-setupDesktopEnv() {
-  # Install xfce, i3, rofi
-  sudo dnf groupinstall -y "Xfce Desktop"
-  sudo dnf remove -y xfdesktop
-  sudo dnf copr enable -y fusion809/Rofi
-  sudo dnf copr enable -y nforro/i3-gaps
-  sudo dnf install -y i3-gaps nitrogen rofi jq compton
+setupGnomeShell() {
+  ## Extensions
+  git clone https://github.com/tomha/gnome-shell-extension-workspace-switcher ~/.local/share/gnome-shell/extensions/workspace-switcher@tomha.github.com
+  pamac build --no-confirm gnome-shell-extension-pop-shell-git
+  
+  dconf write /org/gnome/shell/extensions/workspce-switcher/background-colour-active '#bf3f3f00'
+  dconf write /org/gnome/shell/extensions/workspce-switcher/background-colour-inactive '#bf3f3f00'
+  dconf write /org/gnome/shell/extensions/workspce-switcher/border-size-active 0
+  dconf write /org/gnome/shell/extensions/workspce-switcher/border-size-inactive 0
+  dconf write /org/gnome/shell/extensions/workspce-switcher/font-colour-active '#ffffffff'
+  dconf write /org/gnome/shell/extensions/workspce-switcher/font-colour-inactive '#555753ff'
+  dconf write /org/gnome/shell/extensions/workspce-switcher/font-colour-use-custom-active true
+  dconf write /org/gnome/shell/extensions/workspce-switcher/mode 'ALL'
+  dconf write /org/gnome/shell/extensions/workspce-switcher/padding-horizontal 5
+  dconf write /org/gnome/shell/extensions/workspce-switcher/position 'LEFT'
+  dconf write /org/gnome/shell/extensions/workspce-switcher/show-names false
 
-  # Install workspace plugin dependencies
-  sudo dnf install -y intltool gtk3-devel gtk2-devel libxfce4ui-devel xfce4-panel-devel xfce4-dev-tools json-glib-devel
-  curl -L https://github.com/altdesktop/i3ipc-glib/releases/download/v0.6.0/i3ipc-0.6.0.tar.gz | tar -xzv -C /tmp
-  ( cd /tmp/i3ipc-0.6.0 && ./configure --prefix=/usr && make && sudo make install )
+  ### Gnome Settings ###
+  # Go to workspace
+  dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-1 "['<Super>1']"
+  dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-2 "['<Super>2']"
+  dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-3 "['<Super>3']"
+  dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-4 "['<Super>4']"
+  dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-5 "['<Super>5']"
+  dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-6 "['<Super>6']"
+  dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-7 "['<Super>7']"
+  dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-8 "['<Super>8']"
 
+  # Move focused window to workspace
+  dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-1 "['<Super><Shift>1']"
+  dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-2 "['<Super><Shift>2']"
+  dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-3 "['<Super><Shift>3']"
+  dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-4 "['<Super><Shift>4']"
+  dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-5 "['<Super><Shift>5']"
+  dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-6 "['<Super><Shift>6']"
+  dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-7 "['<Super><Shift>7']"
+  dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-8 "['<Super><Shift>8']"
 
-  # Install xfce i3 workspace plugin
-  curl -L https://github.com/denesb/xfce4-i3-workspaces-plugin/releases/download/1.2.0/xfce4-i3-workspaces-plugin-1.2.0.tar.gz | tar -xzv -C /tmp
-  ( cd /tmp/xfce4-i3-workspaces-plugin && ./configure --prefix=/usr && make && sudo make install )
+  dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-left "['<Super><Control>Left', '<Super><Control>h']"
+  dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-left "['<Super><Control>Right', '<Super><Control>l']"
 
-  # Remove DE startup processes
-  sudo sed -i -e 's/^xfwm4/# DISABLED: &/' /etc/xdg/xfce4/xinitrc 
-  sudo sed -i -e 's/^xfdesktop/# DISABLED: &/' /etc/xdg/xfce4/xinitrc 
-
-  # Copy config files across
-  cp -r home/.config/autostart ~/.config/
-  cp -r home/.config/xfce4 ~/.config/
-  cp -r home/.config/i3 ~/.config/
+  dconf write org.gnome.desktop.wm.preferences focus-mode 'sloppy'
+  dconf write org.gnome.desktop.wm.preferences num-workspaces 8
 }
 
-setupGit
-setupTerminator
-setupZsh
-setupTmux
-setupNeovim
-setupDesktopEnv
+### Setup terminal
+sudo pacman -Syyu --noconfirm pamac ttf-font-awesome zsh tmux neovim ttf-joypixels
+
