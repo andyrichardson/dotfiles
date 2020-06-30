@@ -93,6 +93,13 @@ setupGnomeShell() {
   dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-6 "['<Super><Shift>6']"
   dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-7 "['<Super><Shift>7']"
   dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-8 "['<Super><Shift>8']"
+  
+  dconf write /org/gnome/desktop/wm/keybindings/close "['<Super>Backspace']"
+  dconf write /org/gnome/desktop/wm/keybindings/minimize "['']"
+  dconf write /org/gnome/shell/keybindings/switch-to-application-1 "['']"
+  dconf write /org/gnome/shell/keybindings/switch-to-application-2 "['']"
+  dconf write /org/gnome/shell/keybindings/switch-to-application-3 "['']"
+  dconf write /org/gnome/shell/keybindings/switch-to-application-4 "['']"  
 
   dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-left "['<Super><Control>Left', '<Super><Control>h']"
   dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-left "['<Super><Control>Right', '<Super><Control>l']"
@@ -102,7 +109,6 @@ setupGnomeShell() {
   dconf write /org/gnome/desktop/wm/keybindings/unmaximize "['']"
   dconf write /org/gnome/desktop/wm/keybindings/move-to-monitor-left "['']"
   dconf write /org/gnome/desktop/wm/keybindings/move-to-monitor-right "['']"
-
   dconf write /org/gnome/desktop/wm/preferences/focus-mode "'sloppy'"
   dconf write /org/gnome/mutter/dynamic-workspaces false
   dconf write /org/gnome/desktop/wm/preferences/num-workspaces 8
