@@ -61,16 +61,16 @@ setupGnomeShell() {
   git clone https://github.com/tomha/gnome-shell-extension-workspace-switcher ~/.local/share/gnome-shell/extensions/workspace-switcher@tomha.github.com
   pamac build --no-confirm gnome-shell-extension-pop-shell-git
   
-  dconf write /org/gnome/shell/extensions/workspce-switcher/background-colour-active '#bf3f3f00'
-  dconf write /org/gnome/shell/extensions/workspce-switcher/background-colour-inactive '#bf3f3f00'
+  dconf write /org/gnome/shell/extensions/workspce-switcher/background-colour-active "'#bf3f3f00'"
+  dconf write /org/gnome/shell/extensions/workspce-switcher/background-colour-inactive "'#bf3f3f00'"
   dconf write /org/gnome/shell/extensions/workspce-switcher/border-size-active 0
   dconf write /org/gnome/shell/extensions/workspce-switcher/border-size-inactive 0
-  dconf write /org/gnome/shell/extensions/workspce-switcher/font-colour-active '#ffffffff'
-  dconf write /org/gnome/shell/extensions/workspce-switcher/font-colour-inactive '#555753ff'
+  dconf write /org/gnome/shell/extensions/workspce-switcher/font-colour-active "'#ffffffff'"
+  dconf write /org/gnome/shell/extensions/workspce-switcher/font-colour-inactive "'#555753ff'"
   dconf write /org/gnome/shell/extensions/workspce-switcher/font-colour-use-custom-active true
-  dconf write /org/gnome/shell/extensions/workspce-switcher/mode 'ALL'
+  dconf write /org/gnome/shell/extensions/workspce-switcher/mode "'ALL'"
   dconf write /org/gnome/shell/extensions/workspce-switcher/padding-horizontal 5
-  dconf write /org/gnome/shell/extensions/workspce-switcher/position 'LEFT'
+  dconf write /org/gnome/shell/extensions/workspce-switcher/position "'LEFT'"
   dconf write /org/gnome/shell/extensions/workspce-switcher/show-names false
 
   ### Gnome Settings ###
@@ -97,8 +97,8 @@ setupGnomeShell() {
   dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-left "['<Super><Control>Left', '<Super><Control>h']"
   dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-left "['<Super><Control>Right', '<Super><Control>l']"
 
-  dconf write org.gnome.desktop.wm.preferences focus-mode 'sloppy'
-  dconf write org.gnome.desktop.wm.preferences num-workspaces 8
+  dconf write /org/gnome/desktop/wm/preferences/focus-mode "'sloppy'"
+  dconf write /org/gnome/desktop/wm/preferences/num-workspaces 8
 }
 
 ### Setup terminal
