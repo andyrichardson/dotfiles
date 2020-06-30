@@ -98,9 +98,12 @@ setupGnomeShell() {
   dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-left "['<Super><Control>Right', '<Super><Control>l']"
 
   dconf write /org/gnome/desktop/wm/preferences/focus-mode "'sloppy'"
+  dconf write /org/gnome/mutter/dynamic-workspaces false
   dconf write /org/gnome/desktop/wm/preferences/num-workspaces 8
 }
 
 ### Setup terminal
 sudo pacman -Syyu --noconfirm pamac ttf-font-awesome zsh tmux neovim ttf-joypixels
 
+### Install gnome shell (full)
+sudo pacman -Syyu --noconfirm gnome-extra gdm manjaro-gnome-assets manjaro-gdm-theme manjaro-settings-manager
