@@ -6,7 +6,7 @@
 ######################
 sudo apt update
 sudo apt install -y \
-  git build-essential curl python3 python3-pip
+  git build-essential curl python3 python3-pip autoconf
 
 ######################
 # zsh
@@ -57,4 +57,15 @@ pip3 install docker-compose
 ######################
 # emoji
 ######################
-sudo apt install -y fonts-emojione gnome-characters
+sudo apt install -y fonts-emojione gnome-characters libglib2.0-dev rofi-dev
+git clone https://github.com/Mange/rofi-emoji.git /tmp/rofi-emoji
+cd /tmp/rofi-emoji
+autoreconf -i
+mkdir build
+cd build/
+../configure
+make
+sudo make install
+cd -
+rm -rf /tmp/rofi-emoji
+
