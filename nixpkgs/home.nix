@@ -2,26 +2,23 @@
 
 {
   imports = [
+    (./. + "/modules/alacritty.nix")
     (./. + "/modules/git.nix")
-    (./. + "/modules/zsh.nix")
     (./. + "/modules/tmux.nix")
+    (./. + "/modules/zsh.nix")
   ];
 
   programs.home-manager.enable = true;
   
-  home.username = "andy";
-  home.homeDirectory = "/home/andy";
+  home.username = "andyrichardson";
+  home.homeDirectory = builtins.getEnv "HOME";
   home.stateVersion = "21.03";
   home.sessionVariables = {
-    EDITOR = "tmux";
+    EDITOR = "nvim";
   };
 
   home.packages = [
     pkgs.htop
     pkgs.docker
   ];
-
-  # programs.zsh = {
-  #   enable = true;
-  # };
 }
