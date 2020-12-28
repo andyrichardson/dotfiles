@@ -7,6 +7,15 @@
 
   programs.zsh = {
     enable = true;
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "npm"
+        "gitfast"
+        "autojump"
+      ];
+      theme = "agnoster";
+    };
     plugins = [
       {
         name = "zsh-nix-shell";
@@ -22,23 +31,17 @@
     initExtra = ''
       ## "initExtra" in zsh.nix
       # Setup plugins
-      antigen use oh-my-zsh
       antigen bundle unixorn/autoupdate-antigen.zshplugin
       antigen bundle zsh-users/zsh-completions
       antigen bundle zsh-users/zsh-autosuggestions
-      antigen bundle npm
       antigen bundle chrissicool/zsh-256color
-      antigen bundle gitfast
       antigen bundle amstrad/oh-my-matrix
       antigen bundle lukechilds/zsh-nvm
       antigen bundle lukechilds/zsh-better-npm-completion
       antigen bundle andyrichardson/zsh-node-path
       antigen bundle MichaelAquilina/zsh-autoswitch-virtualenv
       antigen bundle nocttuam/autodotenv
-      antigen bundle autojump
-      antigen bundle zsh-users/zsh-autosuggestions
       antigen bundle zsh-users/zsh-syntax-highlighting
-      antigen theme agnoster
       antigen apply
     '';
   };
