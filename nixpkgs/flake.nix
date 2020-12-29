@@ -3,17 +3,13 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
-  };
-
-  outputs = { home-manager, nixpkgs, ... }: {
-    nixosConfigurations = {
-      hostname = nixpkgs.lib.nixosSystem {
-        system = "x86_64-darwin";
-        modules = [
-          ./configuration.nix
-          home-manager.nixosModules.home-manager
-        ];
-      };
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+      flake = false;
     };
+  };
+  
+  outputs = { home-manager, nixpkgs, ... }: {
+    defaultPackage.x86_64-darwin = home-manager.darwinModules.home-manager;
   };
 }
