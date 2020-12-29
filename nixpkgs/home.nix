@@ -5,6 +5,7 @@
     (./. + "/modules/alacritty.nix")
     (./. + "/modules/git.nix")
     (./. + "/modules/tmux.nix")
+    (./. + "/modules/vscode.nix")
     (./. + "/modules/zsh.nix")
   ];
 
@@ -20,5 +21,6 @@
   home.packages = [
     pkgs.htop
     pkgs.docker
+    # pkgs.update-nix-fetchgit
   ];
 }
