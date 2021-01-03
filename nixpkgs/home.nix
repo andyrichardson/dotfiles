@@ -12,7 +12,6 @@
   programs.home-manager.enable = true;
   
   home.username = "andyrichardson";
-  home.homeDirectory = builtins.getEnv "HOME";
   home.stateVersion = "21.03";
   home.sessionVariables = {
     EDITOR = "nvim";
