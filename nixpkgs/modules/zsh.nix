@@ -1,10 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = [
-    pkgs.zsh
-  ];
-
   programs.zsh = {
     enable = true;
     oh-my-zsh = {

@@ -9,8 +9,8 @@ with import ../secrets.nix;
     userEmail = email;
   };
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    GITHUB_TOKEN = githubToken;
-  };
+  # home.sessionVariables = {
+  #   EDITOR = "nvim";
+  #   GITHUB_TOKEN = githubToken;
+  # };
 }

@@ -11,3 +11,13 @@ nix-shell '<home-manager>' -A install
 # Copy config and make smlink for changes
 # cp -r nixpkgs ~/.config
 # ln -s ~/.config/nixpkgs .
+
+nix-env -iA nixpkgs.nixFlakes
+mkdir -p ~/.config/nix/
+echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
+
+nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer ./result/bin/darwin-installer
+
+# Build and deploy env
+nix-build --impure
+sudo ./result/activate
