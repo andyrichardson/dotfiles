@@ -19,20 +19,7 @@
         home-manager.darwinModules.home-manager
         {
           home-manager.useUserPackages = true;
-          home-manager.users.andyrichardson = {
-            home.username = "andyrichardson";
-            # home.homeDirectory = "/Users/andyrichardson";
-            programs.zsh = {
-              enable = true;
-              initExtra = ''
-                TEST HERE
-              '';
-            };
-            programs.git = {
-              enable = true;
-              userName = "Test Richardson";
-            };
-          };
+          home-manager.users.andyrichardson = (import ./. + "/home.nix");
         }
       ];
     }).system;
