@@ -10,7 +10,9 @@ flakes: { pkgs, ... }:
   # ];
 
   imports = [
-    (import ./modules/git.nix)
+    (import ./modules/alacritty.nix flakes)
+    (import ./modules/git.nix flakes)
+    (import ./modules/tmux.nix flakes)
     (import ./modules/zsh.nix flakes)
   ];
   programs.home-manager.enable = true;
