@@ -1,10 +1,6 @@
-{ config, pkgs, ... }:
+flakes: { config, pkgs, ... }:
 
 {
-  # home.packages = [
-    
-  # ];
-
   programs.tmux = {
     enable = true;
     plugins = [
