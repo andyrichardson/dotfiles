@@ -1,15 +1,40 @@
 {
   description = "NixOS configuration";
   inputs = {
-    antigen = {
-      url = "github:zsh-users/antigen/v2.2.3";
-      flake = false;
-    };
-    # ZSH Plugins
+    # zsh Plugins
     zsh-node-path = {
       url = "github:andyrichardson/zsh-node-path";
       flake = false;
     };
+    zsh-completions = {
+      url = "github:zsh-users/zsh-completions";
+      flake = false;
+    };
+    zsh-autosuggestions = {
+      url = "github:zsh-users/zsh-autosuggestions";
+      flake = false;
+    };
+    zsh-syntax-highlighting = {
+      url = "github:zsh-users/zsh-syntax-highlighting";
+      flake = false;
+    };
+    zsh-256color = {
+      url = "github:chrissicool/zsh-256color";
+      flake = false;
+    };
+    zsh-nvm = {
+      url = "github:lukechilds/zsh-nvm";
+      flake = false;
+    };
+    zsh-better-npm-completion = {
+      url = "github:lukechilds/zsh-better-npm-completion";
+      flake = false;
+    };
+    zsh-autoswitch-virtualenv = {
+      url = "github:MichaelAquilina/zsh-autoswitch-virtualenv";
+      flake = false;
+    };
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -21,14 +46,14 @@
   };
   
 
-  outputs = { antigen, zsh-node-path, home-manager, nixpkgs, darwin, ... }: {
-    defaultPackage.x86_64-darwin = (darwin.lib.darwinSystem {
-      inputs = { inherit home-manager nixpkgs darwin antigen; };
+  outputs = inputs: {
+    defaultPackage.x86_64-darwin = (inputs.darwin.lib.darwinSystem {
+      inputs = inputs;
       modules = [ 
-        home-manager.darwinModules.home-manager
+        inputs.home-manager.darwinModules.home-manager
         {
           home-manager.useUserPackages = true;
-          home-manager.users.andyrichardson = import ./home.nix { inherit antigen zsh-node-path; };
+          home-manager.users.andyrichardson = import ./home.nix inputs;
         }
       ];
     }).system;

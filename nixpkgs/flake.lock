@@ -1,22 +1,5 @@
 {
   "nodes": {
-    "antigen": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1515023826,
-        "narHash": "sha256-OB/NgpYTlMTHaohis2J/McS+oDHvDXND9FHVNnXjFsM=",
-        "owner": "zsh-users",
-        "repo": "antigen",
-        "rev": "d3d4ee03897eed73efc20c3f779b31194bfa64d8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zsh-users",
-        "ref": "v2.2.3",
-        "repo": "antigen",
-        "type": "github"
-      }
-    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -104,12 +87,98 @@
     },
     "root": {
       "inputs": {
-        "antigen": "antigen",
         "darwin": "darwin",
         "flake-compat": "flake-compat",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
-        "zsh-node-path": "zsh-node-path"
+        "zsh-256color": "zsh-256color",
+        "zsh-autosuggestions": "zsh-autosuggestions",
+        "zsh-autoswitch-virtualenv": "zsh-autoswitch-virtualenv",
+        "zsh-better-npm-completion": "zsh-better-npm-completion",
+        "zsh-completions": "zsh-completions",
+        "zsh-node-path": "zsh-node-path",
+        "zsh-nvm": "zsh-nvm",
+        "zsh-syntax-highlighting": "zsh-syntax-highlighting"
+      }
+    },
+    "zsh-256color": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1563652855,
+        "narHash": "sha256-Qd9pjDSQk+kz++/UjGVbM4AhAklc1xSTimLQXxN57pI=",
+        "owner": "chrissicool",
+        "repo": "zsh-256color",
+        "rev": "9d8fa1015dfa895f2258c2efc668bc7012f06da6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "chrissicool",
+        "repo": "zsh-256color",
+        "type": "github"
+      }
+    },
+    "zsh-autosuggestions": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1578370341,
+        "narHash": "sha256-xv4eleksJzomCtLsRUj71RngIJFw8+A31O6/p7i4okA=",
+        "owner": "zsh-users",
+        "repo": "zsh-autosuggestions",
+        "rev": "ae315ded4dba10685dbbafbfa2ff3c1aefeb490d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zsh-users",
+        "repo": "zsh-autosuggestions",
+        "type": "github"
+      }
+    },
+    "zsh-autoswitch-virtualenv": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1607419437,
+        "narHash": "sha256-bYGh3e5HIjXxf2t3uDjKW5UFBWCHkG94aL+luWQzjP8=",
+        "owner": "MichaelAquilina",
+        "repo": "zsh-autoswitch-virtualenv",
+        "rev": "9af10191e3647678bb2dcd3c0def627d4cb56e19",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MichaelAquilina",
+        "repo": "zsh-autoswitch-virtualenv",
+        "type": "github"
+      }
+    },
+    "zsh-better-npm-completion": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1574159288,
+        "narHash": "sha256-/rWmwCH3drGhibF44sNtG1aNdSvx1EyDiYmyHGyZ55s=",
+        "owner": "lukechilds",
+        "repo": "zsh-better-npm-completion",
+        "rev": "0a7cf042415324ec38a186fdcbc9af163f0d7e69",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lukechilds",
+        "repo": "zsh-better-npm-completion",
+        "type": "github"
+      }
+    },
+    "zsh-completions": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1609695678,
+        "narHash": "sha256-EE/PYaK4N2X/+aEMp2YlzlqDTNWPaNfYQvNlEm4E8D8=",
+        "owner": "zsh-users",
+        "repo": "zsh-completions",
+        "rev": "244cbfc832930ce0a10c2e7930a30ea985a5e26d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zsh-users",
+        "repo": "zsh-completions",
+        "type": "github"
       }
     },
     "zsh-node-path": {
@@ -125,6 +194,38 @@
       "original": {
         "owner": "andyrichardson",
         "repo": "zsh-node-path",
+        "type": "github"
+      }
+    },
+    "zsh-nvm": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1592292082,
+        "narHash": "sha256-Zwdi7bezMFKaIKYwsSftu3mJSFvadEWmY2hYnU1Kpu4=",
+        "owner": "lukechilds",
+        "repo": "zsh-nvm",
+        "rev": "23067bd9bb6eb6f4737a3ea90cb0cb5e85f61ba2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lukechilds",
+        "repo": "zsh-nvm",
+        "type": "github"
+      }
+    },
+    "zsh-syntax-highlighting": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1608936230,
+        "narHash": "sha256-8gyZe6OPVLMdfruHJAHcyYeuiyvMTLvuX1UnUOv8eg8=",
+        "owner": "zsh-users",
+        "repo": "zsh-syntax-highlighting",
+        "rev": "5eb494852ebb99cf5c2c2bffee6b74e6f1bf38d0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zsh-users",
+        "repo": "zsh-syntax-highlighting",
         "type": "github"
       }
     }
