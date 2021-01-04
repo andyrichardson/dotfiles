@@ -7,6 +7,11 @@ flakes: { config, pkgs, ... }:
       shell = {
         program = "${pkgs.tmux}/bin/tmux";
       };
+      font = {
+        normal = {
+          family = "DejaVuSansMono Nerd Font";
+        };
+      };
     };
   };
 }
