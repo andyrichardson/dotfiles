@@ -1,5 +1,22 @@
 {
   "nodes": {
+    "antigen": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1515023826,
+        "narHash": "sha256-OB/NgpYTlMTHaohis2J/McS+oDHvDXND9FHVNnXjFsM=",
+        "owner": "zsh-users",
+        "repo": "antigen",
+        "rev": "d3d4ee03897eed73efc20c3f779b31194bfa64d8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zsh-users",
+        "ref": "v2.2.3",
+        "repo": "antigen",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -87,10 +104,28 @@
     },
     "root": {
       "inputs": {
+        "antigen": "antigen",
         "darwin": "darwin",
         "flake-compat": "flake-compat",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "zsh-node-path": "zsh-node-path"
+      }
+    },
+    "zsh-node-path": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1568908332,
+        "narHash": "sha256-jCemmEBWZ+9jVDGNEfDarpCPnJ4HkC2rsDRtAw4N7v0=",
+        "owner": "andyrichardson",
+        "repo": "zsh-node-path",
+        "rev": "1d83f56a7f884cd7e673763d39c7808db3ad1b9a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "andyrichardson",
+        "repo": "zsh-node-path",
+        "type": "github"
       }
     }
   },
