@@ -1,14 +1,18 @@
-{ config, pkgs, ... }:
+flakes: { pkgs, ... }:
 
 {
-  imports = [
-    (./. + "/modules/alacritty.nix")
-    (./. + "/modules/git.nix")
-    (./. + "/modules/tmux.nix")
-    (./. + "/modules/vscode.nix")
-    (./. + "/modules/zsh.nix")
-  ];
+  # imports = [
+  #   (./. + "/modules/alacritty.nix")
+  #   (./. + "/modules/git.nix")
+  #   (./. + "/modules/tmux.nix")
+    # (./. + "/modules/vscode.nix")
+    # (./. + "/modules/zsh.nix")
+  # ];
 
+  imports = [
+    (import ./modules/git.nix)
+    (import ./modules/zsh.nix flakes)
+  ];
   programs.home-manager.enable = true;
   
   home.username = "andyrichardson";
