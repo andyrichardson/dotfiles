@@ -14,26 +14,46 @@ flakes: { config, pkgs, ... }:
     };
     plugins = [
       {
-        name = "antigen";
+        name = "node-path";
         file = "node-path.zsh";
         src = flakes.zsh-node-path;
       }
+      {
+        name = "zsh-completions";
+        file = "zsh-completions.plugin.zsh";
+        src = flakes.zsh-completions;
+      }
+      {
+        name = "zsh-autosuggestions";
+        file = "zsh-autosuggestions.plugin.zsh";
+        src = flakes.zsh-autosuggestions;
+      }
+      {
+        name = "zsh-syntax-highlighting";
+        file = "zsh-syntax-highlighting.plugin.zsh";
+        src = flakes.zsh-syntax-highlighting;
+      }
+      {
+        name = "zsh-256color";
+        file = "zsh-256color.plugin.zsh";
+        src = flakes.zsh-256color;
+      }
+      {
+        name = "zsh-nvm";
+        file = "zsh-nvm.plugin.zsh";
+        src = flakes.zsh-nvm;
+      }
+      {
+        name = "zsh-better-npm-completion";
+        file = "zsh-better-npm-completion.plugin.zsh";
+        src = flakes.zsh-better-npm-completion;
+      }
+      {
+        name = "zsh-autoswitch-virtualenv";
+        file = "zsh-autoswitch-virtualenv.plugin.zsh";
+        src = flakes.zsh-autoswitch-virtualenv;
+      }    
     ];
-    initExtra = ''
-      ## "initExtra" in zsh.nix
-      # # Setup plugins
-      # antigen bundle unixorn/autoupdate-antigen.zshplugin
-      # antigen bundle zsh-users/zsh-completions
-      # antigen bundle zsh-users/zsh-autosuggestions
-      # antigen bundle zsh-users/zsh-syntax-highlighting
-      # antigen bundle chrissicool/zsh-256color
-      # antigen bundle amstrad/oh-my-matrix
-      # antigen bundle lukechilds/zsh-nvm
-      # antigen bundle lukechilds/zsh-better-npm-completion
-      # antigen bundle andyrichardson/zsh-node-path
-      # antigen bundle MichaelAquilina/zsh-autoswitch-virtualenv
-      # antigen apply
-    '';
   };
 }
 
