@@ -91,6 +91,7 @@
         "flake-compat": "flake-compat",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
+        "vscode-theme-onedark": "vscode-theme-onedark",
         "zsh-256color": "zsh-256color",
         "zsh-autosuggestions": "zsh-autosuggestions",
         "zsh-autoswitch-virtualenv": "zsh-autoswitch-virtualenv",
@@ -99,6 +100,22 @@
         "zsh-node-path": "zsh-node-path",
         "zsh-nvm": "zsh-nvm",
         "zsh-syntax-highlighting": "zsh-syntax-highlighting"
+      }
+    },
+    "vscode-theme-onedark": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1608558596,
+        "narHash": "sha256-mdajnwgLqTKl3oNxLglUxcmDixhH02cXedGMwghhCDU=",
+        "owner": "akamud",
+        "repo": "vscode-theme-onedark",
+        "rev": "302baf238166c27ad7104f9ce3dbae38d47dc330",
+        "type": "github"
+      },
+      "original": {
+        "owner": "akamud",
+        "repo": "vscode-theme-onedark",
+        "type": "github"
       }
     },
     "zsh-256color": {
