@@ -14,6 +14,7 @@ flakes: { pkgs, ... }:
     # (import ./modules/fonts.nix flakes)
     (import ./modules/git.nix flakes)
     (import ./modules/tmux.nix flakes)
+    (import ./modules/vscode.nix flakes)
     (import ./modules/zsh.nix flakes)
   ];
   programs.home-manager.enable = true;

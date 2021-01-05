@@ -34,10 +34,15 @@
       url = "github:MichaelAquilina/zsh-autoswitch-virtualenv";
       flake = false;
     };
-    # nerd-fonts = {
-    #   url = "github:ryanoasis/nerd-fonts?dir=patched-fonts/DejaVuSansMono";
-    #   flake = false;
-    # };
+    # Vscode plugins
+    vscode-theme-onedark = {
+      url = "github:akamud/vscode-theme-onedark";
+      flake = false;
+    };
+    vscode-spell-checker = {
+      url = "github:streetsidesoftware/vscode-spell-checker";
+      flake = false;
+    };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -51,13 +56,28 @@
 
   outputs = inputs: {
     defaultPackage.x86_64-darwin = (inputs.darwin.lib.darwinSystem {
-      inputs = inputs;
       modules = [ 
+        # {
+        #   nixpkgs.overlays = [
+        #     (final: prev: {
+        #       vscode-extensions = prev.lib.recursiveUpdate prev.vscode-extensions {
+        #         scalameta.derp = prev.vscode-utils.extensionFromVscodeMarketplace {
+        #           name = "metals";
+        #           publisher = "scalameta";
+        #           version = "1.9.10";
+        #           sha256 = "asdasd";
+        #         };
+        #         # any other overrides here
+        #       };
+        #     })
+        #   ];
+        # }
         inputs.home-manager.darwinModules.home-manager
         {
           home-manager.useUserPackages = true;
           home-manager.users.andyrichardson = import ./home.nix inputs;
         }
+
         ({ pkgs, ... }: {
           fonts = {
             enableFontDir = true;
