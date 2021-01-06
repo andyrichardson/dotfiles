@@ -43,6 +43,42 @@
       url = "github:streetsidesoftware/vscode-spell-checker";
       flake = false;
     };
+    vscode-chrome-debugger = {
+      url = "github:microsoft/vscode-chrome-debug";
+      flake = false;
+    };
+    vscode-docker = {
+      url = "github:microsoft/vscode-docker";
+      flake = false;
+    };
+    vscode-dotenv = {
+      url = "github:mikestead/vscode-dotenv";
+      flake = false;
+    };
+    vscode-eslint = {
+      url = "github:microsoft/vscode-eslint";
+      flake = false;
+    };
+    vscode-atom-keybindings = {
+      url = "github:Microsoft/vscode-atom-keybindings";
+      flake = false;
+    };
+    vscode-gitlens = {
+      url = "github:eamodio/vscode-gitlens";
+      flake = false;
+    };
+    # vscode-graphql = {
+    #   url = "github:kumarharsh/graphql-for-vscode";
+    #   flake = false;
+    # };
+    # vscode-terraform = {
+    #   url = "github:hashicorp/vscode-terraform";
+    #   flake = false;
+    # };
+    # vscode-live-share = {
+    #   url = "github:MicrosoftDocs/live-share";
+    #   flake = false;
+    # };  
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
