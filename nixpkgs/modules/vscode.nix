@@ -7,139 +7,242 @@ flakes: { config, pkgs, lib, ... }:
     # package = pkgs.vscodium;
     extensions = [
       pkgs.vscode-extensions.bbenoist.Nix
-      (pkgs.vscode-utils.buildVscodeExtension {
-        name = "theme-onedark";
-        vscodeExtUniqueId = "akamud.vscode-theme-onedark";
-        src = flakes.vscode-theme-onedark;
+      pkgs.vscode-extensions.ms-azuretools.vscode-docker
+      pkgs.vscode-extensions.pkief.material-icon-theme
+      pkgs.vscode-extensions.mskelton.one-dark-theme
+      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "python";
+          publisher = "ms-python";
+          version = "2020.12.424452561";
+          sha256 = "sha256-ji5MS4B6EMehah8mi5qbkP+snCoVQJC5Ss2SG1XjoH0=";
+        };
+        meta = {
+          license = stdenv.lib.licenses.mit;
+        };
       })
+      # (lib.optional stdenv.isLinux pkgs.vscode-extensions.ms-vsliveshare.vsliveshare)
       # (pkgs.vscode-utils.buildVscodeExtension {
-      #   name = "spell-checker";
-      #   vscodeExtUniqueId = "streetsidesoftware.code-spell-checker";
-      #   src = flakes.vscode-spell-checker;
-      #   buildInputs = [
-      #     pkgs.nodejs
-      #   ];
-      #   buildPhase = ''
-      #     export HOME=${placeholder "out"}/.npm
-      #     npm ci --ignore-scripts
-      #     npm ci --production
-      #   '';
+      #   name = "theme-onedark";
+      #   vscodeExtUniqueId = "akamud.vscode-theme-onedark";
+      #   src = flakes.vscode-theme-onedark;
       # })
-      (pkgs.vscode-utils.buildVscodeExtension {
-        name = "chrome-debugger";
-        vscodeExtUniqueId = "msjsdiag.debugger-for-chrome";
-        src = flakes.vscode-chrome-debugger;
-        buildInputs = [
-          pkgs.nodejs-10_x
-          pkgs.python3
-          (lib.optional stdenv.isDarwin [
-            darwin.apple_sdk.frameworks.CoreServices
-            darwin.apple_sdk.frameworks.AppKit
-            darwin.apple_sdk.frameworks.Foundation
-          ])
-        ];
-        buildPhase = ''
-          # Setup (cache dir)
-          export HOME=/tmp/nix-home
-          
-          # Build
-          npm ci
-          npm run build
-
-          # Cleanup
-          npm ci --ignore-scripts --production
-          rm -rf $HOME
-        '';
+      # TODO: Create contribution to nixpkgs 
+      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "vsliveshare-pack";
+          publisher = "ms-vsliveshare";
+          version = "0.4.0";
+          sha256 = "sha256-xTdfOqdypAaWpmtYIM0H7gwCy1jXNl5+HarvVW/3AiY=";
+        };
+        meta = {
+          license = stdenv.lib.licenses.mit;
+        };
       })
-      (pkgs.vscode-utils.buildVscodeExtension {
-        name = "docker";
-        vscodeExtUniqueId = "ms-azuretools.vscode-docker";
-        src = flakes.vscode-docker;
-        buildInputs = lib.flatten [
-          pkgs.nodejs 
-          pkgs.python3
-          (lib.optional stdenv.isDarwin [
-            darwin.apple_sdk.frameworks.CoreServices
-            darwin.apple_sdk.frameworks.AppKit
-          ])
-        ];
-        buildPhase = ''
-          # Setup (cache dir)
-          export HOME=/tmp/nix-home
-          
-          # Build (w/ postinstall)
-          npm ci
-
-          # Cleanup
-          npm ci --ignore-scripts --production
-          rm -rf $HOME
-        '';
+      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "vscode-styled-components";
+          publisher = "jpoissonnier";
+          version = "1.4.1";
+          sha256 = "sha256-ojbeuYBCS+DjF5R0aLuBImzoSOb8mXw1s0Uh0CzggzE=";
+        };
+        meta = {
+          license = stdenv.lib.licenses.mit;
+        };
       })
-      (pkgs.vscode-utils.buildVscodeExtension {
-        name = "dotenv";
-        vscodeExtUniqueId = "mikestead.dotenv";
-        src = flakes.vscode-dotenv;
+      # TODO: Create contribution to nixpkgs 
+      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "python";
+          publisher = "ms-python";
+          version = "2020.12.424452561";
+          sha256 = "sha256-ji5MS4B6EMehah8mi5qbkP+snCoVQJC5Ss2SG1XjoH0=";
+        };
+        meta = {
+          license = stdenv.lib.licenses.mit;
+        };
       })
-      (pkgs.vscode-utils.buildVscodeExtension {
-        name = "eslint";
-        vscodeExtUniqueId = "dbaeumer.vscode-eslint";
-        src = flakes.vscode-eslint;
-        buildInputs = lib.flatten [
-          pkgs.nodejs 
-        ];
-        buildPhase = ''
-          # Setup (cache dir)
-          export HOME=/tmp/nix-home
-          
-          # Build (w/ postinstall)
-          npm ci
-          npm run webpack
-
-          # Cleanup
-          npm ci --ignore-scripts --production
-          rm -rf $HOME
-        '';
+      # TODO: Create contribution to nixpkgs
+      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "debugger-for-chrome";
+          publisher = "msjsdiag";
+          version = "4.12.11";
+          sha256 = "sha256-9i3TgCFThnFF5ccwzS4ATj5c2Xoe/4tDFGv75jJxeQ4=";
+        };
+        meta = {
+          license = stdenv.lib.licenses.mit;
+        };
       })
-      (pkgs.vscode-utils.buildVscodeExtension {
-        name = "atom-keybindings";
-        vscodeExtUniqueId = "ms-vscode.atom-keybindings";
-        src = flakes.vscode-atom-keybindings;
+      # TODO: Create contribution to nixpkgs
+      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "code-spell-checker";
+          publisher = "streetsidesoftware";
+          version = "1.10.2";
+          sha256 = "sha256-K8pcjjy9cPEvjsz3avFf4pmifJm4L0uSOMy34rIhgNI=";
+        };
+        meta = {
+          license = stdenv.lib.licenses.mit;
+        };
       })
-      (pkgs.vscode-utils.buildVscodeExtension {
-        name = "gitlens";
-        vscodeExtUniqueId = "eamodio.gitlens";
-        src = flakes.vscode-gitlens;
-        buildInputs = lib.flatten [
-          pkgs.nodejs 
-        ];
-        buildPhase = ''
-          # Setup (cache dir)
-          export HOME=/tmp/nix-home
-          
-          # Build (w/ postinstall)
-          npx yarn --frozen-lockfile
-          npm run bundle
-
-          # Cleanup
-          npx yarn --frozen-lockfile --production
-          rm -rf $HOME
-        '';
+      # TODO: Create contribution to nixpkgs
+      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "dotenv";
+          publisher = "mikestead";
+          version = "1.0.1";
+          sha256 = "sha256-dieCzNOIcZiTGu4Mv5zYlG7jLhaEsJR05qbzzzQ7RWc=";
+        };
+        meta = {
+          license = stdenv.lib.licenses.mit;
+        };
       })
-      # (pkgs.vscode-utils.buildVscodeExtension {
-      #   name = "graphql";
-      #   vscodeExtUniqueId = "kumar-harsh.graphql-for-vscode";
-      #   src = flakes.vscode-graphql;
-      # })
-      # (pkgs.vscode-utils.buildVscodeExtension {
-      #   name = "terraform";
-      #   vscodeExtUniqueId = "hashicorp.terraform";
-      #   src = flakes.vscode-terraform;
-      # })
-      # (pkgs.vscode-utils.buildVscodeExtension {
-      #   name = "live-share";
-      #   vscodeExtUniqueId = "ms-vsliveshare.vsliveshare-pack";
-      #   src = flakes.vscode-live-share;
-      # })
+      # TODO: Create contribution to nixpkgs
+      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "vscode-eslint";
+          publisher = "dbaeumer";
+          version = "2.1.14";
+          sha256 = "sha256-bVGmp871yu1Llr3uJ+CCosDsrxJtD4b1+CR+omMUfIQ=";
+        };
+        meta = {
+          license = stdenv.lib.licenses.mit;
+        };
+      })
+      # TODO: Create contribution to nixpkgs
+      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "atom-keybindings";
+          publisher = "ms-vscode";
+          version = "3.0.9";
+          sha256 = "sha256-Qey75Irpb3Y+Unbf+ppTTVoU3XGAVJD8oXN5XKJhWBI=";
+        };
+        meta = {
+          license = stdenv.lib.licenses.mit;
+        };
+      })
+      # TODO: Create contribution to nixpkgs
+      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "prettier-vscode";
+          publisher = "esbenp";
+          version = "5.8.0";
+          sha256 = "sha256-x6/bBeHi/epYpRGy4I8noIsnwFdFEXk3igF75y5h/EA=";
+        };
+        meta = {
+          license = stdenv.lib.licenses.mit;
+        };
+      })
+      # TODO: Create contribution to nixpkgs
+      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "vscode-graphql";
+          publisher = "GraphQL";
+          version = "0.3.13";
+          sha256 = "sha256-JjEefVHQUYidUsr8Ce/dh7hLDm21WkyS+2RwsXHoY04=";
+        };
+        meta = {
+          license = stdenv.lib.licenses.mit;
+        };
+      }) 
+      # TODO: Create contribution to nixpkgs
+      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "gitlens";
+          publisher = "eamodio";
+          version = "11.1.3";
+          sha256 = "sha256-hqJg3jP4bbXU4qSJOjeKfjkPx61yPDMsQdSUVZObK/U=";
+        };
+        meta = {
+          license = stdenv.lib.licenses.mit;
+        };
+      })
+      # TODO: Create contribution to nixpkgs
+      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "terraform";
+          publisher = "HashiCorp";
+          version = "2.3.0";
+          sha256 = "sha256-GJv6zSEwv6aAgyz8h8JHKdMjOV77lyQQwGVNky3CJhk=";
+        };
+        meta = {
+          license = stdenv.lib.licenses.mit;
+        };
+      })
+      # TODO: Create contribution to nixpkgs
+      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "markdown-preview-github-styles";
+          publisher = "bierner";
+          version = "0.1.6";
+          sha256 = "sha256-POIrekEkrYVj7MU9ZXToLIV0pl2X8PUBOQuuB4Mykt4=";
+        };
+        meta = {
+          license = stdenv.lib.licenses.mit;
+        };
+      })
     ];
+    userSettings = ''
+      {
+        "atomKeymap.promptV3Features": true,
+        "cSpell.userWords": [
+          "devtools",
+          "formik",
+          "substate",
+          "unmount",
+          "urql"
+        ],
+        "customizeUI.font.monospace": "Inconsolata, Monaco, Consolas, 'Courier New', Courier",
+        "customizeUI.font.regular": "Inconsolata, Monaco, Consolas, 'Courier New', Courier",
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": true
+        },
+        "editor.detectIndentation": false,
+        "editor.fontFamily": "'DejaVUSansMono Nerd Font', Monaco, Consolas, 'Courier New', Courier",
+        "editor.fontSize": 15,
+        "editor.formatOnSave": true,
+        "editor.gotoLocation.multiple": "goto",
+        "editor.minimap.enabled": false,
+        "editor.multiCursorModifier": "ctrlCmd",
+        "editor.tabSize": 2,
+        "eslint.alwaysShowStatus": true,
+        "eslint.autoFixOnSave": true,
+        "eslint.validate": [
+          "javascript",
+          "javascriptreact",
+          "html",
+          "typescriptreact"
+        ],
+        "explorer.compactFolders": false,
+        "javascript.updateImportsOnFileMove.enabled": "always",
+        "jest.runAllTestsFirst": false,
+        "liveshare.account": "andyrichardson",
+        "liveshare.autoShareServers": false,
+        "prettier.useEditorConfig": false,
+        "typescript.updateImportsOnFileMove.enabled": "always",
+        "vim.enableNeovim": true,
+        "vim.insertModeKeyBindings": [
+          {
+            "before": [
+              "j",
+              "j"
+            ],
+            "after": [
+              "<Esc>"
+            ]
+          }
+        ],
+        "vim.neovimPath": "/usr/local/bin/nvim",
+        "window.zoomLevel": -1,
+        "workbench.colorTheme": "Material Theme Darker",
+        "workbench.editor.enablePreview": false,
+        "workbench.editor.enablePreviewFromQuickOpen": false,
+        "workbench.fontAliasing": "antialiased",
+        "workbench.iconTheme": "vscode-great-icons",
+        "workbench.startupEditor": "newUntitledFile"
+      }
+    '';
   };
 }
