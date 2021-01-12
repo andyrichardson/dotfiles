@@ -1,15 +1,15 @@
-flakes: { config, pkgs, ... }:
+flakes: { config, pkgs, lib, ... }:
 
 {
   programs.tmux = {
     enable = true;
     plugins = [
-      # pkgs.tmuxPlugins.onedark-theme
       pkgs.tmuxPlugins.yank
       pkgs.tmuxPlugins.sessionist
     ];
     extraConfig = ''
       # Set default shell
+      set-option -g status-style bg=black
       set-option -g default-shell ${pkgs.zsh}/bin/zsh
 
       # Allow mouse scrolling
