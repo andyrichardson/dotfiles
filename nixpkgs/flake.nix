@@ -34,6 +34,15 @@
       url = "github:MichaelAquilina/zsh-autoswitch-virtualenv";
       flake = false;
     };
+    zsh-powerline = {
+      url = "github:romkatv/powerlevel10k";
+      flake = false;
+    };
+    # Tmux powerline
+    tmux-powerline = {
+      url = "github:erikw/tmux-powerline";
+      flake = false;
+    };
     # Vscode plugins
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     darwin.url = "github:lnl7/nix-darwin/master";
@@ -73,7 +82,7 @@
         ({ pkgs, ... }: {
           fonts = {
             enableFontDir = true;
-            fonts = [ (pkgs.nerdfonts.override { fonts = [ "DejaVuSansMono" "DroidSansMono" "RobotoMono" ]; }) ];
+            fonts = [ (pkgs.nerdfonts.override { fonts = [ "DejaVuSansMono" "DroidSansMono" "RobotoMono" "Hack" "SourceCodePro" ]; }) ];
           };
         })
       ];

@@ -4,13 +4,13 @@ flakes: { config, pkgs, lib, ... }:
 {
   programs.vscode = {
     enable = true;
-    # package = pkgs.vscodium;
-    extensions = [
-      pkgs.vscode-extensions.bbenoist.Nix
-      pkgs.vscode-extensions.ms-azuretools.vscode-docker
-      pkgs.vscode-extensions.pkief.material-icon-theme
-      pkgs.vscode-extensions.mskelton.one-dark-theme
-      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+    package = pkgs.vscodium;
+    extensions = with pkgs.vscode-extensions; with pkgs.vscode-utils; [
+      bbenoist.Nix
+      ms-azuretools.vscode-docker
+      pkief.material-icon-theme
+      mskelton.one-dark-theme
+      (buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "python";
           publisher = "ms-python";
@@ -22,13 +22,13 @@ flakes: { config, pkgs, lib, ... }:
         };
       })
       # (lib.optional stdenv.isLinux pkgs.vscode-extensions.ms-vsliveshare.vsliveshare)
-      # (pkgs.vscode-utils.buildVscodeExtension {
+      # (buildVscodeExtension {
       #   name = "theme-onedark";
       #   vscodeExtUniqueId = "akamud.vscode-theme-onedark";
       #   src = flakes.vscode-theme-onedark;
       # })
       # TODO: Create contribution to nixpkgs 
-      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+      (buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "vsliveshare-pack";
           publisher = "ms-vsliveshare";
@@ -39,7 +39,7 @@ flakes: { config, pkgs, lib, ... }:
           license = stdenv.lib.licenses.mit;
         };
       })
-      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+      (buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "vscode-styled-components";
           publisher = "jpoissonnier";
@@ -51,7 +51,7 @@ flakes: { config, pkgs, lib, ... }:
         };
       })
       # TODO: Create contribution to nixpkgs 
-      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+      (buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "python";
           publisher = "ms-python";
@@ -63,7 +63,7 @@ flakes: { config, pkgs, lib, ... }:
         };
       })
       # TODO: Create contribution to nixpkgs
-      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+      (buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "debugger-for-chrome";
           publisher = "msjsdiag";
@@ -75,7 +75,7 @@ flakes: { config, pkgs, lib, ... }:
         };
       })
       # TODO: Create contribution to nixpkgs
-      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+      (buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "code-spell-checker";
           publisher = "streetsidesoftware";
@@ -87,7 +87,7 @@ flakes: { config, pkgs, lib, ... }:
         };
       })
       # TODO: Create contribution to nixpkgs
-      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+      (buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "dotenv";
           publisher = "mikestead";
@@ -99,7 +99,7 @@ flakes: { config, pkgs, lib, ... }:
         };
       })
       # TODO: Create contribution to nixpkgs
-      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+      (buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "vscode-eslint";
           publisher = "dbaeumer";
@@ -111,7 +111,7 @@ flakes: { config, pkgs, lib, ... }:
         };
       })
       # TODO: Create contribution to nixpkgs
-      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+      (buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "atom-keybindings";
           publisher = "ms-vscode";
@@ -123,7 +123,7 @@ flakes: { config, pkgs, lib, ... }:
         };
       })
       # TODO: Create contribution to nixpkgs
-      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+      (buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "prettier-vscode";
           publisher = "esbenp";
@@ -135,7 +135,7 @@ flakes: { config, pkgs, lib, ... }:
         };
       })
       # TODO: Create contribution to nixpkgs
-      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+      (buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "vscode-graphql";
           publisher = "GraphQL";
@@ -147,7 +147,7 @@ flakes: { config, pkgs, lib, ... }:
         };
       }) 
       # TODO: Create contribution to nixpkgs
-      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+      (buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "gitlens";
           publisher = "eamodio";
@@ -159,7 +159,7 @@ flakes: { config, pkgs, lib, ... }:
         };
       })
       # TODO: Create contribution to nixpkgs
-      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+      (buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "terraform";
           publisher = "HashiCorp";
@@ -171,7 +171,7 @@ flakes: { config, pkgs, lib, ... }:
         };
       })
       # TODO: Create contribution to nixpkgs
-      (pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+      (buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "markdown-preview-github-styles";
           publisher = "bierner";

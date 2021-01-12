@@ -7,11 +7,13 @@ flakes: { config, pkgs, ... }:
       enable = true;
       plugins = [
         "npm"
-        "gitfast"
+        "git"
         "autojump"
       ];
-      theme = "agnoster";
     };
+    initExtra = ''
+      source ~/.p10k.zsh
+    '';
     plugins = [
       {
         name = "node-path";
@@ -52,8 +54,16 @@ flakes: { config, pkgs, ... }:
         name = "zsh-autoswitch-virtualenv";
         file = "zsh-autoswitch-virtualenv.plugin.zsh";
         src = flakes.zsh-autoswitch-virtualenv;
-      }    
+      }
+      {
+      name = "zsh-powerline-powerlevel10k";
+        file = "powerlevel10k.zsh-theme";
+        src = flakes.zsh-powerline;
+      }
     ];
   };
+
+  # P10k (powerline) config
+  home.file.".p10k.zsh".text = builtins.readFile ./p10k.zsh;
 }
 
