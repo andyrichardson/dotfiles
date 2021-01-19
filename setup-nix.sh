@@ -18,6 +18,8 @@ echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 
 nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer ./result/bin/darwin-installer
 
+. /etc/static/bashrc
+
 # Build and deploy env
 nix-build --impure
 sudo ./result/activate

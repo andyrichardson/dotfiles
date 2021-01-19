@@ -8,8 +8,11 @@ flakes: { config, pkgs, lib, ... }:
       pkgs.tmuxPlugins.sessionist
     ];
     extraConfig = ''
+      run-shell "powerline-config tmux setup"
       # Set default shell
       set-option -g status-style bg=black
+      set -g pane-border-style fg=black
+      set -g pane-active-border-style fg=black
       set-option -g default-shell ${pkgs.zsh}/bin/zsh
 
       # Allow mouse scrolling

@@ -1,4 +1,5 @@
 with (import <nixpkgs> {});
+with import ../colors.nix;
 flakes: { config, pkgs, lib, ... }:
 
 {
@@ -10,6 +11,8 @@ flakes: { config, pkgs, lib, ... }:
       ms-azuretools.vscode-docker
       pkief.material-icon-theme
       mskelton.one-dark-theme
+      esbenp.prettier-vscode
+      msjsdiag.debugger-for-chrome
       (buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "python";
@@ -57,18 +60,6 @@ flakes: { config, pkgs, lib, ... }:
           publisher = "ms-python";
           version = "2020.12.424452561";
           sha256 = "sha256-ji5MS4B6EMehah8mi5qbkP+snCoVQJC5Ss2SG1XjoH0=";
-        };
-        meta = {
-          license = stdenv.lib.licenses.mit;
-        };
-      })
-      # TODO: Create contribution to nixpkgs
-      (buildVscodeMarketplaceExtension {
-        mktplcRef = {
-          name = "debugger-for-chrome";
-          publisher = "msjsdiag";
-          version = "4.12.11";
-          sha256 = "sha256-9i3TgCFThnFF5ccwzS4ATj5c2Xoe/4tDFGv75jJxeQ4=";
         };
         meta = {
           license = stdenv.lib.licenses.mit;
@@ -125,18 +116,6 @@ flakes: { config, pkgs, lib, ... }:
       # TODO: Create contribution to nixpkgs
       (buildVscodeMarketplaceExtension {
         mktplcRef = {
-          name = "prettier-vscode";
-          publisher = "esbenp";
-          version = "5.8.0";
-          sha256 = "sha256-x6/bBeHi/epYpRGy4I8noIsnwFdFEXk3igF75y5h/EA=";
-        };
-        meta = {
-          license = stdenv.lib.licenses.mit;
-        };
-      })
-      # TODO: Create contribution to nixpkgs
-      (buildVscodeMarketplaceExtension {
-        mktplcRef = {
           name = "vscode-graphql";
           publisher = "GraphQL";
           version = "0.3.13";
@@ -183,66 +162,62 @@ flakes: { config, pkgs, lib, ... }:
         };
       })
     ];
-    userSettings = ''
-      {
-        "atomKeymap.promptV3Features": true,
-        "cSpell.userWords": [
-          "devtools",
-          "formik",
-          "substate",
-          "unmount",
-          "urql"
-        ],
-        "customizeUI.font.monospace": "Inconsolata, Monaco, Consolas, 'Courier New', Courier",
-        "customizeUI.font.regular": "Inconsolata, Monaco, Consolas, 'Courier New', Courier",
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.codeActionsOnSave": {
-          "source.fixAll.eslint": true
-        },
-        "editor.detectIndentation": false,
-        "editor.fontFamily": "'DejaVUSansMono Nerd Font', Monaco, Consolas, 'Courier New', Courier",
-        "editor.fontSize": 15,
-        "editor.formatOnSave": true,
-        "editor.gotoLocation.multiple": "goto",
-        "editor.minimap.enabled": false,
-        "editor.multiCursorModifier": "ctrlCmd",
-        "editor.tabSize": 2,
-        "eslint.alwaysShowStatus": true,
-        "eslint.autoFixOnSave": true,
-        "eslint.validate": [
-          "javascript",
-          "javascriptreact",
-          "html",
-          "typescriptreact"
-        ],
-        "explorer.compactFolders": false,
-        "javascript.updateImportsOnFileMove.enabled": "always",
-        "jest.runAllTestsFirst": false,
-        "liveshare.account": "andyrichardson",
-        "liveshare.autoShareServers": false,
-        "prettier.useEditorConfig": false,
-        "typescript.updateImportsOnFileMove.enabled": "always",
-        "vim.enableNeovim": true,
-        "vim.insertModeKeyBindings": [
-          {
-            "before": [
-              "j",
-              "j"
-            ],
-            "after": [
-              "<Esc>"
-            ]
-          }
-        ],
-        "vim.neovimPath": "/usr/local/bin/nvim",
-        "window.zoomLevel": -1,
-        "workbench.colorTheme": "Material Theme Darker",
-        "workbench.editor.enablePreview": false,
-        "workbench.editor.enablePreviewFromQuickOpen": false,
-        "workbench.fontAliasing": "antialiased",
-        "workbench.iconTheme": "vscode-great-icons",
-        "workbench.startupEditor": "newUntitledFile"
-      }
-    '';
+    userSettings = {
+      atomKeymap.promptV3Features = true;
+      cSpell.userWords = [
+        "devtools"
+        "formik"
+        "substate"
+        "unmount"
+        "urql"
+      ];
+      "editor.alwaysShowStatus" = true;
+      "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "editor.detectIndentation" = false;
+      "editor.fontFamily" = "'DejaVUSansMono Nerd Font', Monaco, Consolas, 'Courier New', Courier";
+      "editor.fontSize" = 15;
+      "editor.formatOnSave" = true;
+      "editor.gotoLocation.multiple" = "goto";
+      "editor.minimap.enabled" = false;
+      "editor.multiCursorModifier" = "ctrlCmd";
+      "editor.tabSize" = 2;
+      "editor.tokenColorCustomizations" = {
+        background = "#00ff00";
+        editor.background = "#00ff00";
+        comments = "#ff0000";
+      };
+      eslint.validate = [
+        "javascript"
+        "javascriptreact"
+        "html"
+        "typescriptreact"
+      ];
+      explorer.compactFolders = false;
+      javascript.updateImportsOnFileMove.enabled = true;
+      liveshare = {
+        account = "andyrichardson";
+      };
+      prettier.useEditorConfig = false;
+      typescript.updateImportsOnFileMove.enabled = true;
+      window.zoomLevel = -1;
+      "workbench.colorCustomizations" = {
+        editor.background = "#ff0000";
+      };
+      workbench = {
+        # colorTheme = "Material Theme Darker";
+        colorTheme = "One Dark";
+        colorCustomizations = {
+          activityBar.background = "#ff00000";
+          editor.background = "#ff0000";
+        };
+        editor = {
+          enablePreview = false;
+          enablePreviewFromQuickOpen = false;
+        };
+        fontAliasing = "antialiased";
+        iconTheme = "vscode-great-icons";
+        startupEditor = "newUntitledFile";
+      };
+    };
   };
 }

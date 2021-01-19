@@ -38,13 +38,12 @@
       url = "github:romkatv/powerlevel10k";
       flake = false;
     };
-    # Tmux powerline
-    tmux-powerline = {
-      url = "github:erikw/tmux-powerline";
+    powerline = {
+      url = "github:powerline/powerline";
       flake = false;
     };
     # Vscode plugins
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs";
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
@@ -58,21 +57,6 @@
   outputs = inputs: {
     defaultPackage.x86_64-darwin = (inputs.darwin.lib.darwinSystem {
       modules = [ 
-        # {
-        #   nixpkgs.overlays = [
-        #     (final: prev: {
-        #       vscode-extensions = prev.lib.recursiveUpdate prev.vscode-extensions {
-        #         scalameta.derp = prev.vscode-utils.extensionFromVscodeMarketplace {
-        #           name = "metals";
-        #           publisher = "scalameta";
-        #           version = "1.9.10";
-        #           sha256 = "asdasd";
-        #         };
-        #         # any other overrides here
-        #       };
-        #     })
-        #   ];
-        # }
         inputs.home-manager.darwinModules.home-manager
         {
           home-manager.useUserPackages = true;

@@ -11,9 +11,13 @@ flakes: { config, pkgs, ... }:
         "autojump"
       ];
     };
+    initExtraBeforeCompInit = ''
+      export NVM_LAZY_LOAD=true
+    '';
     initExtra = ''
       source ~/.p10k.zsh
     '';
+    
     plugins = [
       {
         name = "node-path";
