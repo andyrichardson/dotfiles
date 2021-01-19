@@ -32,6 +32,9 @@ with import ../colors.nix;
           cyan = cyan;
           white = white;
         };
+        bright = {
+          black = brightBlack;
+        };
       };
     };
   };

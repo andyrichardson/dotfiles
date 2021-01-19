@@ -3,7 +3,7 @@
   foreground = "#CCCCCC";
   
   black = "#282a2e";
-  brightBlack = "#373b41";
+  brightBlack = "#3b3e44";
   
   red = "#B54646";
   brightRed = "#cc6666";
@@ -14,7 +14,7 @@
   yellow = "#de935f";
   brightYellow=  "#f0c674";
   
-  blue = "#5EA2DC";
+  blue = "#4c7fab";
   brightBlue = "#81a2be";
   
   magenta = "#B294BB";
