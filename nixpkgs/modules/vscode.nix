@@ -13,6 +13,10 @@ flakes: { config, pkgs, lib, ... }:
       mskelton.one-dark-theme
       esbenp.prettier-vscode
       msjsdiag.debugger-for-chrome
+      graphql.vscode-graphql
+      eamodio.gitlens
+      jpoissonnier.vscode-styled-components
+      mikestead.dotenv
       (buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "python";
@@ -42,6 +46,19 @@ flakes: { config, pkgs, lib, ... }:
           license = stdenv.lib.licenses.mit;
         };
       })
+      # TODO: Create contribution to nixpkgs 
+      (buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "vscode-great-icons";
+          publisher = "emmanuelbeziat";
+          version = "2.1.64";
+          sha256 = "sha256-qsL1vWiEAYeWkMDNSrr1yzg0QxroEQQeznoDL3Ujy/o=";
+        };
+        meta = {
+          license = stdenv.lib.licenses.mit;
+        };
+      })
+      # TODO: Create contribution to nixpkgs 
       (buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "vscode-styled-components";
@@ -116,18 +133,6 @@ flakes: { config, pkgs, lib, ... }:
       # TODO: Create contribution to nixpkgs
       (buildVscodeMarketplaceExtension {
         mktplcRef = {
-          name = "vscode-graphql";
-          publisher = "GraphQL";
-          version = "0.3.13";
-          sha256 = "sha256-JjEefVHQUYidUsr8Ce/dh7hLDm21WkyS+2RwsXHoY04=";
-        };
-        meta = {
-          license = stdenv.lib.licenses.mit;
-        };
-      }) 
-      # TODO: Create contribution to nixpkgs
-      (buildVscodeMarketplaceExtension {
-        mktplcRef = {
           name = "gitlens";
           publisher = "eamodio";
           version = "11.1.3";
@@ -163,15 +168,14 @@ flakes: { config, pkgs, lib, ... }:
       })
     ];
     userSettings = {
-      atomKeymap.promptV3Features = true;
-      cSpell.userWords = [
+      "atomKeymap.promptV3Features" = true;
+      "cSpell.userWords" = [
         "devtools"
         "formik"
         "substate"
         "unmount"
         "urql"
       ];
-      "editor.alwaysShowStatus" = true;
       "editor.defaultFormatter" = "esbenp.prettier-vscode";
       "editor.detectIndentation" = false;
       "editor.fontFamily" = "'DejaVUSansMono Nerd Font', Monaco, Consolas, 'Courier New', Courier";
@@ -186,29 +190,29 @@ flakes: { config, pkgs, lib, ... }:
         editor.background = "#00ff00";
         comments = "#ff0000";
       };
-      eslint.validate = [
+      "eslint.validate" = [
         "javascript"
         "javascriptreact"
         "html"
         "typescriptreact"
       ];
-      explorer.compactFolders = false;
-      javascript.updateImportsOnFileMove.enabled = true;
-      liveshare = {
-        account = "andyrichardson";
-      };
-      prettier.useEditorConfig = false;
-      typescript.updateImportsOnFileMove.enabled = true;
-      window.zoomLevel = -1;
+      "explorer.compactFolders" = false;
+      "javascript.updateImportsOnFileMove.enabled" = true;
+      "liveshare.account" = "andyrichardson";
+      "prettier.useEditorConfig" = false;
+      "typescript.updateImportsOnFileMove.enabled" = true;
+      "window.zoomLevel" = -1;
       "workbench.colorCustomizations" = {
-        editor.background = "#ff0000";
+        "editor.background" = background;
       };
+      "workbench.fontAliasing" = "antialiased";
+      "workbench.iconTheme" = "vscode-great-icons";
       workbench = {
         # colorTheme = "Material Theme Darker";
         colorTheme = "One Dark";
         colorCustomizations = {
           activityBar.background = "#ff00000";
-          editor.background = "#ff0000";
+          editor.background = background;
         };
         editor = {
           enablePreview = false;
