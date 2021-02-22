@@ -52,17 +52,16 @@
       flake = false;
     };
   };
-  
 
   outputs = inputs: {
     defaultPackage.x86_64-darwin = (inputs.darwin.lib.darwinSystem {
+      inputs = { inherit inputs; };
       modules = [ 
         inputs.home-manager.darwinModules.home-manager
         {
           home-manager.useUserPackages = true;
           home-manager.users.andyrichardson = import ./home.nix inputs;
         }
-
         ({ pkgs, ... }: {
           fonts = {
             enableFontDir = true;

@@ -15,7 +15,7 @@ flakes: { config, pkgs, ... }:
       export NVM_LAZY_LOAD=true
 
       # Temporary for macOS - see https://github.com/nix-community/home-manager/issues/1782
-      . /Users/andyrichardson/.nix-profile/etc/profile.d/nix.sh
+      # . /Users/andyrichardson/.nix-profile/etc/profile.d/nix.sh
       # Temporary for macOS
       . /etc/static/bashrc 
     '';

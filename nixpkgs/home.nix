@@ -34,5 +34,6 @@ flakes: { pkgs, lib, ... }:
   home.packages = [
     pkgs.htop
     pkgs.docker
+    pkgs.lynx
   ];
 }

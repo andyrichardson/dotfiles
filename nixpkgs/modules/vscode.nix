@@ -17,6 +17,9 @@ flakes: { config, pkgs, lib, ... }:
       eamodio.gitlens
       jpoissonnier.vscode-styled-components
       mikestead.dotenv
+      dbaeumer.vscode-eslint
+      streetsidesoftware.code-spell-checker
+      eamodio.gitlens
       (buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "python";
@@ -85,34 +88,10 @@ flakes: { config, pkgs, lib, ... }:
       # TODO: Create contribution to nixpkgs
       (buildVscodeMarketplaceExtension {
         mktplcRef = {
-          name = "code-spell-checker";
-          publisher = "streetsidesoftware";
-          version = "1.10.2";
-          sha256 = "sha256-K8pcjjy9cPEvjsz3avFf4pmifJm4L0uSOMy34rIhgNI=";
-        };
-        meta = {
-          license = stdenv.lib.licenses.mit;
-        };
-      })
-      # TODO: Create contribution to nixpkgs
-      (buildVscodeMarketplaceExtension {
-        mktplcRef = {
           name = "dotenv";
           publisher = "mikestead";
           version = "1.0.1";
           sha256 = "sha256-dieCzNOIcZiTGu4Mv5zYlG7jLhaEsJR05qbzzzQ7RWc=";
-        };
-        meta = {
-          license = stdenv.lib.licenses.mit;
-        };
-      })
-      # TODO: Create contribution to nixpkgs
-      (buildVscodeMarketplaceExtension {
-        mktplcRef = {
-          name = "vscode-eslint";
-          publisher = "dbaeumer";
-          version = "2.1.14";
-          sha256 = "sha256-bVGmp871yu1Llr3uJ+CCosDsrxJtD4b1+CR+omMUfIQ=";
         };
         meta = {
           license = stdenv.lib.licenses.mit;
