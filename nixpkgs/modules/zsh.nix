@@ -1,4 +1,4 @@
-flakes: { config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   programs.zsh = {
@@ -27,47 +27,47 @@ flakes: { config, pkgs, ... }:
       {
         name = "node-path";
         file = "node-path.zsh";
-        src = flakes.zsh-node-path;
+        src = inputs.zsh-node-path;
       }
       {
         name = "zsh-completions";
         file = "zsh-completions.plugin.zsh";
-        src = flakes.zsh-completions;
+        src = inputs.zsh-completions;
       }
       {
         name = "zsh-autosuggestions";
         file = "zsh-autosuggestions.plugin.zsh";
-        src = flakes.zsh-autosuggestions;
+        src = inputs.zsh-autosuggestions;
       }
       {
         name = "zsh-syntax-highlighting";
         file = "zsh-syntax-highlighting.plugin.zsh";
-        src = flakes.zsh-syntax-highlighting;
+        src = inputs.zsh-syntax-highlighting;
       }
       {
         name = "zsh-256color";
         file = "zsh-256color.plugin.zsh";
-        src = flakes.zsh-256color;
+        src = inputs.zsh-256color;
       }
       {
         name = "zsh-nvm";
         file = "zsh-nvm.plugin.zsh";
-        src = flakes.zsh-nvm;
+        src = inputs.zsh-nvm;
       }
       {
         name = "zsh-better-npm-completion";
         file = "zsh-better-npm-completion.plugin.zsh";
-        src = flakes.zsh-better-npm-completion;
+        src = inputs.zsh-better-npm-completion;
       }
       {
         name = "zsh-autoswitch-virtualenv";
         file = "zsh-autoswitch-virtualenv.plugin.zsh";
-        src = flakes.zsh-autoswitch-virtualenv;
+        src = inputs.zsh-autoswitch-virtualenv;
       }
       {
       name = "zsh-powerline-powerlevel10k";
         file = "powerlevel10k.zsh-theme";
-        src = flakes.zsh-powerline;
+        src = inputs.zsh-powerline;
       }
     ];
   };

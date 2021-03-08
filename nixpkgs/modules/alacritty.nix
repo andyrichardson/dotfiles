@@ -1,4 +1,4 @@
-flakes: { config, pkgs, ... }:
+{ config, pkgs, ... }:
 
 with import ../colors.nix;
 

@@ -1,6 +1,5 @@
-with (import <nixpkgs> {});
 with import ../colors.nix;
-flakes: { config, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   programs.vscode = {
@@ -28,7 +27,7 @@ flakes: { config, pkgs, lib, ... }:
           sha256 = "sha256-ji5MS4B6EMehah8mi5qbkP+snCoVQJC5Ss2SG1XjoH0=";
         };
         meta = {
-          license = stdenv.lib.licenses.mit;
+          license = lib.licenses.mit;
         };
       })
       # (lib.optional stdenv.isLinux pkgs.vscode-extensions.ms-vsliveshare.vsliveshare)
@@ -46,7 +45,7 @@ flakes: { config, pkgs, lib, ... }:
           sha256 = "sha256-xTdfOqdypAaWpmtYIM0H7gwCy1jXNl5+HarvVW/3AiY=";
         };
         meta = {
-          license = stdenv.lib.licenses.mit;
+          license = lib.licenses.mit;
         };
       })
       # TODO: Create contribution to nixpkgs 
@@ -58,7 +57,7 @@ flakes: { config, pkgs, lib, ... }:
           sha256 = "sha256-qsL1vWiEAYeWkMDNSrr1yzg0QxroEQQeznoDL3Ujy/o=";
         };
         meta = {
-          license = stdenv.lib.licenses.mit;
+          license = lib.licenses.mit;
         };
       })
       # TODO: Create contribution to nixpkgs 
@@ -70,7 +69,7 @@ flakes: { config, pkgs, lib, ... }:
           sha256 = "sha256-ojbeuYBCS+DjF5R0aLuBImzoSOb8mXw1s0Uh0CzggzE=";
         };
         meta = {
-          license = stdenv.lib.licenses.mit;
+          license = lib.licenses.mit;
         };
       })
       # TODO: Create contribution to nixpkgs 
@@ -82,7 +81,7 @@ flakes: { config, pkgs, lib, ... }:
           sha256 = "sha256-ji5MS4B6EMehah8mi5qbkP+snCoVQJC5Ss2SG1XjoH0=";
         };
         meta = {
-          license = stdenv.lib.licenses.mit;
+          license = lib.licenses.mit;
         };
       })
       # TODO: Create contribution to nixpkgs
@@ -94,7 +93,7 @@ flakes: { config, pkgs, lib, ... }:
           sha256 = "sha256-dieCzNOIcZiTGu4Mv5zYlG7jLhaEsJR05qbzzzQ7RWc=";
         };
         meta = {
-          license = stdenv.lib.licenses.mit;
+          license = lib.licenses.mit;
         };
       })
       # TODO: Create contribution to nixpkgs
@@ -106,7 +105,7 @@ flakes: { config, pkgs, lib, ... }:
           sha256 = "sha256-Qey75Irpb3Y+Unbf+ppTTVoU3XGAVJD8oXN5XKJhWBI=";
         };
         meta = {
-          license = stdenv.lib.licenses.mit;
+          license = lib.licenses.mit;
         };
       })
       # TODO: Create contribution to nixpkgs
@@ -118,7 +117,7 @@ flakes: { config, pkgs, lib, ... }:
           sha256 = "sha256-hqJg3jP4bbXU4qSJOjeKfjkPx61yPDMsQdSUVZObK/U=";
         };
         meta = {
-          license = stdenv.lib.licenses.mit;
+          license = lib.licenses.mit;
         };
       })
       # TODO: Create contribution to nixpkgs
@@ -130,7 +129,7 @@ flakes: { config, pkgs, lib, ... }:
           sha256 = "sha256-GJv6zSEwv6aAgyz8h8JHKdMjOV77lyQQwGVNky3CJhk=";
         };
         meta = {
-          license = stdenv.lib.licenses.mit;
+          license = lib.licenses.mit;
         };
       })
       # TODO: Create contribution to nixpkgs
@@ -142,7 +141,7 @@ flakes: { config, pkgs, lib, ... }:
           sha256 = "sha256-POIrekEkrYVj7MU9ZXToLIV0pl2X8PUBOQuuB4Mykt4=";
         };
         meta = {
-          license = stdenv.lib.licenses.mit;
+          license = lib.licenses.mit;
         };
       })
     ];
