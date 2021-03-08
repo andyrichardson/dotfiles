@@ -1,10 +1,8 @@
 #!/bin/bash
 
-# Install nix (macos) - skip daemon arg if issues
-sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume --daemon
-
-# (optional)
-. /etc/static/bashrc
+# Install nix (macos) - skip `--daemon` arg for macOS
+sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume
+. /Users/andyrichardson/.nix-profile/etc/profile.d/nix.sh
 
 # Add flakes
 nix-env -iA nixpkgs.nixFlakes

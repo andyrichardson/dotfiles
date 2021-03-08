@@ -60,15 +60,25 @@
         inputs.home-manager.darwinModules.home-manager
         {
           home-manager.useUserPackages = true;
-          home-manager.users.andyrichardson = import ./home.nix inputs;
+          home-manager.users.andyrichardson = import ./home.nix;
+          home-manager.extraSpecialArgs = { inherit inputs; };
         }
-        ({ pkgs, ... }: {
-          fonts = {
-            enableFontDir = true;
-            fonts = [ (pkgs.nerdfonts.override { fonts = [ "DejaVuSansMono" "DroidSansMono" "RobotoMono" "Hack" "SourceCodePro" ]; }) ];
-          };
-        })
+        ./fonts.nix
       ];
     }).system;
+    
+    nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./configuration.nix
+        ./fonts.nix
+        inputs.home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.demo = import ./home.nix;
+        }
+      ];
+    };
   };
 }

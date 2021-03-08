@@ -1,4 +1,4 @@
-flakes: { config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 {
   home.file.".config/powerline/config.json".text = builtins.toJSON {
       test = "hi";
@@ -58,7 +58,7 @@ flakes: { config, pkgs, ... }:
       version  = "latest";
       pname = "powerline";
 
-      src = flakes.powerline;
+      src = inputs.powerline;
       propagatedBuildInputs = [
         pkgs.socat
         pkgs.python38Packages.psutil

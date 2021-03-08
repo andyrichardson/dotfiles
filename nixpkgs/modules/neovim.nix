@@ -1,4 +1,4 @@
-flakes: { config, pkgs, ... }:
+{ config, pkgs, ... }:
 
 # https://github.com/nix-community/home-manager/issues/815#issuecomment-537442524
 let
