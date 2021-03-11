@@ -60,7 +60,10 @@
         inputs.home-manager.darwinModules.home-manager
         {
           home-manager.useUserPackages = true;
-          home-manager.users.andyrichardson = import ./home.nix;
+          home-manager.users.andyrichardson = {
+            home.username = "andyrichardson";
+            inherit (import ./home.nix);
+          };
           home-manager.extraSpecialArgs = { inherit inputs; };
         }
         ./fonts.nix
@@ -72,11 +75,20 @@
       modules = [
         ./configuration.nix
         ./fonts.nix
+        ({ nixpkgs, ... }: {
+          nixpkgs.overlays = [
+            (final: prev: (import ./overlays/sway.nix) final prev)~
+          ];
+        })
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.demo = import ./home.nix;
+          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.users.demo = {
+            home.username = "demo";
+            inherit (import ./home.nix);
+          };
         }
       ];
     };
