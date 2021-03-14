@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 
-with import ../secrets.nix;
+with import ../config/secrets.nix;
 
 {
   programs.git = {

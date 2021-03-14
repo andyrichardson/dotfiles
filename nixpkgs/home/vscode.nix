@@ -1,4 +1,4 @@
-with import ../colors.nix;
+with import ../config/colors.nix;
 { config, pkgs, lib, ... }:
 
 {

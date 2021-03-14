@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 
-with import ../colors.nix;
+with import ../config/colors.nix;
 
 {
   programs.alacritty = {

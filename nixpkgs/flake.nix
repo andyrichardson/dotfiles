@@ -58,7 +58,7 @@
       inputs = { inherit inputs; };
       modules = [ 
         ./overlays/default.nix
-        ./fonts.nix
+        ./system/fonts.nix
         inputs.home-manager.darwinModules.home-manager
         {
           home-manager.useUserPackages = true;
@@ -75,14 +75,14 @@
       system = "x86_64-linux";
       modules = [
         ./overlays/default.nix
-        ./configuration.nix
-        ./fonts.nix
+        ./system/configuration.nix
+        ./system/fonts.nix
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = { inherit inputs; };
-          home-manager.users.demo = import ./home.nix;
+          home-manager.users.demo = import ./home/default.nix;
         }
       ];
     };
