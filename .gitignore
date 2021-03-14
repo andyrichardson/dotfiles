@@ -1,2 +1,2 @@
 nixpkgs/result
-nixpkgs/secrets.nix
+nixpkgs/config/secrets.nix

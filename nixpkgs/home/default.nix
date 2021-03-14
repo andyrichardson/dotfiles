@@ -2,21 +2,25 @@
 
 {
   imports = [
-    (import ./modules/alacritty.nix)
-    (import ./modules/dconf.nix)
-    (import ./modules/git.nix)
-    (import ./modules/neovim.nix)
-    (import ./modules/powerline.nix)
-    (import ./modules/tmux.nix)
-    (import ./modules/vscode.nix)
-    (import ./modules/zsh.nix)
+    (import ./alacritty.nix)
+    (import ./dconf.nix)
+    (import ./git.nix)
+    (import ./neovim.nix)
+    (import ./powerline.nix)
+    (import ./tmux.nix)
+    (import ./vscode.nix)
+    (import ./zsh.nix)
   ];
+  
   programs.home-manager.enable = true;
   fonts.fontconfig.enable = true;
-  home.username = "demo";
-  home.stateVersion = "21.03";
-  home.sessionVariables = {
-    EDITOR = "nvim";
+  
+  home = {
+    username = "demo";
+    stateVersion = "21.03";
+    sessionVariables = {
+      EDITOR = "nvim";
+    };
   };
 
   # Temporary fix for macos Applications
