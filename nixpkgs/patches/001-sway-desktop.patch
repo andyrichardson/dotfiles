@@ -1,0 +1,23 @@
+From 1adbd90abb3b834b115152a17958b2b86f664c79 Mon Sep 17 00:00:00 2001
+From: Andy Richardson <andy.john.richardson@gmail.com>
+Date: Thu, 11 Mar 2021 18:10:27 +0000
+Subject: [PATCH 2/2] Add desktop systemctl
+
+---
+ sway.desktop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sway.desktop b/sway.desktop
+index 420db5aa..f69f53fd 100644
+--- a/sway.desktop
++++ b/sway.desktop
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+ Name=Sway
+ Comment=An i3-compatible Wayland compositor
+-Exec=sway
++Exec=/bin/sh -c "systemctl --user import-environment; exec systemctl --user start sway"
+ Type=Application
+-- 
+2.24.3 (Apple Git-128)
+
