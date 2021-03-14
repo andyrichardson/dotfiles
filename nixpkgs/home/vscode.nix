@@ -19,17 +19,6 @@ with import ../config/colors.nix;
       dbaeumer.vscode-eslint
       streetsidesoftware.code-spell-checker
       eamodio.gitlens
-      (buildVscodeMarketplaceExtension {
-        mktplcRef = {
-          name = "python";
-          publisher = "ms-python";
-          version = "2020.12.424452561";
-          sha256 = "sha256-ji5MS4B6EMehah8mi5qbkP+snCoVQJC5Ss2SG1XjoH0=";
-        };
-        meta = {
-          license = lib.licenses.mit;
-        };
-      })
       # (lib.optional stdenv.isLinux pkgs.vscode-extensions.ms-vsliveshare.vsliveshare)
       # (buildVscodeExtension {
       #   name = "theme-onedark";
