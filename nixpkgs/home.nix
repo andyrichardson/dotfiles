@@ -3,6 +3,7 @@
 {
   imports = [
     (import ./modules/alacritty.nix)
+    (import ./modules/dconf.nix)
     (import ./modules/git.nix)
     (import ./modules/neovim.nix)
     (import ./modules/powerline.nix)
@@ -12,7 +13,7 @@
   ];
   programs.home-manager.enable = true;
   fonts.fontconfig.enable = true;
-  home.username = "andyrichardson";
+  home.username = "demo";
   home.stateVersion = "21.03";
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -31,9 +32,12 @@
   # });
 
 
-  home.packages = [
-    pkgs.htop
-    pkgs.docker
-    pkgs.lynx
+  home.packages = with pkgs; [
+    git
+    curl
+    htop
+    gnome3.dconf-editor
+    docker
+    lynx
   ];
 }

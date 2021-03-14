@@ -57,6 +57,8 @@
     defaultPackage.x86_64-darwin = (inputs.darwin.lib.darwinSystem {
       inputs = { inherit inputs; };
       modules = [ 
+        ./overlays/default.nix
+        ./fonts.nix
         inputs.home-manager.darwinModules.home-manager
         {
           home-manager.useUserPackages = true;
@@ -66,29 +68,21 @@
           };
           home-manager.extraSpecialArgs = { inherit inputs; };
         }
-        ./fonts.nix
       ];
     }).system;
     
     nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        ./overlays/default.nix
         ./configuration.nix
         ./fonts.nix
-        ({ nixpkgs, ... }: {
-          nixpkgs.overlays = [
-            (final: prev: (import ./overlays/sway.nix) final prev)~
-          ];
-        })
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = { inherit inputs; };
-          home-manager.users.demo = {
-            home.username = "demo";
-            inherit (import ./home.nix);
-          };
+          home-manager.users.demo = import ./home.nix;
         }
       ];
     };
