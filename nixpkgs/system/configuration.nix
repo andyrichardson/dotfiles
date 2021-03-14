@@ -16,11 +16,13 @@
 
   environment.systemPackages = with pkgs; [
     git
+    bash
   ];
   environment.pathsToLink = [
     "/usr"
     "/share"
     "/lib"
+    "/bin"
   ];
 
   services.xserver.displayManager.gdm.enable = true;

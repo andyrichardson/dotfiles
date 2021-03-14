@@ -49,42 +49,6 @@ with import ../config/colors.nix;
           license = lib.licenses.mit;
         };
       })
-      # TODO: Create contribution to nixpkgs 
-      (buildVscodeMarketplaceExtension {
-        mktplcRef = {
-          name = "vscode-styled-components";
-          publisher = "jpoissonnier";
-          version = "1.4.1";
-          sha256 = "sha256-ojbeuYBCS+DjF5R0aLuBImzoSOb8mXw1s0Uh0CzggzE=";
-        };
-        meta = {
-          license = lib.licenses.mit;
-        };
-      })
-      # TODO: Create contribution to nixpkgs 
-      (buildVscodeMarketplaceExtension {
-        mktplcRef = {
-          name = "python";
-          publisher = "ms-python";
-          version = "2020.12.424452561";
-          sha256 = "sha256-ji5MS4B6EMehah8mi5qbkP+snCoVQJC5Ss2SG1XjoH0=";
-        };
-        meta = {
-          license = lib.licenses.mit;
-        };
-      })
-      # TODO: Create contribution to nixpkgs
-      (buildVscodeMarketplaceExtension {
-        mktplcRef = {
-          name = "dotenv";
-          publisher = "mikestead";
-          version = "1.0.1";
-          sha256 = "sha256-dieCzNOIcZiTGu4Mv5zYlG7jLhaEsJR05qbzzzQ7RWc=";
-        };
-        meta = {
-          license = lib.licenses.mit;
-        };
-      })
       # TODO: Create contribution to nixpkgs
       (buildVscodeMarketplaceExtension {
         mktplcRef = {
@@ -92,18 +56,6 @@ with import ../config/colors.nix;
           publisher = "ms-vscode";
           version = "3.0.9";
           sha256 = "sha256-Qey75Irpb3Y+Unbf+ppTTVoU3XGAVJD8oXN5XKJhWBI=";
-        };
-        meta = {
-          license = lib.licenses.mit;
-        };
-      })
-      # TODO: Create contribution to nixpkgs
-      (buildVscodeMarketplaceExtension {
-        mktplcRef = {
-          name = "gitlens";
-          publisher = "eamodio";
-          version = "11.1.3";
-          sha256 = "sha256-hqJg3jP4bbXU4qSJOjeKfjkPx61yPDMsQdSUVZObK/U=";
         };
         meta = {
           license = lib.licenses.mit;
