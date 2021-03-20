@@ -1,6 +1,6 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
-{
+lib.mkIf pkgs.stdenv.isLinux {
   dconf = {
     enable = true;
     settings = {

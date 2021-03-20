@@ -84,6 +84,38 @@
         "type": "github"
       }
     },
+    "nvim-nerdtree": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1614609294,
+        "narHash": "sha256-qoOsw6mWB6Qke7upLrn8b64oy2fWd+UM1SX3jC5upNI=",
+        "owner": "preservim",
+        "repo": "nerdtree",
+        "rev": "f63fb6984f9cd07cf723c3e2e20f6ccc0aad48c2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "preservim",
+        "repo": "nerdtree",
+        "type": "github"
+      }
+    },
+    "nvim-prettier": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1614813444,
+        "narHash": "sha256-E7PGKV0GMI7sTZC1OPYVlazaAGbZ1mFo7M8u6RT6I9U=",
+        "owner": "prettier",
+        "repo": "vim-prettier",
+        "rev": "e7564653bccc34a2564ccd9463483af2965d148e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "prettier",
+        "repo": "vim-prettier",
+        "type": "github"
+      }
+    },
     "powerline": {
       "flake": false,
       "locked": {
@@ -106,12 +138,15 @@
         "flake-compat": "flake-compat",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
+        "nvim-nerdtree": "nvim-nerdtree",
+        "nvim-prettier": "nvim-prettier",
         "powerline": "powerline",
         "zsh-256color": "zsh-256color",
         "zsh-autosuggestions": "zsh-autosuggestions",
         "zsh-autoswitch-virtualenv": "zsh-autoswitch-virtualenv",
         "zsh-better-npm-completion": "zsh-better-npm-completion",
         "zsh-completions": "zsh-completions",
+        "zsh-history-substring-search": "zsh-history-substring-search",
         "zsh-node-path": "zsh-node-path",
         "zsh-nvm": "zsh-nvm",
         "zsh-powerline": "zsh-powerline",
@@ -195,6 +230,22 @@
       "original": {
         "owner": "zsh-users",
         "repo": "zsh-completions",
+        "type": "github"
+      }
+    },
+    "zsh-history-substring-search": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1557707754,
+        "narHash": "sha256-Ptxik1r6anlP7QTqsN1S2Tli5lyRibkgGlVlwWZRG3k=",
+        "owner": "zsh-users",
+        "repo": "zsh-history-substring-search",
+        "rev": "0f80b8eb3368b46e5e573c1d91ae69eb095db3fb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zsh-users",
+        "repo": "zsh-history-substring-search",
         "type": "github"
       }
     },

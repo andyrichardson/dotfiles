@@ -38,15 +38,27 @@
       url = "github:romkatv/powerlevel10k";
       flake = false;
     };
+    zsh-history-substring-search = {
+      url = "github:zsh-users/zsh-history-substring-search";
+      flake = false;
+    };
+    # Nvim plugins
+    nvim-nerdtree = {
+      url = "github:preservim/nerdtree";
+      flake = false;
+    };
+    nvim-prettier = {
+      url = "github:prettier/vim-prettier";
+      flake = false;
+    };
     powerline = {
       url = "github:powerline/powerline";
       flake = false;
     };
-    # Vscode plugins
-    nixpkgs.url = "github:nixos/nixpkgs";
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
+    nixpkgs.url = "github:nixos/nixpkgs";
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;
@@ -62,11 +74,11 @@
         inputs.home-manager.darwinModules.home-manager
         {
           home-manager.useUserPackages = true;
-          home-manager.users.andyrichardson = {
-            home.username = "andyrichardson";
-            inherit (import ./home.nix);
+          home-manager.extraSpecialArgs = { 
+            inherit inputs;
+            username = "andyrichardson"; 
           };
-          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.users.andyrichardson = import ./home/default.nix;
         }
       ];
     }).system;
@@ -81,7 +93,10 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.extraSpecialArgs = { 
+            inherit inputs;
+            username = "demo"; 
+          };
           home-manager.users.demo = import ./home/default.nix;
         }
       ];

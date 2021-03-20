@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 # https://github.com/nix-community/home-manager/issues/815#issuecomment-537442524
 let
@@ -6,7 +6,8 @@ let
     set rtp^=${plugin.rtp}
     set rtp+=${plugin.rtp}/after
   '';
-  plugins = [
+  plugins = with pkgs.vimPlugins; [
+    nerdtree
     pkgs.vimPlugins.vim-nix
     pkgs.vimPlugins.typescript-vim
     # (pkgs.vimUtils.buildVimPluginFrom2Nix {
@@ -27,7 +28,6 @@ in {
     withNodeJs = true;
     withPython3 = true;
     withRuby = true;
-
     extraConfig = ''
       " # Display
       set relativenumber

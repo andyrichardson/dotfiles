@@ -1,27 +1,35 @@
-{ pkgs, lib, inputs, ... }:
+{ pkgs, lib, inputs, username, ... }:
 
 {
   imports = [
-    (import ./alacritty.nix)
-    (import ./dconf.nix)
-    (import ./git.nix)
-    (import ./neovim.nix)
-    (import ./powerline.nix)
-    (import ./tmux.nix)
-    (import ./vscode.nix)
-    (import ./zsh.nix)
+    ./alacritty.nix
+    ./dconf.nix
+    ./git.nix
+    ./neovim.nix
+    ./powerline.nix
+    ./tmux.nix
+    ./vscode.nix
+    ./zsh.nix
   ];
-  
-  programs.home-manager.enable = true;
-  fonts.fontconfig.enable = true;
-  
+
   home = {
-    username = "demo";
+    inherit username;
     stateVersion = "21.03";
     sessionVariables = {
       EDITOR = "nvim";
     };
+    packages = with pkgs; [
+      git
+      curl
+      htop
+      docker
+      lynx
+      (lib.mkIf pkgs.stdenv.isLinux gnome3.dconf-editor)
+    ];
   };
+
+  programs.home-manager.enable = true;
+  # fonts.fontconfig.enable = true;
 
   # Temporary fix for macos Applications
   # source = https://github.com/nix-community/home-manager/issues/1341#issuecomment-761021848
@@ -34,14 +42,4 @@
       done
     '';
   });
-
-
-  home.packages = with pkgs; [
-    git
-    curl
-    htop
-    gnome3.dconf-editor
-    docker
-    lynx
-  ];
 }

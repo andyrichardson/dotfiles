@@ -12,15 +12,18 @@
       ];
     };
     initExtraBeforeCompInit = ''
-      export NVM_LAZY_LOAD=true
-
       # Temporary for macOS - see https://github.com/nix-community/home-manager/issues/1782
       # . /Users/andyrichardson/.nix-profile/etc/profile.d/nix.sh
       # Temporary for macOS
-      . /etc/static/bashrc 
+      # . /etc/static/bashrc 
     '';
     initExtra = ''
       source ~/.p10k.zsh
+      bindkey "$terminfo[kcuu1]" history-substring-search-up
+      bindkey "$terminfo[kcud1]" history-substring-search-down
+      
+      export NVM_LAZY_LOAD=true
+      export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=red,fg=white,bold"
     '';
     
     plugins = [
@@ -65,9 +68,14 @@
         src = inputs.zsh-autoswitch-virtualenv;
       }
       {
-      name = "zsh-powerline-powerlevel10k";
+        name = "zsh-powerline-powerlevel10k";
         file = "powerlevel10k.zsh-theme";
         src = inputs.zsh-powerline;
+      }
+      {
+        name = "zsh-history-substring-search";
+        file = "zsh-history-substring-search.plugin.zsh";
+        src = inputs.zsh-history-substring-search;
       }
     ];
   };
