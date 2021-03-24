@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 # https://github.com/nix-community/home-manager/issues/815#issuecomment-537442524
 let
@@ -10,17 +10,47 @@ let
     nerdtree
     pkgs.vimPlugins.vim-nix
     pkgs.vimPlugins.typescript-vim
-    # (pkgs.vimUtils.buildVimPluginFrom2Nix {
-    #    pname = "vim-prettier";
-    #    version = "2020-12-22";
-    #    src = pkgs.fetchFromGitHub {
-    #      owner = "prettier";
-    #      repo = "vim-prettier";
-    #      rev = "671ca8bd00052cf011c2f276587c95a20557a014";
-    #      sha256 = "0rq74znq9mx5p925jd120l5apjqdqp6xy6llzhf2gq5cxpg62hjl";
-    #    };
-    #    meta.homepage = "https://github.com/prettier/vim-prettier/";
-    # })
+    pkgs.vimPlugins.onedark-vim
+    (pkgs.vimUtils.buildVimPluginFrom2Nix {
+      pname = "which-key";
+      version = "latest";
+      src = inputs.nvim-which-key;
+    })
+    (pkgs.vimUtils.buildVimPluginFrom2Nix {
+      pname = "coc.nvim";
+      version = "latest";
+      src = inputs.nvim-coc;
+    })
+    (pkgs.vimUtils.buildVimPluginFrom2Nix {
+      pname = "coc-git";
+      version = "latest";
+      src = inputs.nvim-coc-git;
+      buildInputs = [pkgs.nodejs pkgs.yarn];
+      preInstall = ''
+        yarn install --frozen-lockfile || true
+        npm run prepare
+      '';
+    })
+    (pkgs.vimUtils.buildVimPluginFrom2Nix {
+      pname = "coc-json";
+      version = "latest";
+      src = inputs.nvim-coc-json;
+      buildInputs = [pkgs.nodejs pkgs.yarn];
+      preInstall = ''
+        yarn install --frozen-lockfile || true
+        npm run prepare
+      '';
+    })
+    (pkgs.vimUtils.buildVimPluginFrom2Nix {
+      pname = "coc-prettier";
+      version = "latest";
+      src = inputs.nvim-coc-prettier;
+      buildInputs = [pkgs.nodejs pkgs.yarn];
+      preInstall = ''
+        yarn install --frozen-lockfile || true
+        npm run prepare
+      '';
+    })
   ];
 in {
   programs.neovim = {
@@ -31,19 +61,55 @@ in {
     extraConfig = ''
       " # Display
       set relativenumber
-      set termguicolors
       syntax on
       
       ${builtins.concatStringsSep "\n"
             (map loadPlugin plugins)}
+      
+      colorscheme onedark
+      set termguicolors
+      set winblend=15
 
-      " # Keymaps
+      let g:leaderGuide_vspace = 5
+      let g:leaderGuide_vertical = 1
+      let g:lmap = {}
+
+      " Interactive keymaps
       imap jj <Esc>
-      map <C-N> :NERDTreeToggle<CR>
-      map <A-N> :NERDTreeFocus<CR>
+      
+      " Set leader
+      let mapleader = "\<space>"
+      nnoremap <space> <Nop>
+      map <space> <leader>
+
+      " Language
+      let g:lmap.l = {'name' : 'language'}
+      nmap <leader>lp :CocCommand prettier.formatFile<CR>
+      let g:lmap.l.p = 'prettier'
+      nmap <leader>lr :CocCommand tsserver.restart<CR>
+      let g:lmap.l.r = 'restart lang server'
+
+      
+      " Other maps
+      "map <C-N> :NERDTreeToggle<CR>
+      "map <A-N> :NERDTreeFocus<CR>
+
+      call leaderGuide#register_prefix_descriptions("<space>", "g:lmap")
+      nnoremap <silent> <leader> :<c-u>LeaderGuide '<space>'<CR>
     '';
+  };
 
-
+  home.file.".config/nvim/coc-settings.json".text = builtins.toJSON {
+    "coc.preferences.formatOnSaveFiletypes" = [
+      "css"
+      "markdown"
+      "javascript"
+      "javascriptreact"
+      "typescript"
+      "typescriptreact"
+      "json"
+      "graphql"
+    ];
   };
 }
 
