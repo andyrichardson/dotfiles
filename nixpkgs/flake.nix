@@ -51,6 +51,30 @@
       url = "github:prettier/vim-prettier";
       flake = false;
     };
+    nvim-coc = {
+      url = "github:neoclide/coc.nvim";
+      flake = false;
+    };
+    nvim-coc-git = {
+      url = "github:neoclide/coc-git";
+      flake = false;
+    };
+    nvim-coc-json = {
+      url = "github:neoclide/coc-json";
+      flake = false;
+    };
+    nvim-coc-prettier = {
+      url = "github:neoclide/coc-prettier";
+      flake = false;
+    };
+    nvim-onedark = {
+      url = "github:joshdick/onedark.vim";
+      flake = false;
+    };
+    nvim-which-key = {
+      url = "github:spinks/vim-leader-guide";
+      flake = false;
+    };
     powerline = {
       url = "github:powerline/powerline";
       flake = false;
