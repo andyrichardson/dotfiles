@@ -75,6 +75,10 @@
       url = "github:spinks/vim-leader-guide";
       flake = false;
     };
+    rofi-themes = {
+      url = "github:Murzchnvok/rofi-collection";
+      flake = false;
+    };
     powerline = {
       url = "github:powerline/powerline";
       flake = false;
@@ -109,6 +113,7 @@
     
     nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
       modules = [
         ./overlays/default.nix
         ./system/configuration.nix

@@ -4,7 +4,24 @@ lib.mkIf pkgs.stdenv.isLinux {
   dconf = {
     enable = true;
     settings = {
-      "org/gnome/desktop/wm/keybindings" = {
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+        binding = "<Super>space";
+        command = "rofi -show drun -modi drun -display-drun Apps";
+        name = "Rofi Applications";
+      };
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+        binding = "<Super>period";
+        command = "rofi -show emoji -modi emoji -display-drun Emoji";
+        name = "Rofi Emoji";
+      };
+      "org/gnome/settings-daemon/plugins/media-keys" = {
+        custom-keybindings = [
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+        ];
+      };
+       "org/gnome/desktop/wm/keybindings" = {
+        switch-input-source = []; # Disable default in favor of rofi
         switch-to-workspace-1 = ["<Super>1"];
         switch-to-workspace-2 = ["<Super>2"];
         switch-to-workspace-3 = ["<Super>3"];
@@ -15,8 +32,6 @@ lib.mkIf pkgs.stdenv.isLinux {
         switch-to-workspace-8 = ["<Super>8"];
         switch-to-workspace-9 = ["<Super>9"];
         switch-to-workspace-10 = ["<Super>0"];
-      };
-       "org/gnome/desktop/wm/keybindings" = {
         move-to-workspace-1 = ["<Super><Shift>1"];
         move-to-workspace-2 = ["<Super><Shift>2"];
         move-to-workspace-3 = ["<Super><Shift>3"];
@@ -57,7 +72,7 @@ lib.mkIf pkgs.stdenv.isLinux {
       };
 
       "org/gnome/shell/extensions/workspce-switcher" = {
-        position = "LEFT"; # Position values - https://github.com/Tomha/gnome-shell-extension-workspace-switcher/blob/master/schema/org.gnome.shell.extensions.workspace-switcher.gschema.xml#L13
+        position = "CENTER"; # Position values - https://github.com/Tomha/gnome-shell-extension-workspace-switcher/blob/master/schema/org.gnome.shell.extensions.workspace-switcher.gschema.xml#L13
       };
     };
   };

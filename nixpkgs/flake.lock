@@ -228,6 +228,22 @@
         "type": "github"
       }
     },
+    "rofi-themes": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1614655558,
+        "narHash": "sha256-dPWWa5sQ3FYdToVsDE0b9hZpW0hX1s3VdiIO+KjpB28=",
+        "owner": "Murzchnvok",
+        "repo": "rofi-collection",
+        "rev": "b88187016d8e22d6a0dfce7523e13945bcd12d1d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Murzchnvok",
+        "repo": "rofi-collection",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "darwin": "darwin",
@@ -243,6 +259,7 @@
         "nvim-prettier": "nvim-prettier",
         "nvim-which-key": "nvim-which-key",
         "powerline": "powerline",
+        "rofi-themes": "rofi-themes",
         "zsh-256color": "zsh-256color",
         "zsh-autosuggestions": "zsh-autosuggestions",
         "zsh-autoswitch-virtualenv": "zsh-autoswitch-virtualenv",
