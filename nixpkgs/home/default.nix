@@ -7,6 +7,7 @@
     ./git.nix
     ./neovim.nix
     ./powerline.nix
+    ./rofi.nix
     ./tmux.nix
     ./vscode.nix
     ./zsh.nix
