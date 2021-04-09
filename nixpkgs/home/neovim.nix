@@ -17,6 +17,11 @@ let
       src = inputs.nvim-which-key;
     })
     (pkgs.vimUtils.buildVimPluginFrom2Nix {
+      pname = "nerd-commenter";
+      version = "latest";
+      src = inputs.nvim-nerd-commenter;
+    })
+    (pkgs.vimUtils.buildVimPluginFrom2Nix {
       pname = "coc.nvim";
       version = "latest";
       src = inputs.nvim-coc;
@@ -45,6 +50,16 @@ let
       pname = "coc-prettier";
       version = "latest";
       src = inputs.nvim-coc-prettier;
+      buildInputs = [pkgs.nodejs pkgs.yarn];
+      preInstall = ''
+        yarn install --frozen-lockfile || true
+        npm run prepare
+      '';
+    })
+    (pkgs.vimUtils.buildVimPluginFrom2Nix {
+      pname = "coc-tsserver";
+      version = "latest";
+      src = inputs.nvim-coc-tsserver;
       buildInputs = [pkgs.nodejs pkgs.yarn];
       preInstall = ''
         yarn install --frozen-lockfile || true
@@ -84,18 +99,35 @@ in {
 
       " Language
       let g:lmap.l = {'name' : 'language'}
-      nmap <leader>lp :CocCommand prettier.formatFile<CR>
-      let g:lmap.l.p = 'prettier'
-      nmap <leader>lr :CocCommand tsserver.restart<CR>
-      let g:lmap.l.r = 'restart lang server'
 
+      let g:lmap.l.p = 'prettier'
+      nmap <leader>lp :CocCommand prettier.formatFile<CR>
+      
+      let g:lmap.l.r = 'restart lang server'
+      autocmd FileType javascript,javascriptreact,typescript,typescriptreact nmap <leader>lr :CocCommand tsserver.restart<CR>
+    
+      " Commenting
+      let g:NERDSpaceDelims = 1
+      let g:NERDCreateDefaultMappings = 0
+      let g:lmap.c = {'name' : 'commenter'}
+
+      let g:lmap.c.c = 'toggle'
+      nmap <leader>cc <plug>NERDCommenterToggle
+      let g:lmap.c.w = 'comment (write)'
+      nmap <leader>cw <plug>NERDCommenterComment
+      let g:lmap.c.d = 'uncomment (delete)'
+      nmap <leader>cd <plug>NERDCommenterUncomment
       
       " Other maps
-      "map <C-N> :NERDTreeToggle<CR>
-      "map <A-N> :NERDTreeFocus<CR>
+      map <C-N> :NERDTreeToggle<CR>
+      map <A-N> :NERDTreeFocus<CR>
 
       call leaderGuide#register_prefix_descriptions("<space>", "g:lmap")
       nnoremap <silent> <leader> :<c-u>LeaderGuide '<space>'<CR>
+
+      let g:wmap = {}
+      "call leaderGuide#register_prefix_descriptions("<c-w>", "g:wmap")
+      "map <silent> <c-w> :<c-u>LeaderGuide '<c-w>'<CR>
     '';
   };
 
