@@ -67,12 +67,20 @@
       url = "github:neoclide/coc-prettier";
       flake = false;
     };
+    nvim-coc-tsserver = {
+      url = "github:neoclide/coc-tsserver";
+      flake = false;
+    };
     nvim-onedark = {
       url = "github:joshdick/onedark.vim";
       flake = false;
     };
     nvim-which-key = {
       url = "github:spinks/vim-leader-guide";
+      flake = false;
+    };
+    nvim-nerd-commenter = {
+      url = "github:preservim/nerdcommenter";
       flake = false;
     };
     rofi-themes = {

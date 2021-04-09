@@ -148,6 +148,38 @@
         "type": "github"
       }
     },
+    "nvim-coc-tsserver": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1613990656,
+        "narHash": "sha256-LhuBAFqb6gNeO7NIzl+XSSZjrkQ2W4gzlo5cuxjkAN8=",
+        "owner": "neoclide",
+        "repo": "coc-tsserver",
+        "rev": "17dc0c235c7be2f29211c1696edb2c82017e8e43",
+        "type": "github"
+      },
+      "original": {
+        "owner": "neoclide",
+        "repo": "coc-tsserver",
+        "type": "github"
+      }
+    },
+    "nvim-nerd-commenter": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1617692260,
+        "narHash": "sha256-Orm2QrGCUXU/WM8cFRRTgvfvx0192Ed/zMFk5M5Xu3A=",
+        "owner": "preservim",
+        "repo": "nerdcommenter",
+        "rev": "6d0ab7dec9306fada667ea71edbb3da2b06a40ad",
+        "type": "github"
+      },
+      "original": {
+        "owner": "preservim",
+        "repo": "nerdcommenter",
+        "type": "github"
+      }
+    },
     "nvim-nerdtree": {
       "flake": false,
       "locked": {
@@ -254,6 +286,8 @@
         "nvim-coc-git": "nvim-coc-git",
         "nvim-coc-json": "nvim-coc-json",
         "nvim-coc-prettier": "nvim-coc-prettier",
+        "nvim-coc-tsserver": "nvim-coc-tsserver",
+        "nvim-nerd-commenter": "nvim-nerd-commenter",
         "nvim-nerdtree": "nvim-nerdtree",
         "nvim-onedark": "nvim-onedark",
         "nvim-prettier": "nvim-prettier",
