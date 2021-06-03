@@ -66,8 +66,9 @@ lib.mkIf pkgs.stdenv.isLinux {
         switch-to-application-10 = [];
       };
       "org/gnome/shell" = {
-        enabled-extensions = [
-          pkgs.gnome-shell-extension-workspace-switcher.uuid
+        enabled-extensions = with pkgs; [
+          gnome-shell-extension-workspace-switcher.uuid
+          gnomeExtensions.caffeine.uuid
         ];
       };
 
@@ -76,7 +77,14 @@ lib.mkIf pkgs.stdenv.isLinux {
       };
     };
   };
-  home.packages = [
-    pkgs.gnome-shell-extension-workspace-switcher
+  home.packages = with pkgs; [
+    gnome.dconf-editor
+    gnome.gnome-boxes
+    gnome.gnome-tweak-tool
+    pop-gtk-theme
+    gnome-shell-extension-workspace-switcher
+    gnomeExtensions.caffeine
+    gnomeExtensions.just-perfection
+    pop-os-shell
   ];
 }

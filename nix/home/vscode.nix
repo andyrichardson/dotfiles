@@ -4,7 +4,7 @@ with import ../config/colors.nix;
 {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    package = pkgs.vscode; # Nonfree
     extensions = with pkgs.vscode-extensions; with pkgs.vscode-utils; [
       bbenoist.Nix
       ms-azuretools.vscode-docker
