@@ -96,9 +96,6 @@
       flake = false;
     };
     home-manager.url = "github:nix-community/home-manager";
-    # Use nixpkgs master branch for latest package releases
-    # but stable branch for base OS
-    popshell.url = "github:remunds/nixpkgs/pop-os-shell";
     nixpkgs.url = "github:nixos/nixpkgs";
     nixos.url = "github:NixOS/nixpkgs/nixos-20.09";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
