@@ -85,6 +85,6 @@ lib.mkIf pkgs.stdenv.isLinux {
     gnome-shell-extension-workspace-switcher
     gnomeExtensions.caffeine
     gnomeExtensions.just-perfection
-    # pop-os-shell
+    pop-os-shell
   ];
 }

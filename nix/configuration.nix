@@ -53,6 +53,7 @@
     wayland = true;
   };
   services.xserver.desktopManager.gnome.enable = true;
+  #services.xserver.videoDrivers = [ "intel" ];
   
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -64,13 +65,31 @@
   #};
 
   # Sound
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    pulse.enable = true;
+  #hardware.pulseaudio.enable = false;
+  #security.rtkit.enable = true;
+  # services.pipewire = {
+  #  enable = true;
+  #  alsa.enable = true;
+  #  pulse.enable = true;
+  #};
+  hardware.pulseaudio.package = pkgs.pulseaudioFull;
+  hardware.pulseaudio.daemon.config = {
+    default-sample-rate = 48000;
+    high-priority = "yes";
+    realtime-scheduling = "yes";
+    default-fragments = 2;
+    default-fragment-size-msec = 125;
+    nice-level = -20;
+    realtime-priority = 50;
   };
+  hardware.cpu.intel.updateMicrocode = true;
+  #hardware.pulseaudio.configFile = pkgs.writeText "default.pa" ''
+  #  ;load-module module-null-sink sink_name=mic_denoised_out rate=48000
+  #  ;load-module module-ladspa-sink sink_name=mic_raw_in sink_master=mic_denoised_out label=noise_suppressor_stereo plugin=/nix/store/4hai6z1ip1qbi8w8lx4fd6kikh7mwzl4-noise-suppression-for-voice-1.0.0/lib/ladspa/librnnoise_ladspa.so control=10
+  #  ;load-module module-loopback source=alsa_input.pci-0000_00_1f.3.analog-stereo sink=mic_raw_in channels=2 source_dont_move=true sink_dont_move=true
+  #  ;load-module module-remap-source source_name=denoised master=mic_denoised_out.monitor channels=2
+  #'';
+
 
   # Fonts
   fonts = {
@@ -109,6 +128,7 @@
     # The basics
     git
     bash
+    gcc
     htop
     curl
     wget
@@ -119,6 +139,7 @@
     usbutils
     pciutils
     libva-utils
+    noise-suppression-for-voice
   ];
   environment.pathsToLink = [
     "/usr"

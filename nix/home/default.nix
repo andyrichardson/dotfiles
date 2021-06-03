@@ -21,10 +21,12 @@
     };
     packages = with pkgs; [
       # nonfree packages
+      gnome.gnome-sound-recorder
       google-chrome
       _1password
       _1password-gui
       discord
+      reaper
     ];
   };
 

@@ -13,13 +13,6 @@
 
   # Display scaling
   services.xserver.displayManager.sessionCommands = ''
-    xrandr --output eDP-1 --scale 1.2x1.2
+    xrandr --output eDP-1 --scale 1.1x1.1
   '';
-
-  environment.systemPackages = with pkgs; [
-    # Fingerprint packages (TODO: Add dell drivers)
-    oem-somerville-melisa-meta
-    oem-somerville-meta
-    # tlp-config
-  ];
 }

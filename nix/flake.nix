@@ -91,6 +91,10 @@
       url = "github:powerline/powerline";
       flake = false;
     };
+    pulse-noise-suppression-for-voice = {
+      url = "github:werman/noise-suppression-for-voice";
+      flake = false;
+    };
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;

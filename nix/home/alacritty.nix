@@ -6,7 +6,10 @@ with import ../config/colors.nix;
   programs.alacritty = {
     enable = true;
     settings = {
-      startup_mode = "Fullscreen";
+      window = {
+        startup_mode = "Maximized";
+        decorations = "none";
+      };
       shell = {
         program = "${pkgs.zsh}/bin/zsh";
       };
