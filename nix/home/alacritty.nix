@@ -6,13 +6,13 @@ with import ../config/colors.nix;
   programs.alacritty = {
     enable = true;
     settings = {
-      # shell = {
-      #   program = "${pkgs.tmux}/bin/tmux";
-      # };
+      startup_mode = "Fullscreen";
+      shell = {
+        program = "${pkgs.zsh}/bin/zsh";
+      };
       font = {
-        size = 14;
+        size = 12;
         normal = {
-          # family = "DejaVuSansMono Nerd Font";
           family = "DroidSansMono Nerd Font";
         };
       };

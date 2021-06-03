@@ -91,52 +91,39 @@
       url = "github:powerline/powerline";
       flake = false;
     };
-    darwin.url = "github:lnl7/nix-darwin/master";
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
-    nixpkgs.url = "github:nixos/nixpkgs";
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;
     };
+    home-manager.url = "github:nix-community/home-manager";
+    # Use nixpkgs master branch for latest package releases
+    # but stable branch for base OS
+    popshell.url = "github:remunds/nixpkgs/pop-os-shell";
+    nixpkgs.url = "github:nixos/nixpkgs";
+    nixos.url = "github:NixOS/nixpkgs/nixos-20.09";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
 
   outputs = inputs: {
-    defaultPackage.x86_64-darwin = (inputs.darwin.lib.darwinSystem {
-      inputs = { inherit inputs; };
-      modules = [ 
-        ./overlays/default.nix
-        ./system/fonts.nix
-        inputs.home-manager.darwinModules.home-manager
-        {
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = { 
-            inherit inputs;
-            username = "andyrichardson"; 
-          };
-          home-manager.users.andyrichardson = import ./home/default.nix;
-        }
-      ];
-    }).system;
-    
     nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
-        ./overlays/default.nix
-        ./system/configuration.nix
-        ./system/fonts.nix
-        inputs.home-manager.nixosModules.home-manager
-        {
+      	inputs.nixos-hardware.nixosModules.dell-xps-15-9500
+      	./overlays
+      	./configuration.nix
+      	inputs.home-manager.nixosModules.home-manager
+      	{
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = { 
             inherit inputs;
-            username = "demo"; 
+            username = "andy"; 
           };
-          home-manager.users.demo = import ./home/default.nix;
+          home-manager.users.andy = import ./home/default.nix;
         }
       ];
     };
   };
 }
+
