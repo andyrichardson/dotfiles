@@ -9,10 +9,11 @@
     };
   };
   security.pam.services.login.fprintAuth = true;
+  security.pam.services.login.unixAuth = true;
   security.pam.services.xscreensaver.fprintAuth = true;
 
   # Display scaling
-  services.xserver.displayManager.sessionCommands = ''
-    xrandr --output eDP-1 --scale 1.1x1.1
-  '';
+#  services.xserver.displayManager.sessionCommands = ''
+#    xrandr --output eDP-1 --scale 1.1x1.1
+#  '';
 }

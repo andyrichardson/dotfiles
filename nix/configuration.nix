@@ -53,8 +53,12 @@
     wayland = true;
   };
   services.xserver.desktopManager.gnome.enable = true;
-  #services.xserver.videoDrivers = [ "intel" ];
-  
+  services.xserver.deviceSection = ''
+    Option "TearFree" "True"
+  '';
+
+  services.xserver.videoDrivers = [ "modesetting" ];
+  services.xserver.useGlamor = true;  
 
   # Enable touchpad support (enabled default in most desktopManager).
   # kinetic scrolling support w/ libinput sucks for now
@@ -140,6 +144,10 @@
     pciutils
     libva-utils
     noise-suppression-for-voice
+    mesa
+    xorg.xorgserver
+    xorg.xf86inputlibinput
+    xorg.xf86videointel
   ];
   environment.pathsToLink = [
     "/usr"

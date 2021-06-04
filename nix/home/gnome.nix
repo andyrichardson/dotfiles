@@ -86,5 +86,6 @@ lib.mkIf pkgs.stdenv.isLinux {
     gnomeExtensions.caffeine
     gnomeExtensions.just-perfection
     pop-os-shell
+    cpu-freq-monitor
   ];
 }
