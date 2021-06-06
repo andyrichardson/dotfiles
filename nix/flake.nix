@@ -100,15 +100,16 @@
       flake = false;
     };
     home-manager.url = "github:nix-community/home-manager";
-    nixpkgs.url = "github:nixos/nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/20.09";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs";
     nixos.url = "github:NixOS/nixpkgs/nixos-20.09";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
 
   outputs = inputs: {
-    nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nixos = inputs.nixpkgs-unstable.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
+      specialArgs = { inherit inputs; pkgs-stable = inputs.nixpkgs.legacyPackages.x86_64-linux; };
       modules = [
       	inputs.nixos-hardware.nixosModules.dell-xps-15-9500
       	./overlays

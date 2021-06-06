@@ -79,17 +79,33 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_2": {
+    "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1622709875,
-        "narHash": "sha256-O1phXV5qG6+o136QgOdvFX51nM0iumPKScd9hX+jSn8=",
+        "lastModified": 1622919252,
+        "narHash": "sha256-LZu1xQHufkFnTCIRrs3fBthjg9jdcQWnfwEiGchYBZk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "95222ea78011226872735fff0260b4debb045a3a",
+        "rev": "64abed3b574b4d496fc220e9cd197fe681a060e8",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1603791972,
+        "narHash": "sha256-nj2SvACFH+NERpye1kudcuygCcvnsZYv26M2+wgM5vE=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "cd63096d6d887d689543a0b97743d28995bc9bc3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "20.09",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -309,6 +325,7 @@
         "nixos": "nixos",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-unstable": "nixpkgs-unstable",
         "nvim-coc": "nvim-coc",
         "nvim-coc-git": "nvim-coc-git",
         "nvim-coc-json": "nvim-coc-json",

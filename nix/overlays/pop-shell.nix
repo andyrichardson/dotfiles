@@ -1,7 +1,8 @@
 final: prev: {
   pop-os-shell = prev.stdenv.mkDerivation {
     pname = "pop-os-shell";
-    version = "1.4.0";
+    version = "1.5.0";
+    uuid = "pop-shell@system76.com";
 
     src = prev.fetchFromGitHub {
       owner = "andyrichardson";

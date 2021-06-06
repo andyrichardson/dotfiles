@@ -66,14 +66,20 @@ lib.mkIf pkgs.stdenv.isLinux {
         switch-to-application-10 = [];
       };
       "org/gnome/shell" = {
+        disable-extension-version-validation = true;
         enabled-extensions = with pkgs; [
-          gnome-shell-extension-workspace-switcher.uuid
+          # gnome-shell-extension-workspace-switcher.uuid
           gnomeExtensions.caffeine.uuid
+	  pop-os-shell.uuid
+	  "just-perfection-desktop@just-perfection"
+    	  #gnomeExtensions.just-perfection.uuid
         ];
       };
-
       "org/gnome/shell/extensions/workspce-switcher" = {
         position = "CENTER"; # Position values - https://github.com/Tomha/gnome-shell-extension-workspace-switcher/blob/master/schema/org.gnome.shell.extensions.workspace-switcher.gschema.xml#L13
+      };
+      "org/gnome/shell/extensions/just-perfection" = {
+        activities-button = false;
       };
     };
   };
@@ -82,7 +88,7 @@ lib.mkIf pkgs.stdenv.isLinux {
     gnome.gnome-boxes
     gnome.gnome-tweak-tool
     pop-gtk-theme
-    gnome-shell-extension-workspace-switcher
+    #gnome-shell-extension-workspace-switcher
     gnomeExtensions.caffeine
     gnomeExtensions.just-perfection
     pop-os-shell
