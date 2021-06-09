@@ -28,6 +28,13 @@
       discord
       reaper
     ];
+    file = {
+      ".config/nixpkgs/config.nix".text = ''
+        {
+          allowNonfree = true;
+        }
+      '';
+    };
   };
 
   programs.home-manager.enable = true;

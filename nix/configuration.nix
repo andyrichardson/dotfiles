@@ -132,6 +132,7 @@
     # The basics
     git
     bash
+    zip
     gcc
     htop
     curl
