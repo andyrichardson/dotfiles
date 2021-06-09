@@ -20,6 +20,7 @@
       EDITOR = "nvim";
     };
     packages = with pkgs; [
+      qemu
       # nonfree packages
       gnome.gnome-sound-recorder
       google-chrome

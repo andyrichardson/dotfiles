@@ -40,6 +40,7 @@
   boot.initrd.luks.devices = {
     "nixos" = {
       device = "/dev/sysvg/nix";
+      allowDiscards = true;
       preLVM = false;
     };
   };

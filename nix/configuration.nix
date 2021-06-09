@@ -28,10 +28,15 @@
       efiInstallAsRemovable = true;
       device = "nodev";
       enableCryptodisk = true;
+      #theme = pkgs.nixos-grub2-theme;
     };
   };
   boot.kernelModules = [ "kvm-intel" ];
 
+  services.fstrim = {
+    enable = true;
+    interval = "daily";
+  };
 
   # Networking
   networking.hostName = "nixos";
@@ -81,12 +86,16 @@
     default-sample-rate = 48000;
     high-priority = "yes";
     realtime-scheduling = "yes";
-    default-fragments = 2;
-    default-fragment-size-msec = 125;
+    resample-method = "src-sinc-best-quality";
+    # default-fragments = 2;
+    # default-fragment-size-msec = 125;
     nice-level = -20;
     realtime-priority = 50;
   };
   hardware.cpu.intel.updateMicrocode = true;
+  hardware.pulseaudio.configFile = pkgs.runCommand "default.pa" {} ''
+    load-module module-udev-detect use_ucm=0 tsched=0
+  '';
   #hardware.pulseaudio.configFile = pkgs.writeText "default.pa" ''
   #  ;load-module module-null-sink sink_name=mic_denoised_out rate=48000
   #  ;load-module module-ladspa-sink sink_name=mic_raw_in sink_master=mic_denoised_out label=noise_suppressor_stereo plugin=/nix/store/4hai6z1ip1qbi8w8lx4fd6kikh7mwzl4-noise-suppression-for-voice-1.0.0/lib/ladspa/librnnoise_ladspa.so control=10
