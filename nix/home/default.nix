@@ -32,7 +32,7 @@
     file = {
       ".config/nixpkgs/config.nix".text = ''
         {
-          allowNonfree = true;
+          allowUnfree = true;
         }
       '';
     };

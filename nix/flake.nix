@@ -95,6 +95,7 @@
       url = "github:werman/noise-suppression-for-voice";
       flake = false;
     };
+    simply-workspaces.url = "github:andyrichardson/simply-workspaces";
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;

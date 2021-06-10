@@ -16,6 +16,21 @@
         "type": "github"
       }
     },
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1622445595,
+        "narHash": "sha256-m+JRe6Wc5OZ/mKw2bB3+Tl0ZbtyxxxfnAWln8Q5qs+Y=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "7d706970d94bc5559077eb1a6600afddcd25a7c8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -81,11 +96,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1623242683,
-        "narHash": "sha256-UU8PrwXzSqRWbeGQ00igTEkeGThZ4Td3qzqa9fLoFLY=",
+        "lastModified": 1623330979,
+        "narHash": "sha256-UQD8P6lSfDx2RnP4Ss2biPDwlz19UQb9qOqjhesFSLk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "4de8cbfb16707dfed1d695a7fc1da09cb6e2bf38",
+        "rev": "5e78bbcb4926bc9e35a85573ea362aec1fa9b7ac",
         "type": "github"
       },
       "original": {
@@ -108,6 +123,20 @@
         "ref": "20.09",
         "repo": "nixpkgs",
         "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1623340550,
+        "narHash": "sha256-ArmpcXaAkI32mlktgY8NFVdvMPblO+J1C0sLMKUhh7s=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "edd3c9989708d979118ead4be9201e11e7423548",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
       }
     },
     "nvim-coc": {
@@ -339,6 +368,7 @@
         "powerline": "powerline",
         "pulse-noise-suppression-for-voice": "pulse-noise-suppression-for-voice",
         "rofi-themes": "rofi-themes",
+        "simply-workspaces": "simply-workspaces",
         "zsh-256color": "zsh-256color",
         "zsh-autosuggestions": "zsh-autosuggestions",
         "zsh-autoswitch-virtualenv": "zsh-autoswitch-virtualenv",
@@ -349,6 +379,25 @@
         "zsh-nvm": "zsh-nvm",
         "zsh-powerline": "zsh-powerline",
         "zsh-syntax-highlighting": "zsh-syntax-highlighting"
+      }
+    },
+    "simply-workspaces": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1623352226,
+        "narHash": "sha256-tlNNR/DtsRhNICVq+8e9+0qnILrBHLS7vjtZCqmG26g=",
+        "owner": "andyrichardson",
+        "repo": "simply-workspaces",
+        "rev": "4f23405bc7795c8c3a09a5a18602509b00af1aac",
+        "type": "github"
+      },
+      "original": {
+        "owner": "andyrichardson",
+        "repo": "simply-workspaces",
+        "type": "github"
       }
     },
     "zsh-256color": {

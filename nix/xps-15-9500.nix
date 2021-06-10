@@ -19,6 +19,12 @@
     options iwlwifi power_save=1 disable_11ax=1
   '';
 
+  # Undervolt
+  services.undervolt = {
+    enable = false;
+    coreOffset = -100;
+  };
+
   # Display scaling
 #  services.xserver.displayManager.sessionCommands = ''
 #    xrandr --output eDP-1 --scale 1.1x1.1

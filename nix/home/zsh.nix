@@ -22,6 +22,7 @@
       bindkey "$terminfo[kcuu1]" history-substring-search-up
       bindkey "$terminfo[kcud1]" history-substring-search-down
       
+      export NIX_BUILD_SHELL=zsh
       export NVM_LAZY_LOAD=true
       export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=red,fg=white,bold"
     '';

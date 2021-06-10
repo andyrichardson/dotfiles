@@ -6,6 +6,9 @@
     (import ./pop-shell.nix)
     (import ./cpu-freq-monitor.nix)
     (import ./noise-suppression-for-voice.nix inputs)
+    (final: prev: {
+      simply-workspaces = inputs.simply-workspaces.defaultPackage."${final.system}";
+    })
     # (final: prev: {
     #   gnome = pkgs-stable.gnome3;
     #   desktops.gnome = ({config, pkgs, lib }: pkgs-stable.desktops.gnome3 { inherit config lib; pkgs = pkgs-stable; });

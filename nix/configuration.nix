@@ -14,24 +14,34 @@
     '';
     binaryCaches = [ "https://cache.nixos.org/" ];
     trustedUsers = [ "andy" ];
+
+    # Experimenting with performance of builds
+    useSandbox = false;
+
+    # registry = {
+    #   "nixos21.05".flake = pkgs.nixUnstable;
+    # };
   };
   nixpkgs.config.allowUnfree = true;
 
   # Bootloader
-  boot.loader = {
-    efi = {
-      efiSysMountPoint = "/boot/efi";
+  boot = {
+    loader = {
+      efi = {
+        efiSysMountPoint = "/boot/efi";
+      };
+      grub = {
+        enable = true;
+        efiSupport = true;
+        efiInstallAsRemovable = true;
+        device = "nodev";
+        enableCryptodisk = true;
+        #theme = pkgs.nixos-grub2-theme;
+      };
     };
-    grub = {
-      enable = true;
-      efiSupport = true;
-      efiInstallAsRemovable = true;
-      device = "nodev";
-      enableCryptodisk = true;
-      #theme = pkgs.nixos-grub2-theme;
-    };
+
+    kernelModules = [ "kvm-intel" ];
   };
-  boot.kernelModules = [ "kvm-intel" ];
 
   services.fstrim = {
     enable = true;
@@ -39,12 +49,15 @@
   };
 
   # Networking
-  networking.hostName = "nixos";
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.wlp0s20f3.useDHCP = true;
+  networking = {
+    hostName = "nixos";
+    # The global useDHCP flag is deprecated, therefore explicitly set to false here.
+    # Per-interface useDHCP will be mandatory in the future, so this generated config
+    # replicates the default behaviour.
+    useDHCP = false;
+    interfaces.wlp0s20f3.useDHCP = true;
+  };
+
 
   # Region/timezone
   time.timeZone = "Europe/London";
@@ -52,26 +65,23 @@
   services.xserver.layout = "us";
 
   # Desktop environment
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm = {
+  services.xserver = {
     enable = true;
-    wayland = true;
+    videoDrivers = [ "modesetting" ];
+    useGlamor = true;
+    libinput.enable = true;
+    displayManager.gdm = {
+      enable = true;
+      wayland = true;
+    };
+    desktopManager.gnome = {
+      enable = true;
+    };
+    deviceSection = ''
+      Option "TearFree" "True"
+    '';
   };
-  services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.deviceSection = ''
-    Option "TearFree" "True"
-  '';
 
-  services.xserver.videoDrivers = [ "modesetting" ];
-  services.xserver.useGlamor = true;  
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # kinetic scrolling support w/ libinput sucks for now
-  services.xserver.libinput.enable = true;
-  # services.xserver.synaptics = {
-  #  enable = true;
-  #  twoFingerScroll = true;
-  #};
 
   # Sound
   #hardware.pulseaudio.enable = false;
@@ -93,16 +103,13 @@
     realtime-priority = 50;
   };
   hardware.cpu.intel.updateMicrocode = true;
+  # hardware.pulseaudio.configFile = pkgs.runCommand "default.pa" {} ''
+  #   load-module module-udev-detect use_ucm=0 tsched=0
+  # '';
   hardware.pulseaudio.configFile = pkgs.runCommand "default.pa" {} ''
-    load-module module-udev-detect use_ucm=0 tsched=0
+    sed 's/module-udev-detect$/module-udev-detect use_ucm=0 tsched=0/' \
+      ${pkgs.pulseaudio}/etc/pulse/default.pa > $out
   '';
-  #hardware.pulseaudio.configFile = pkgs.writeText "default.pa" ''
-  #  ;load-module module-null-sink sink_name=mic_denoised_out rate=48000
-  #  ;load-module module-ladspa-sink sink_name=mic_raw_in sink_master=mic_denoised_out label=noise_suppressor_stereo plugin=/nix/store/4hai6z1ip1qbi8w8lx4fd6kikh7mwzl4-noise-suppression-for-voice-1.0.0/lib/ladspa/librnnoise_ladspa.so control=10
-  #  ;load-module module-loopback source=alsa_input.pci-0000_00_1f.3.analog-stereo sink=mic_raw_in channels=2 source_dont_move=true sink_dont_move=true
-  #  ;load-module module-remap-source source_name=denoised master=mic_denoised_out.monitor channels=2
-  #'';
-
 
   # Fonts
   fonts = {
@@ -150,6 +157,7 @@
     vim
     firefox-wayland
     lynx
+    hdparm
     usbutils
     pciutils
     libva-utils

@@ -11,7 +11,7 @@ with import ../config/colors.nix;
         decorations = "none";
       };
       shell = {
-        program = "${pkgs.zsh}/bin/zsh";
+        program = "${pkgs.tmux}/bin/tmux";
       };
       font = {
         size = 12;
