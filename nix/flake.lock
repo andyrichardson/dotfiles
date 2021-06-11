@@ -49,22 +49,6 @@
         "type": "github"
       }
     },
-    "nixos": {
-      "locked": {
-        "lastModified": 1623124193,
-        "narHash": "sha256-SIwXuoJC6lwXPz8N5ca6rRlyiCH+D3x8V4J6TL54/qU=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "1a40a7254eaedb560b47096c7b1ae368ad716279",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-20.09",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1623143341,
@@ -94,33 +78,17 @@
         "type": "indirect"
       }
     },
-    "nixpkgs-unstable": {
-      "locked": {
-        "lastModified": 1623330979,
-        "narHash": "sha256-UQD8P6lSfDx2RnP4Ss2biPDwlz19UQb9qOqjhesFSLk=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "5e78bbcb4926bc9e35a85573ea362aec1fa9b7ac",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1603791972,
-        "narHash": "sha256-nj2SvACFH+NERpye1kudcuygCcvnsZYv26M2+wgM5vE=",
+        "lastModified": 1623403135,
+        "narHash": "sha256-YVsaxdTSSKsd/ZdJYq2QyzE60OZg/XbonrpVLHK+VE8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "cd63096d6d887d689543a0b97743d28995bc9bc3",
+        "rev": "76a8cd4a755ce3eaab417cf49dd8f24b56b793c9",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "20.09",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -137,6 +105,21 @@
       "original": {
         "id": "nixpkgs",
         "type": "indirect"
+      }
+    },
+    "nur": {
+      "locked": {
+        "lastModified": 1623402381,
+        "narHash": "sha256-4wRsO1h62XxP8r4Lgc7rjlt5VCb8eM9KeZJ3Fykx+9Y=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "4f932934b05e391946c67297cd2cdd9fa85d4783",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
       }
     },
     "nvim-coc": {
@@ -351,10 +334,9 @@
       "inputs": {
         "flake-compat": "flake-compat",
         "home-manager": "home-manager",
-        "nixos": "nixos",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-unstable": "nixpkgs-unstable",
+        "nur": "nur",
         "nvim-coc": "nvim-coc",
         "nvim-coc-git": "nvim-coc-git",
         "nvim-coc-json": "nvim-coc-json",

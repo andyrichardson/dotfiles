@@ -22,7 +22,7 @@
   # Undervolt
   services.undervolt = {
     enable = false;
-    coreOffset = -100;
+    coreOffset = -80;
   };
 
   # Display scaling

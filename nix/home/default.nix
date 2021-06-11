@@ -18,11 +18,17 @@
     stateVersion = "21.05";
     sessionVariables = {
       EDITOR = "nvim";
+      NIC_CC = "${pkgs.gcc.out}";
     };
     packages = with pkgs; [
       qemu
-      # nonfree packages
+      screenkey
+      slop
+      peek
       gnome.gnome-sound-recorder
+      undervolt
+      # nonfree packages
+      parsec
       google-chrome
       _1password
       _1password-gui

@@ -111,6 +111,8 @@
       ${pkgs.pulseaudio}/etc/pulse/default.pa > $out
   '';
 
+  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+
   # Fonts
   fonts = {
     enableDefaultFonts = true; # default
@@ -150,9 +152,13 @@
     bash
     zip
     gcc
+    gnumake
     htop
     curl
     wget
+    cachix
+    glxinfo
+    nixfmt
     tree
     vim
     firefox-wayland

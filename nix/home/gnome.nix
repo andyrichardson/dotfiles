@@ -13,7 +13,7 @@ lib.mkIf pkgs.stdenv.isLinux {
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" =
         {
           binding = "<Super>period";
-          command = "rofi -show emoji -modi emoji -display-drun Emoji";
+          command = "rofimoji -a type";
           name = "Rofi Emoji";
         };
       "org/gnome/settings-daemon/plugins/media-keys" = {
@@ -70,6 +70,7 @@ lib.mkIf pkgs.stdenv.isLinux {
           gnomeExtensions.caffeine.uuid
           pop-os-shell.uuid
           simply-workspaces.uuid
+          gnomeExtensions.appindicator.uuid
           "just-perfection-desktop@just-perfection"
           #gnomeExtensions.just-perfection.uuid
         ];
@@ -88,9 +89,10 @@ lib.mkIf pkgs.stdenv.isLinux {
     gnome.gnome-boxes
     gnome.gnome-tweak-tool
     pop-gtk-theme
-    #gnome-shell-extension-workspace-switcher
     gnomeExtensions.caffeine
     gnomeExtensions.just-perfection
+    gnomeExtensions.appindicator
+    libappindicator
     simply-workspaces
     pop-os-shell
     cpu-freq-monitor

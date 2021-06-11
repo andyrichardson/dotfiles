@@ -25,4 +25,7 @@ lib.mkIf pkgs.stdenv.isLinux {
       size: 1.2em;
     }
   '';
+  home.packages = [
+    pkgs.rofimoji
+  ];
 }

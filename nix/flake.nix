@@ -101,14 +101,13 @@
       flake = false;
     };
     home-manager.url = "github:nix-community/home-manager";
-    nixpkgs.url = "github:nixos/nixpkgs/20.09";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs";
-    nixos.url = "github:NixOS/nixpkgs/nixos-20.09";
+    nur.url = "github:nix-community/NUR";
+    nixpkgs.url = "github:nixos/nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
 
   outputs = inputs: {
-    nixosConfigurations.nixos = inputs.nixpkgs-unstable.lib.nixosSystem {
+    nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; pkgs-stable = inputs.nixpkgs.legacyPackages.x86_64-linux; };
       modules = [
