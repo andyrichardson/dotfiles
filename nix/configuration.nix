@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs ? {}, ... }:
 
 {
   imports = [ 
@@ -10,14 +10,18 @@
   nix = {
     package = pkgs.nixUnstable;
     extraOptions = ''
-      experimental-features = nix-command flakes
+      experimental-features = nix-command flakes ca-references
     '';
     binaryCaches = [ "https://cache.nixos.org/" ];
     trustedUsers = [ "andy" ];
 
     # Experimenting with performance of builds
     useSandbox = false;
-
+    registry."node".to = {
+      type = "github";
+      owner = "andyrichardson";
+      repo = "nix-node";
+    };
     # registry = {
     #   "nixos21.05".flake = pkgs.nixUnstable;
     # };
@@ -125,12 +129,11 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
     "andy" = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "docker" "libvirtd" ];
+      extraGroups = [ "wheel" "docker" "libvirtd" "kvm" ];
     };
   };
   # Passwordless sudo
@@ -159,6 +162,8 @@
     cachix
     glxinfo
     nixfmt
+    python3
+    parsec
     tree
     vim
     firefox-wayland

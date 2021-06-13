@@ -22,7 +22,17 @@
           sha256 = "1hfdzjd8qiksv336m4s4ban004vhv00cv2j461gc6zrp37s0fwhc";
         };
         phases = [ "buildPhase" "preFixup" ];
-        buildInputs = [ prev.dpkg ];
+        buildInputs = with prev; [
+          dpkg
+          stdenv.cc.cc.lib
+          # xorg.libX11 # libX11.so.6
+          xorg.libXi # libXi.so.6
+          libGL # libGL.so.1
+          xorg.libXcursor # libXcursor.so.1
+          alsa-lib # libasound.so.2
+          libudev # libudev.so.1
+          openssl
+        ];
         nativeBuildInputs = [ prev.autoPatchelfHook ];
         buildPhase = ''
           mkdir -p $out
@@ -36,52 +46,76 @@
           mv $out/usr/* $out
           rmdir $out/usr
         '';
-        preFixup = with prev; let
-          libPath = lib.makeLibraryPath [
-            prev.stdenv.cc.cc.lib
-            prev.stdenv.glibc
-            # prev.stdenv.gcc
-            prev.gcc
-            prev.gcc6
-            prev.glibc
-            prev.libGL
-            alsaLib
-            cups
-            dbus
-            fontconfig
-            freetype
-            libGL
-            libpulseaudio
-            libsamplerate
-            libudev
-            libva
-            libxkbcommon
-            nas
-            stdenv.cc.cc.lib
-            vulkan-loader
-            xorg.libX11
-            xorg.libXScrnSaver
-            xorg.libXcursor
-            xorg.libXext
-            xorg.libXi
-            xorg.libXinerama
-            xorg.libXrandr
-            xorg.libXrender
-            xorg.libXxf86vm
-            xorg.libxcb
-          ];
+        preFixup = with prev;
+          let
+            libPath = lib.makeLibraryPath [
+              stdenv.cc.cc.lib
+              zsnes # libX11.so.6
+              xorg.libXi # libXi.so.6
+              libGL # libGL.so.1
+              xorg.libXcursor # libXcursor.so.1
+              alsa-lib # libasound.so.2
+              libudev # libudev.so.1
+              openssl
+              libglvnd #
+              prev.stdenv.cc.cc.lib
+              prev.gcc
+              prev.gcc6
+              prev.glibc
+              prev.libGL
+              alsaLib
+              cups
+              dbus
+              fontconfig
+              freetype
+              libGL
+              
+              libva
+              libxkbcommon
+              nas
+              stdenv.cc.cc.lib
+              vulkan-loader
+
+              xorg.libXScrnSaver
+              xorg.libXcursor
+              xorg.libXext
+
+              xorg.libXinerama
+              xorg.libXrandr
+              xorg.libXrender
+              xorg.libXxf86vm
+              xorg.libxcb
+            ];
           in ''
             echo ${libPath}
+            # --add-needed libX11.so.6
             patchelf \
             --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
             --set-rpath "${libPath}" \
             $out/bin/parsecd
+
+            patchelf --add-needed parsecd-150-28.so $out/bin/parsecd 
+            patchelf --add-needed libX11.so.6 $out/bin/parsecd
+            patchelf --add-needed libXi.so.6 $out/bin/parsecd
+            patchelf --add-needed libXi.so.6 $out/bin/parsecd
+            patchelf --add-needed libGL.so.1 $out/bin/parsecd
+            patchelf --add-needed libXcursor.so.1 $out/bin/parsecd
+            patchelf --add-needed libasound.so.2 $out/bin/parsecd
+            patchelf --add-needed libudev.so.1 $out/bin/parsecd
+            patchelf --add-needed libcrypto.so.1.1 $out/bin/parsecd
           '';
       };
     })
   ];
 }
 
+          # --add-needed libX11.so.6 \
+          #   --add-needed libXi.so.6 \ 
+          #   --add-needed libGL.so.1 \ 
+          #   --add-needed libXcursor.so.1 \ 
+          #   --add-needed libasound.so.2 \ 
+          #   --add-needed libudev.so.1 \ 
+          #   --add-needed libcrypto.so.1.0.0 \ 
 
 # libc6 (>= 2.17),
 #   libgcc1 (>= 1:3.0),

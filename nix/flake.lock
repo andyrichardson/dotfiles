@@ -49,6 +49,24 @@
         "type": "github"
       }
     },
+    "nix-node": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1623419115,
+        "narHash": "sha256-3vtWl6dLB0ImmjPUixFDrHmLcuorTOWNM7Fi5RXU6UQ=",
+        "owner": "andyrichardson",
+        "repo": "nix-node",
+        "rev": "0dc4a2087907a48c326b7fbafe3a6f01f7b8fa04",
+        "type": "github"
+      },
+      "original": {
+        "owner": "andyrichardson",
+        "repo": "nix-node",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1623143341,
@@ -80,6 +98,21 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1623330979,
+        "narHash": "sha256-UQD8P6lSfDx2RnP4Ss2biPDwlz19UQb9qOqjhesFSLk=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "5e78bbcb4926bc9e35a85573ea362aec1fa9b7ac",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1623403135,
         "narHash": "sha256-YVsaxdTSSKsd/ZdJYq2QyzE60OZg/XbonrpVLHK+VE8=",
         "owner": "nixos",
@@ -93,7 +126,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1623340550,
         "narHash": "sha256-ArmpcXaAkI32mlktgY8NFVdvMPblO+J1C0sLMKUhh7s=",
@@ -334,8 +367,9 @@
       "inputs": {
         "flake-compat": "flake-compat",
         "home-manager": "home-manager",
+        "nix-node": "nix-node",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "nur": "nur",
         "nvim-coc": "nvim-coc",
         "nvim-coc-git": "nvim-coc-git",
@@ -366,7 +400,7 @@
     "simply-workspaces": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1623352226,

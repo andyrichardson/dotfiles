@@ -28,7 +28,7 @@
       gnome.gnome-sound-recorder
       undervolt
       # nonfree packages
-      parsec
+      # parsec
       google-chrome
       _1password
       _1password-gui

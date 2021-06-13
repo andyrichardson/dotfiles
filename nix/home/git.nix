@@ -5,7 +5,7 @@ with import ../config/secrets.nix;
 {
   programs.git = {
     enable = true;
-    userName = "Test Richardson";
+    userName = "andyrichardson";
     userEmail = email;
   };
 

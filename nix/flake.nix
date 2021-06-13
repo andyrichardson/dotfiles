@@ -101,6 +101,7 @@
       flake = false;
     };
     home-manager.url = "github:nix-community/home-manager";
+    nix-node.url = "github:andyrichardson/nix-node";
     nur.url = "github:nix-community/NUR";
     nixpkgs.url = "github:nixos/nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
