@@ -24,6 +24,9 @@ lib.mkIf pkgs.stdenv.isLinux {
       };
       "org/gnome/desktop/wm/keybindings" = {
         switch-input-source = [ ]; # Disable default in favor of rofi
+        minimize = [ ];
+        maximize = [ ];
+        close = [ "<Super>BackSpace" ];
         switch-to-workspace-1 = [ "<Super>1" ];
         switch-to-workspace-2 = [ "<Super>2" ];
         switch-to-workspace-3 = [ "<Super>3" ];
@@ -50,7 +53,13 @@ lib.mkIf pkgs.stdenv.isLinux {
         num-workspaces = 10;
       };
       "org/gnome/desktop/interface" = { enable-animations = false; };
-      "org/gnome/mutter" = { dynamic-workspaces = false; };
+      "org/gnome/mutter" = { 
+        dynamic-workspaces = false; 
+        edge-tiling = false;
+      };
+      "org/gnome/mutter/keybindings" = {
+        toggle-tiled-left = false;
+      };
       "org/gnome/shell/keybindings" = {
         switch-to-application-1 = [ ];
         switch-to-application-2 = [ ];
@@ -75,9 +84,8 @@ lib.mkIf pkgs.stdenv.isLinux {
           #gnomeExtensions.just-perfection.uuid
         ];
       };
-      "org/gnome/shell/extensions/workspce-switcher" = {
-        position =
-          "CENTER"; # Position values - https://github.com/Tomha/gnome-shell-extension-workspace-switcher/blob/master/schema/org.gnome.shell.extensions.workspace-switcher.gschema.xml#L13
+      "org/gnome/shell/overrides" = {
+        edge-tiling = false;
       };
       "org/gnome/shell/extensions/just-perfection" = {
         activities-button = false;
