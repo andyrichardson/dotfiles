@@ -25,6 +25,10 @@
     coreOffset = -80;
   };
 
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+  };
   # Display scaling
 #  services.xserver.displayManager.sessionCommands = ''
 #    xrandr --output eDP-1 --scale 1.1x1.1

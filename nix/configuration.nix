@@ -149,6 +149,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  programs.steam.enable = true;
   environment.systemPackages = with pkgs; [
     # The basics
     git
@@ -163,7 +164,6 @@
     glxinfo
     nixfmt
     python3
-    parsec
     tree
     vim
     firefox-wayland
@@ -173,10 +173,10 @@
     pciutils
     libva-utils
     noise-suppression-for-voice
-    mesa
-    xorg.xorgserver
-    xorg.xf86inputlibinput
-    xorg.xf86videointel
+    # mesa
+    # xorg.xorgserver
+    # xorg.xf86inputlibinput
+    # xorg.xf86videointel
   ];
   environment.pathsToLink = [
     "/usr"
