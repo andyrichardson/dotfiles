@@ -108,22 +108,27 @@
   };
 
   outputs = inputs: {
-    nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; pkgs-stable = inputs.nixpkgs.legacyPackages.x86_64-linux; };
+      specialArgs = {
+        inherit inputs;
+        pkgs-stable = inputs.nixpkgs.legacyPackages.x86_64-linux;
+        username = "andy";
+      };
       modules = [
-      	inputs.nixos-hardware.nixosModules.dell-xps-15-9500
-      	./overlays
-      	./configuration.nix
-      	inputs.home-manager.nixosModules.home-manager
-      	{
+        inputs.nixos-hardware.nixosModules.dell-xps-15-9500
+        ./overlays
+        ./configuration.nix
+        inputs.home-manager.nixosModules.home-manager
+        {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = { 
+          home-manager.extraSpecialArgs = {
             inherit inputs;
-            username = "andy"; 
+            username = specialArgs.username;
           };
-          home-manager.users.andy = import ./home/default.nix;
+          home-manager.users.${specialArgs.username} =
+            import ./home/default.nix;
         }
       ];
     };

@@ -7,19 +7,20 @@ final: prev: {
     postUnpack = ''
       patchShebangs source/scripts
     '';
-    # installPhase = ''
-    #   echo "INSTALLL"
-    #   make install
-    # '';
 
     postInstall = ''
       cp -r /tmp/usr $out/
     '';
 
     sandbox = true;
-    nativeBuildInputs = [ prev.glib prev.gettext prev.bash prev.zip prev.unzip ];
+    nativeBuildInputs =
+      [ prev.glib prev.gettext prev.bash prev.zip prev.unzip ];
     # patches = [ ./cpu.patch ];
-    makeFlags = [ "MSGFMT=${prev.gettext}/bin/msgfmt" "GLIB_COMPILE_SCHEMAS=${prev.glib.dev}/bin/glib-compile-schemas" "PREFIX=/tmp/usr" ];
+    makeFlags = [
+      "MSGFMT=${prev.gettext}/bin/msgfmt"
+      "GLIB_COMPILE_SCHEMAS=${prev.glib.dev}/bin/glib-compile-schemas"
+      "PREFIX=/tmp/usr"
+    ];
 
     src = prev.fetchFromGitHub {
       owner = "martin31821";

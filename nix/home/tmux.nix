@@ -3,10 +3,7 @@
 {
   programs.tmux = {
     enable = true;
-    plugins = [
-      pkgs.tmuxPlugins.yank
-      pkgs.tmuxPlugins.sessionist
-    ];
+    plugins = [ pkgs.tmuxPlugins.yank pkgs.tmuxPlugins.sessionist ];
     extraConfig = ''
       run-shell "powerline-config tmux setup"
       # Set default shell

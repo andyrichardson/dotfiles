@@ -15,23 +15,13 @@ final: prev: {
 
     buildInputs = [ prev.gjs ];
 
-    # patches = [
-    #   ./fix-gjs.patch
-    # ];
-
-    makeFlags = [ "INSTALLBASE=$(out)/share/gnome-shell/extensions PLUGIN_BASE=$(out)/share/pop-shell/launcher" ];
+    makeFlags = [
+      "INSTALLBASE=$(out)/share/gnome-shell/extensions PLUGIN_BASE=$(out)/share/pop-shell/launcher"
+    ];
 
     postInstall = ''
       chmod +x $out/share/gnome-shell/extensions/pop-shell@system76.com/floating_exceptions/main.js
       chmod +x $out/share/gnome-shell/extensions/pop-shell@system76.com/color_dialog/main.js
     '';
-
-    # meta = with prev.lib; {
-    #   description = "Keyboard-driven layer for GNOME Shell";
-    #   license = prev.licenses.gpl3Only;
-    #   homepage = "https://github.com/pop-os/shell";
-    #   platforms = prev.platforms.linux;
-    #   maintainers = with maintainers; [ remunds ];
-    # };
   };
 }

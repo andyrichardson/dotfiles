@@ -1,7 +1,6 @@
 { pkgs, inputs, lib, pkgs-stable, ... }: {
   nixpkgs.overlays = [
-    (import ./gnome-shell-extension-workspace-switcher.nix)
-    # (import ./fingerprint.nix)
+    inputs.nur.overlay 
     (import ./pop-shell.nix)
     (import ./cpu-freq-monitor.nix)
     (import ./noise-suppression-for-voice.nix inputs)
@@ -10,11 +9,5 @@
       simply-workspaces =
         inputs.simply-workspaces.defaultPackage."${final.system}";
     })
-    inputs.nur.overlay
-    # (final: prev: {
-    #    steam = prev.steam.override {
-    #     nativeOnly = true;
-    #   };
-    # })  
   ];
 }

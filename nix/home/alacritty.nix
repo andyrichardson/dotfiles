@@ -10,14 +10,10 @@ with import ../config/colors.nix;
         startup_mode = "Maximized";
         decorations = "none";
       };
-      shell = {
-        program = "${pkgs.tmux}/bin/tmux";
-      };
+      shell = { program = "${pkgs.tmux}/bin/tmux"; };
       font = {
         size = 12;
-        normal = {
-          family = "DroidSansMono Nerd Font";
-        };
+        normal = { family = "DroidSansMono Nerd Font"; };
       };
       colors = {
         primary = {
@@ -35,9 +31,7 @@ with import ../config/colors.nix;
           cyan = cyan;
           white = white;
         };
-        bright = {
-          black = brightBlack;
-        };
+        bright = { black = brightBlack; };
       };
     };
   };

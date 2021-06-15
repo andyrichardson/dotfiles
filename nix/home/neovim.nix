@@ -30,7 +30,7 @@ let
       pname = "coc-git";
       version = "latest";
       src = inputs.nvim-coc-git;
-      buildInputs = [pkgs.nodejs pkgs.yarn];
+      buildInputs = [ pkgs.nodejs pkgs.yarn ];
       preInstall = ''
         yarn install --frozen-lockfile || true
         npm run prepare
@@ -40,7 +40,7 @@ let
       pname = "coc-json";
       version = "latest";
       src = inputs.nvim-coc-json;
-      buildInputs = [pkgs.nodejs pkgs.yarn];
+      buildInputs = [ pkgs.nodejs pkgs.yarn ];
       preInstall = ''
         yarn install --frozen-lockfile || true
         npm run prepare
@@ -50,7 +50,7 @@ let
       pname = "coc-prettier";
       version = "latest";
       src = inputs.nvim-coc-prettier;
-      buildInputs = [pkgs.nodejs pkgs.yarn];
+      buildInputs = [ pkgs.nodejs pkgs.yarn ];
       preInstall = ''
         yarn install --frozen-lockfile || true
         npm run prepare
@@ -60,7 +60,7 @@ let
       pname = "coc-tsserver";
       version = "latest";
       src = inputs.nvim-coc-tsserver;
-      buildInputs = [pkgs.nodejs pkgs.yarn];
+      buildInputs = [ pkgs.nodejs pkgs.yarn ];
       preInstall = ''
         yarn install --frozen-lockfile || true
         npm run prepare
@@ -77,10 +77,9 @@ in {
       " # Display
       set relativenumber
       syntax on
-      
-      ${builtins.concatStringsSep "\n"
-            (map loadPlugin plugins)}
-      
+
+      ${builtins.concatStringsSep "\n" (map loadPlugin plugins)}
+
       colorscheme onedark
       set termguicolors
       set winblend=15
@@ -91,7 +90,7 @@ in {
 
       " Interactive keymaps
       imap jj <Esc>
-      
+
       " Set leader
       let mapleader = "\<space>"
       nnoremap <space> <Nop>
@@ -102,10 +101,10 @@ in {
 
       let g:lmap.l.p = 'prettier'
       nmap <leader>lp :CocCommand prettier.formatFile<CR>
-      
+
       let g:lmap.l.r = 'restart lang server'
       autocmd FileType javascript,javascriptreact,typescript,typescriptreact nmap <leader>lr :CocCommand tsserver.restart<CR>
-    
+
       " Commenting
       let g:NERDSpaceDelims = 1
       let g:NERDCreateDefaultMappings = 0
@@ -117,7 +116,7 @@ in {
       nmap <leader>cw <plug>NERDCommenterComment
       let g:lmap.c.d = 'uncomment (delete)'
       nmap <leader>cd <plug>NERDCommenterUncomment
-      
+
       " Other maps
       map <C-N> :NERDTreeToggle<CR>
       map <A-N> :NERDTreeFocus<CR>

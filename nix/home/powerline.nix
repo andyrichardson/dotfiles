@@ -1,49 +1,43 @@
-{ config, pkgs, inputs, ... }:
-{
-  home.file.".config/powerline/config.json".text = builtins.toJSON {
-      test = "hi";
-  };
-  home.file.".config/powerline/themes/tmux/default.json".text = builtins.toJSON {
-    segments = {
-      right = [];
-    };
-  };
-  home.file.".config/powerline/colorschemes/tmux/default.json".text = builtins.toJSON {
-    groups = {
-      background = {
-        fg = "red";
-        bg = "black";
-      };
-      session = {
-        fg = "white";
-        bg = "blue";
-      };
-      window = {
-        bg = "black";
-        fg = "white";
-      };
-      "window:current" = {
-        bg = "blue";
-        fg = "white";
-      };
-      window_name = {
-        bg = "blue";
-        fg = "white";
-      };
-      active_window_status = {
-        bg = "black";
-        fg = "white";
-      };
-      "window:divider" = {
-        bg = "black";
-        fg = "white";
-      };
-      "session:prefix" = {
-        bg = "red";
-        fg = "white";
+{ config, pkgs, inputs, ... }: {
+  home.file.".config/powerline/themes/tmux/default.json".text =
+    builtins.toJSON { segments = { right = [ ]; }; };
+  home.file.".config/powerline/colorschemes/tmux/default.json".text =
+    builtins.toJSON {
+      groups = {
+        background = {
+          fg = "red";
+          bg = "black";
+        };
+        session = {
+          fg = "white";
+          bg = "blue";
+        };
+        window = {
+          bg = "black";
+          fg = "white";
+        };
+        "window:current" = {
+          bg = "blue";
+          fg = "white";
+        };
+        window_name = {
+          bg = "blue";
+          fg = "white";
+        };
+        active_window_status = {
+          bg = "black";
+          fg = "white";
+        };
+        "window:divider" = {
+          bg = "black";
+          fg = "white";
+        };
+        "session:prefix" = {
+          bg = "red";
+          fg = "white";
+        };
       };
     };
-  };
   home.file.".config/powerline/colors.json".text = builtins.toJSON {
     colors = {
       blue = 4;
@@ -55,7 +49,7 @@
   };
   home.packages = [
     (pkgs.python38Packages.buildPythonPackage rec {
-      version  = "latest";
+      version = "latest";
       pname = "powerline";
 
       src = inputs.powerline;

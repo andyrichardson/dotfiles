@@ -5,11 +5,7 @@
     enable = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [
-        "npm"
-        "git"
-        "autojump"
-      ];
+      plugins = [ "npm" "git" "autojump" ];
     };
     initExtraBeforeCompInit = ''
       # Temporary for macOS - see https://github.com/nix-community/home-manager/issues/1782
@@ -21,12 +17,12 @@
       source ~/.p10k.zsh
       bindkey "$terminfo[kcuu1]" history-substring-search-up
       bindkey "$terminfo[kcud1]" history-substring-search-down
-      
+
       export NIX_BUILD_SHELL=zsh
       export NVM_LAZY_LOAD=true
       export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=red,fg=white,bold"
     '';
-    
+
     plugins = [
       {
         name = "node-path";

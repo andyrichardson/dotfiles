@@ -53,13 +53,11 @@ lib.mkIf pkgs.stdenv.isLinux {
         num-workspaces = 10;
       };
       "org/gnome/desktop/interface" = { enable-animations = false; };
-      "org/gnome/mutter" = { 
-        dynamic-workspaces = false; 
+      "org/gnome/mutter" = {
+        dynamic-workspaces = false;
         edge-tiling = false;
       };
-      "org/gnome/mutter/keybindings" = {
-        toggle-tiled-left = false;
-      };
+      "org/gnome/mutter/keybindings" = { toggle-tiled-left = false; };
       "org/gnome/shell/keybindings" = {
         switch-to-application-1 = [ ];
         switch-to-application-2 = [ ];
@@ -75,18 +73,15 @@ lib.mkIf pkgs.stdenv.isLinux {
       "org/gnome/shell" = {
         disable-extension-version-validation = true;
         enabled-extensions = with pkgs; [
-          # gnome-shell-extension-workspace-switcher.uuid
           gnomeExtensions.caffeine.uuid
           pop-os-shell.uuid
           simply-workspaces.uuid
           gnomeExtensions.appindicator.uuid
           "just-perfection-desktop@just-perfection"
-          #gnomeExtensions.just-perfection.uuid
+          gnomeExtensions.just-perfection.extensionUuid
         ];
       };
-      "org/gnome/shell/overrides" = {
-        edge-tiling = false;
-      };
+      "org/gnome/shell/overrides" = { edge-tiling = false; };
       "org/gnome/shell/extensions/just-perfection" = {
         activities-button = false;
       };
