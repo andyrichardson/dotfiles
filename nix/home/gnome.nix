@@ -12,6 +12,12 @@ lib.mkIf pkgs.stdenv.isLinux {
         };
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" =
         {
+          binding = "<Super><Shift>space";
+          command = "rofi -show run -modi run";
+          name = "Rofi Run";
+        };
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" =
+        {
           binding = "<Super>period";
           command = "rofimoji -a type";
           name = "Rofi Emoji";
@@ -20,6 +26,7 @@ lib.mkIf pkgs.stdenv.isLinux {
         custom-keybindings = [
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
         ];
       };
       "org/gnome/desktop/wm/keybindings" = {

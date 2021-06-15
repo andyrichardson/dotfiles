@@ -1,0 +1,1 @@
+ACTION=="add", RUN+="RUN_TARGET"

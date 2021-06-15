@@ -1,5 +1,6 @@
 { config, pkgs, inputs ? { }, username ? "andy", ... }: {
   imports = [
+    ./system/audio.nix
     ./system/cpu.nix
     ./system/de.nix
     ./system/disks.nix
@@ -63,10 +64,7 @@
     pciutils
     libva-utils
     noise-suppression-for-voice
-    # mesa
-    # xorg.xorgserver
-    # xorg.xf86inputlibinput
-    # xorg.xf86videointel
+    evo4-udev # Temporary
   ];
   environment.pathsToLink = [ "/usr" "/share" "/lib" "/bin" "/etc" "/libexec" ];
 
