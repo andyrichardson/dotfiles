@@ -1,4 +1,5 @@
 { ... }: {
+  hardware.enableRedistributableFirmware = true;
   hardware.cpu.intel.updateMicrocode = true;
   powerManagement.cpuFreqGovernor = "powersave";
   services.undervolt = {
