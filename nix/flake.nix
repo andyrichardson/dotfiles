@@ -100,6 +100,10 @@
       url = "github:hepaajan/shade-inactive-windows";
       flake = false;
     };
+    pop-shell = {
+      url = "github:andyrichardson/shell";
+      flake = false;
+    };
     gtk-title-bar = {
       url = "github:velitasali/gtktitlebar";
       flake = false;

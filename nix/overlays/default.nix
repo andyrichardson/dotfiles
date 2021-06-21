@@ -1,7 +1,7 @@
 { pkgs, inputs, lib, pkgs-stable, ... }: {
   nixpkgs.overlays = [
     inputs.nur.overlay
-    (import ./pop-shell.nix)
+    (import ./pop-shell.nix inputs)
     (import ./cpu-freq-monitor.nix)
     (import ./noise-suppression-for-voice.nix inputs)
     (import ./parsec.nix)

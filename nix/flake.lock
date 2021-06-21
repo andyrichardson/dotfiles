@@ -129,11 +129,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1623750159,
-        "narHash": "sha256-eolvGWlxF9oYoCiyCIz/H3SMHNc7eAoZDU3q6N7yO2g=",
+        "lastModified": 1624266098,
+        "narHash": "sha256-Cp4dnGlFeSicpOHcberVD32Pf++3UnUHMv82aIIRR3s=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "874ef4b6c615eba5b22ddbdf0ecb77b73a3f0453",
+        "rev": "9f9a0c0ec6b4c0dc37d8647830b359db350651ef",
         "type": "github"
       },
       "original": {
@@ -331,6 +331,22 @@
         "type": "github"
       }
     },
+    "pop-shell": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1622640574,
+        "narHash": "sha256-3T06cJDWS4cAEbRNACNZUQjunH1VJaW9WK4qewVHzVs=",
+        "owner": "andyrichardson",
+        "repo": "shell",
+        "rev": "9a3f30edb81d2e930e8d17ccdd394bbb2b937f39",
+        "type": "github"
+      },
+      "original": {
+        "owner": "andyrichardson",
+        "repo": "shell",
+        "type": "github"
+      }
+    },
     "powerline": {
       "flake": false,
       "locked": {
@@ -398,6 +414,7 @@
         "nvim-onedark": "nvim-onedark",
         "nvim-prettier": "nvim-prettier",
         "nvim-which-key": "nvim-which-key",
+        "pop-shell": "pop-shell",
         "powerline": "powerline",
         "pulse-noise-suppression-for-voice": "pulse-noise-suppression-for-voice",
         "rofi-themes": "rofi-themes",

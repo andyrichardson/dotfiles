@@ -26,7 +26,7 @@ final: prev: {
       owner = "martin31821";
       repo = "cpupower";
       rev = "feature/modular-cpufreqctl-backends";
-      sha256 = "sha256-DSJus8su6B+JzOPWb1vszUSzWw9AVtbq++uKv2VONns=";
+      sha256 = "sha256-ssAsmyMwn1/LVhfMFzB1P0x/PWWfJ+Saf1xlKDDrLs0=";
     };
   };
 }

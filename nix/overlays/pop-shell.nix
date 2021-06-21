@@ -1,22 +1,17 @@
-final: prev: {
+inputs: final: prev: {
   pop-os-shell = prev.stdenv.mkDerivation {
     pname = "pop-os-shell";
     version = "1.5.0";
     uuid = "pop-shell@system76.com";
 
-    src = prev.fetchFromGitHub {
-      owner = "andyrichardson";
-      repo = "shell";
-      rev = "master";
-      sha256 = "sha256-KOp/0R7P/iH52njr7JPDKd4fAoN88d/pfou2gWy5QPk=";
-    };
+    src = inputs.pop-shell;
 
     nativeBuildInputs = [ prev.glib prev.nodePackages.typescript prev.gjs ];
 
     buildInputs = [ prev.gjs ];
 
     makeFlags = [
-      "INSTALLBASE=$(out)/share/gnome-shell/extensions PLUGIN_BASE=$(out)/share/pop-shell/launcher"
+      "INSTALLBASE=$(out)/share/gnome-shell/extensions PLUGIN_BASE=$(out)/share/pop-shell/launcher SCRIPTS_BASE=$(out)/lib/pop-shell/scripts"
     ];
 
     postInstall = ''
