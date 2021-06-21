@@ -94,6 +94,10 @@ lib.mkIf pkgs.stdenv.isLinux {
       "org/gnome/shell/extensions/just-perfection" = {
         activities-button = false;
       };
+      "org/gnome/shell/extensions/gtktitlebar" = {
+        hide-window-titlebars = "always";
+        restrict-to-primary-screen = false;
+      };
     };
   };
   home.packages = with pkgs; [
