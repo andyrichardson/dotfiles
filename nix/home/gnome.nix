@@ -87,6 +87,7 @@ lib.mkIf pkgs.stdenv.isLinux {
           shade-inactive-windows.uuid
           "just-perfection-desktop@just-perfection"
           gnomeExtensions.just-perfection.extensionUuid
+          gtk-title-bar.uuid
         ];
       };
       "org/gnome/shell/overrides" = { edge-tiling = false; };
@@ -103,6 +104,7 @@ lib.mkIf pkgs.stdenv.isLinux {
     gnomeExtensions.caffeine
     gnomeExtensions.just-perfection
     gnomeExtensions.appindicator
+    gtk-title-bar
     simply-workspaces
     cpu-freq-monitor
     pop-os-shell

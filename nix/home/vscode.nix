@@ -14,6 +14,7 @@ with import ../config/colors.nix;
         ms-azuretools.vscode-docker
         pkief.material-icon-theme
         mskelton.one-dark-theme
+        zhuangtongfa.material-theme
         esbenp.prettier-vscode
         msjsdiag.debugger-for-chrome
         graphql.vscode-graphql

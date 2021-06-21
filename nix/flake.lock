@@ -31,6 +31,22 @@
         "type": "github"
       }
     },
+    "gtk-title-bar": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1621155547,
+        "narHash": "sha256-X/Fn/LDR0TxeJ3KrDu9LK1jlRNJqDuJKdXE2SboY950=",
+        "owner": "velitasali",
+        "repo": "gtktitlebar",
+        "rev": "a8db4aa7f6d3f739d011eaad022d343cc2f69c1f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "velitasali",
+        "repo": "gtktitlebar",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -366,6 +382,7 @@
     "root": {
       "inputs": {
         "flake-compat": "flake-compat",
+        "gtk-title-bar": "gtk-title-bar",
         "home-manager": "home-manager",
         "nix-node": "nix-node",
         "nixos-hardware": "nixos-hardware",

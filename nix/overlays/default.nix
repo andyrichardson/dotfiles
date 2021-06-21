@@ -7,6 +7,7 @@
     (import ./parsec.nix)
     (import ./evo4)
     (import ./shade-inactive-windows/default.nix inputs)
+    (import ./gtk-title-bar.nix inputs)
     (final: prev: {
       simply-workspaces =
         inputs.simply-workspaces.defaultPackage."${final.system}";

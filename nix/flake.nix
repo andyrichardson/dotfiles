@@ -100,6 +100,10 @@
       url = "github:hepaajan/shade-inactive-windows";
       flake = false;
     };
+    gtk-title-bar = {
+      url = "github:velitasali/gtktitlebar";
+      flake = false;
+    };
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;
