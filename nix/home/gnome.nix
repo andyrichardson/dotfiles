@@ -59,7 +59,10 @@ lib.mkIf pkgs.stdenv.isLinux {
         focus-mode = "sloppy";
         num-workspaces = 10;
       };
-      "org/gnome/desktop/interface" = { enable-animations = false; };
+      "org/gnome/desktop/interface" = {
+        enable-animations = false;
+        text-scaling-factor = 0.9;
+      };
       "org/gnome/mutter" = {
         dynamic-workspaces = false;
         edge-tiling = false;
