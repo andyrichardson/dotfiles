@@ -1,0 +1,13 @@
+diff --git a/extension.js b/extension.js
+index 25eee48..24acf6e 100644
+--- a/extension.js
++++ b/extension.js
+@@ -6,7 +6,7 @@ const Main = imports.ui.main;
+ const Tweener = imports.ui.tweener;
+ const Clutter = imports.gi.Clutter;
+
+-const SHADE_TIME = 0.3;
++const SHADE_TIME = 0.1;
+ const SHADE_BRIGHTNESS = -0.3;
+
+ let on_window_created;

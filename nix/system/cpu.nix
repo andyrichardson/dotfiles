@@ -1,6 +1,10 @@
 { ... }: {
   hardware.enableRedistributableFirmware = true;
   hardware.enableAllFirmware = true;
+  # boot.kernelParams = [ "mem_sleep_default=s2idle" ];
+  # services.tlp = { enable = true; };
+
+  powerManagement.powertop.enable = true;
 
   hardware.cpu.intel.updateMicrocode = true;
   powerManagement.cpuFreqGovernor = "powersave";

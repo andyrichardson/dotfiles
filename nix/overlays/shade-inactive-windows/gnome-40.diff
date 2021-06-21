@@ -1,0 +1,24 @@
+diff --git a/extension.js b/extension.js
+index 25eee48..dccd861 100644
+--- a/extension.js
++++ b/extension.js
+@@ -3,7 +3,7 @@ const St = imports.gi.St;
+ const Meta = imports.gi.Meta;
+ const Lang = imports.lang;
+ const Main = imports.ui.main;
+-const Tweener = imports.ui.tweener;
++const Tweener = imports.tweener.tweener;
+ const Clutter = imports.gi.Clutter;
+
+ const SHADE_TIME = 0.3;
+diff --git a/metadata.json b/metadata.json
+index 07eaeab..74e72e5 100644
+--- a/metadata.json
++++ b/metadata.json
+@@ -1,5 +1,5 @@
+ {
+-    "shell-version": ["3.4", "3.6", "3.8", "3.10", "3.12"],
++    "shell-version": ["40"],
+     "uuid": "shade-inactive-windows@hepaajan.iki.fi",
+     "name": "Shade Inactive Windows",
+     "description": "Make inactive windows darker",

@@ -84,6 +84,7 @@ lib.mkIf pkgs.stdenv.isLinux {
           pop-os-shell.uuid
           simply-workspaces.uuid
           gnomeExtensions.appindicator.uuid
+          shade-inactive-windows.uuid
           "just-perfection-desktop@just-perfection"
           gnomeExtensions.just-perfection.extensionUuid
         ];
@@ -102,9 +103,10 @@ lib.mkIf pkgs.stdenv.isLinux {
     gnomeExtensions.caffeine
     gnomeExtensions.just-perfection
     gnomeExtensions.appindicator
-    libappindicator
     simply-workspaces
-    pop-os-shell
     cpu-freq-monitor
+    pop-os-shell
+    shade-inactive-windows
+    libappindicator
   ];
 }

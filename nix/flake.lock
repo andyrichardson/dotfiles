@@ -384,6 +384,7 @@
         "powerline": "powerline",
         "pulse-noise-suppression-for-voice": "pulse-noise-suppression-for-voice",
         "rofi-themes": "rofi-themes",
+        "shade-inactive-windows": "shade-inactive-windows",
         "simply-workspaces": "simply-workspaces",
         "zsh-256color": "zsh-256color",
         "zsh-autosuggestions": "zsh-autosuggestions",
@@ -395,6 +396,22 @@
         "zsh-nvm": "zsh-nvm",
         "zsh-powerline": "zsh-powerline",
         "zsh-syntax-highlighting": "zsh-syntax-highlighting"
+      }
+    },
+    "shade-inactive-windows": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1406532339,
+        "narHash": "sha256-NAJ5QSCjtWVm9fgppQjL1XlCFCXSZA9+ggyBkA5cP24=",
+        "owner": "hepaajan",
+        "repo": "shade-inactive-windows",
+        "rev": "dc7ef9d71e563634a3fc284996a47adc2af193b4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hepaajan",
+        "repo": "shade-inactive-windows",
+        "type": "github"
       }
     },
     "simply-workspaces": {

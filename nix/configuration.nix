@@ -66,7 +66,8 @@
     noise-suppression-for-voice
     evo4-udev # Temporary
   ];
-  environment.pathsToLink = [ "/usr" "/share" "/lib" "/bin" "/etc" "/libexec" ];
+  environment.pathsToLink =
+    [ "/usr" "/share" "/lib" "/bin" "/etc" "/libexec" "/var" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

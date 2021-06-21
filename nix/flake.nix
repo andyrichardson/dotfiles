@@ -96,6 +96,10 @@
       flake = false;
     };
     simply-workspaces.url = "github:andyrichardson/simply-workspaces";
+    shade-inactive-windows = {
+      url = "github:hepaajan/shade-inactive-windows";
+      flake = false;
+    };
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;

@@ -47,5 +47,7 @@
     "explorer.confirmDelete": false,
     "editor.tabSize": 2,
     "editor.formatOnSave": true,
-    "window.zoomLevel": 1
+    "atomKeymap.promptV3Features": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.formatOnPaste": true
 }
