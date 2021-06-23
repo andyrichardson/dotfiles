@@ -1,4 +1,4 @@
-{ ... }: {
+{ ... }: rec {
   fileSystems = {
     "/" = {
       device = "/dev/mapper/nixos";
@@ -14,13 +14,8 @@
       device = "/dev/nvme0n1p1";
       fsType = "vfat";
     };
-    "swap" = {
-      device = "/dev/sysvg/swap";
-      fsType = "swap";
-      mountPoint = "none";
-      options = [ "noatime" "nodiratime" "defaults" "discard" ];
-    };
   };
+  swapDevices = [{ device = "/dev/sysvg/swap"; }];
 
   services.fstrim = {
     enable = true;
@@ -28,6 +23,7 @@
   };
 
   boot = {
+    resumeDevice = (builtins.elemAt swapDevices 0).device;
     loader = {
       efi = { efiSysMountPoint = "/boot/efi"; };
       grub = {
@@ -52,5 +48,4 @@
       kernelModules = [ "dm-snapshot" ];
     };
   };
-  swapDevices = [ ];
 }

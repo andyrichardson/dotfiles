@@ -1,17 +1,25 @@
-{ ... }: {
+{ config, ... }: {
   hardware.enableRedistributableFirmware = true;
   hardware.enableAllFirmware = true;
-  # boot.kernelParams = [ "mem_sleep_default=s2idle" ];
-  # services.tlp = { enable = true; };
+  services.fwupd.enable = true;
 
+  boot.kernelParams = [ "intel_iommu=igfx_off" "i915.enable_fbc=1" ];
+  services.syslogd.enable = true;
+  services.power-profiles-daemon.enable = false;
+  services.tlp = {
+    enable = true;
+    settings = {
+      TLP_DEBUG = "arg bat disk lock nm path pm ps rf run sysfs udev usb";
+    };
+  };
   powerManagement.powertop.enable = true;
-
-  hardware.cpu.intel.updateMicrocode = true;
   powerManagement.cpuFreqGovernor = "powersave";
   services.undervolt = {
     enable = false;
     coreOffset = -80;
   };
+
+  hardware.cpu.intel.updateMicrocode = true;
   hardware.opengl = {
     enable = true;
     driSupport = true;

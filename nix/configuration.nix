@@ -9,6 +9,8 @@
     ./system/virt.nix
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   nix = {
     package = pkgs.nixUnstable;
     extraOptions = ''
@@ -29,7 +31,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."${username}" = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "libvirtd" "kvm" ];
+    extraGroups = [ "wheel" "docker" "libvirtd" "kvm" "plugdev" ];
   };
   # Passwordless sudo
   security.sudo.extraRules = [{

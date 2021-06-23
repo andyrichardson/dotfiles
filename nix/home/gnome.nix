@@ -26,7 +26,7 @@ lib.mkIf pkgs.stdenv.isLinux {
         custom-keybindings = [
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
-          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
         ];
       };
       "org/gnome/desktop/wm/keybindings" = {
@@ -66,6 +66,7 @@ lib.mkIf pkgs.stdenv.isLinux {
       "org/gnome/mutter" = {
         dynamic-workspaces = false;
         edge-tiling = false;
+	focus-change-on-pointer-rest = false;
       };
       "org/gnome/mutter/keybindings" = { toggle-tiled-left = false; };
       "org/gnome/shell/keybindings" = {

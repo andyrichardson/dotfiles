@@ -30,7 +30,9 @@
       # nonfree packages
       # steam
       parsec
+      slack
       google-chrome
+      zoom-us
       _1password
       _1password-gui
       discord
