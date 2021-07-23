@@ -112,10 +112,10 @@
       url = "github:edolstra/flake-compat";
       flake = false;
     };
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-21.05";
     nix-node.url = "github:andyrichardson/nix-node";
     nur.url = "github:nix-community/NUR";
-    nixpkgs.url = "github:nixos/nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
 

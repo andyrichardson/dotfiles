@@ -66,7 +66,7 @@ lib.mkIf pkgs.stdenv.isLinux {
       "org/gnome/mutter" = {
         dynamic-workspaces = false;
         edge-tiling = false;
-	focus-change-on-pointer-rest = false;
+        focus-change-on-pointer-rest = false;
       };
       "org/gnome/mutter/keybindings" = { toggle-tiled-left = false; };
       "org/gnome/shell/keybindings" = {
@@ -114,7 +114,7 @@ lib.mkIf pkgs.stdenv.isLinux {
     gnomeExtensions.appindicator
     gtk-title-bar
     simply-workspaces
-    cpu-freq-monitor
+    # cpu-freq-monitor
     pop-os-shell
     shade-inactive-windows
     libappindicator

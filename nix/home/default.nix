@@ -21,6 +21,8 @@
       NIC_CC = "${pkgs.gcc.out}";
     };
     packages = with pkgs; [
+      aws-vault
+      awscli
       qemu
       screenkey
       slop

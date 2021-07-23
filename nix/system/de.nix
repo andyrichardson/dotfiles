@@ -1,7 +1,7 @@
 { pkgs, username ? "andy", ... }: {
   services.xserver = {
     enable = true;
-    # videoDrivers = [ "modesetting" ];
+    videoDrivers = [ "modesetting" ];
     useGlamor = true;
     libinput.enable = true;
     displayManager = {
@@ -17,7 +17,7 @@
     };
     desktopManager.gnome = { enable = true; };
     deviceSection = ''
-      Option "TearFree" "True"
+      # Option "TearFree" "True"
     '';
     layout = "us";
 
@@ -33,12 +33,6 @@
         MatchIsPointer "on"
         Option "AccelProfile" "flat"
         Option "AccelSpeed" "0"
-      EndSection
-
-      Section "Device"
-        Identifier "Intel Graphics"
-        Driver "intel"
-        Option "TearFree" "true"
       EndSection
     '';
   };

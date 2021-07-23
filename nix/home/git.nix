@@ -5,8 +5,12 @@ with import ../config/secrets.nix;
 {
   programs.git = {
     enable = true;
-    userName = "andyrichardson";
+    userName = "Andy Richardson";
     userEmail = email;
+    signing = {
+      key = null;
+      signByDefault = true;
+    };
   };
 
   home.sessionVariables = {

@@ -27,8 +27,11 @@
       [ "https://cache.nixos.org/" "https://nix-node.cachix.org/" ];
   };
   nixpkgs.config.allowUnfree = true;
-
+  nixpkgs.config.permittedInsecurePackages = [
+   "ffmpeg-3.4.8"  
+  ];
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.groups.plugdev = { };
   users.users."${username}" = {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "libvirtd" "kvm" "plugdev" ];
@@ -42,6 +45,7 @@
     }];
   }];
 
+  programs.java = { enable = true;  };
   programs.steam.enable = true;
   environment.systemPackages = with pkgs; [
     # The basics

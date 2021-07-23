@@ -37,7 +37,7 @@
             }
         ]
     },
-    "workbench.colorTheme": "One Dark Pro",
+    "workbench.colorTheme": "Material Theme Darker",
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -53,5 +53,17 @@
     "window.menuBarVisibility": "toggle",
     "editor.minimap.enabled": false,
     "workbench.activityBar.visible": false,
-    "window.zoomLevel": 2
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.inlineSuggest.enabled": true,
+    "cSpell.userWords": [
+        "subprotocol"
+    ],
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }
