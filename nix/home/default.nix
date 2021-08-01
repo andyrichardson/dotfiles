@@ -23,6 +23,7 @@
     packages = with pkgs; [
       aws-vault
       awscli
+      docker-compose
       qemu
       screenkey
       slop

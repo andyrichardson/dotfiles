@@ -5,6 +5,7 @@
     ./system/de.nix
     ./system/disks.nix
     ./system/fingerprint.nix
+    ./system/libs.nix
     ./system/network.nix
     ./system/virt.nix
   ];
@@ -27,9 +28,7 @@
       [ "https://cache.nixos.org/" "https://nix-node.cachix.org/" ];
   };
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-   "ffmpeg-3.4.8"  
-  ];
+  nixpkgs.config.permittedInsecurePackages = [ "ffmpeg-3.4.8" ];
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.groups.plugdev = { };
   users.users."${username}" = {
@@ -45,7 +44,7 @@
     }];
   }];
 
-  programs.java = { enable = true;  };
+  programs.java = { enable = true; };
   programs.steam.enable = true;
   environment.systemPackages = with pkgs; [
     # The basics
