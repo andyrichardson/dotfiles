@@ -108,6 +108,7 @@
       url = "github:velitasali/gtktitlebar";
       flake = false;
     };
+    flake-utils.url = "github:numtide/flake-utils";
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;
@@ -119,31 +120,39 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
 
-  outputs = inputs: {
-    nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem rec {
-      system = "x86_64-linux";
-      specialArgs = {
-        inherit inputs;
-        pkgs-stable = inputs.nixpkgs.legacyPackages.x86_64-linux;
-        username = "andy";
+  outputs = { nixpkgs, nixos-hardware, home-manager, ... }@inputs:
+    let system = "x86_64-linux";
+    in {
+      # OS configuration
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem rec {
+        inherit system;
+        specialArgs = {
+          inherit inputs;
+          pkgs-stable = nixpkgs.legacyPackages.${system};
+          username = "andy";
+        };
+        modules = [
+          nixos-hardware.nixosModules.dell-xps-15-9500
+          ./overlays
+          ./configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              username = specialArgs.username;
+            };
+            home-manager.users.${specialArgs.username} =
+              import ./home/default.nix;
+          }
+        ];
       };
-      modules = [
-        inputs.nixos-hardware.nixosModules.dell-xps-15-9500
-        ./overlays
-        ./configuration.nix
-        inputs.home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = {
-            inherit inputs;
-            username = specialArgs.username;
-          };
-          home-manager.users.${specialArgs.username} =
-            import ./home/default.nix;
-        }
-      ];
+
+      packages.x86_64-linux.devEnv = (import ./envs {
+        inherit inputs;
+        pkgs = nixpkgs.legacyPackages.${system};
+      }).devEnv.env;
     };
-  };
 }
 

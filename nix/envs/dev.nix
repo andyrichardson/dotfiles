@@ -52,27 +52,31 @@ let
   # Development libraries and tools
   buildToolsGroup = pkgs:
     with pkgs; [
-      unzip
-      which
-      pkg-config
-      zlib
-      libuv
       (lib.getLib openssl)
       (lib.getLib stdenv.cc.cc)
       (lib.getLib udev)
-      openssl
+      git
+      glibc
+      gnumake
+      gnupg
       http-parser
       icu
-      stdenv.cc.cc.lib
-      zlib
       libuv
-      openssl.dev
-      pkg-config
-      python
-      glibc
+      libuv
       nodejs
-      python2
-      python3
+      openjdk
+      openssl
+      openssl.dev
+      perl
+      pkg-config
+      python2Full
+      (python39Full.withPackages (p: with p; [ pip setuptools ]))
+      python39Packages.fonty
+      stdenv.cc.cc.lib
+      unzip
+      which
+      zip
+      zlib
     ];
 
   # Monolithic dev environment
@@ -86,4 +90,4 @@ in (pkgs.buildFHSUserEnv {
       miscGroup
       buildToolsGroup
     ]);
-}).env
+})

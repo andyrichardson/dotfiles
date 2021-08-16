@@ -24,14 +24,17 @@
       aws-vault
       awscli
       docker-compose
+      (fontforge.override { withGTK = true; })
       qemu
       screenkey
       slop
       peek
       gnome.gnome-sound-recorder
+      vlc
       undervolt
       # nonfree packages
       # steam
+      qbittorrent
       parsec
       slack
       google-chrome

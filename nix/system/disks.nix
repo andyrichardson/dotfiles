@@ -23,6 +23,7 @@
   };
 
   boot = {
+    tmpOnTmpfs = true;
     resumeDevice = (builtins.elemAt swapDevices 0).device;
     loader = {
       efi = { efiSysMountPoint = "/boot/efi"; };

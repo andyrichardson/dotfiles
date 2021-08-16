@@ -19,11 +19,12 @@
     '';
     trustedUsers = [ "${username}" ];
     useSandbox = false; # May improve build perf
-    registry."node".to = {
+    registry.node.to = {
       type = "github";
       owner = "andyrichardson";
       repo = "nix-node";
     };
+    registry.self.flake = inputs.self;
     binaryCaches =
       [ "https://cache.nixos.org/" "https://nix-node.cachix.org/" ];
   };
@@ -59,7 +60,7 @@
     cachix
     glxinfo
     nixfmt
-    python3
+    (python39Full.withPackages (p: with p; [ pip setuptools ]))
     tree
     vim
     firefox-wayland
