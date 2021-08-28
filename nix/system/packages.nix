@@ -17,6 +17,7 @@ with pkgs; {
     htop
     libva-utils
     lynx
+    nixfmt
     neovim
     openssl
     p7zip
