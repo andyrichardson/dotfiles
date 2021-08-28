@@ -126,7 +126,8 @@ Making a system link to the repo folder.
 
 ```sh
 sudo rm -r /etc/nixos
-sudo ln -s ~/dotfiles/nix /etc/nixos
+cd ~/dotfiles
+sudo ln -s `pwd` /etc/nixos
 ```
 
 Install all the things (first run will take a while)
