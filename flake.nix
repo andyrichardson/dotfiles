@@ -158,8 +158,6 @@
         ];
       };
 
-      self = self;
-
       pkgs = import nixpkgs {
         inherit system;
         inherit specialArgs;

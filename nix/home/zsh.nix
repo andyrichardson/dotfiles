@@ -11,7 +11,10 @@
       # Temporary for macOS - see https://github.com/nix-community/home-manager/issues/1782
       # . /Users/andyrichardson/.nix-profile/etc/profile.d/nix.sh
       # Temporary for macOS
-      # . /etc/static/bashrc 
+      # . /etc/static/bashrc
+      if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+        source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+      fi 
     '';
     initExtra = ''
       source ~/.p10k.zsh
