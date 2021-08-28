@@ -6,6 +6,7 @@
     ./gnome.nix
     ./git.nix
     ./neovim.nix
+    ./packages.nix
     ./powerline.nix
     ./rofi.nix
     ./tmux.nix
@@ -20,30 +21,7 @@
       EDITOR = "nvim";
       NIC_CC = "${pkgs.gcc.out}";
     };
-    packages = with pkgs; [
-      aws-vault
-      awscli
-      docker-compose
-      (fontforge.override { withGTK = true; })
-      qemu
-      screenkey
-      slop
-      peek
-      gnome.gnome-sound-recorder
-      vlc
-      undervolt
-      # nonfree packages
-      # steam
-      qbittorrent
-      parsec
-      slack
-      google-chrome
-      zoom-us
-      _1password
-      _1password-gui
-      discord
-      reaper
-    ];
+
     file = {
       ".config/nixpkgs/config.nix".text = ''
         {

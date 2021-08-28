@@ -1,17 +1,20 @@
-{ config, ... }: {
+{ config, pkgs, ... }: {
   hardware.enableRedistributableFirmware = true;
   hardware.enableAllFirmware = true;
   services.fwupd.enable = true;
 
-  boot.kernelParams = [
-    "intel_iommu=igfx_off"
-    "i915.enable_fbc=1"
-    "i915.enable_guc=3"
-    "i915.enable_dc=4"
-    "i915.edp_vswing=2"
-    "acpi=force"
-    "reboot=acpi"
-  ];
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = [
+      "intel_iommu=igfx_off"
+      "i915.enable_fbc=1"
+      "i915.enable_guc=3"
+      "i915.enable_dc=4"
+      "i915.edp_vswing=2"
+      "acpi=force"
+      "reboot=acpi"
+    ];
+  };
   services.syslogd.enable = true;
   services.power-profiles-daemon.enable = false;
   services.tlp = {

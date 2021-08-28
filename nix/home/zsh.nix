@@ -5,7 +5,7 @@
     enable = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [ "npm" "git" "autojump" ];
+      plugins = [ "npm" "git" ];
     };
     initExtraBeforeCompInit = ''
       # Temporary for macOS - see https://github.com/nix-community/home-manager/issues/1782
@@ -76,6 +76,7 @@
       }
     ];
   };
+  programs.autojump.enable = true;
 
   # P10k (powerline) config
   home.file.".p10k.zsh".text = builtins.readFile ./p10k.zsh;

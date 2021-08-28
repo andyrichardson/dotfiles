@@ -36,6 +36,8 @@
       EndSection
     '';
   };
+  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+  services.printing.enable = true;
 
   security.pam.services.login.enableGnomeKeyring = true;
   time.timeZone = "Europe/London";
@@ -56,8 +58,4 @@
       })
     ];
   };
-
-  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
-
-  services.printing.enable = true;
 }

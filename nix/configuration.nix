@@ -7,10 +7,9 @@
     ./system/fingerprint.nix
     ./system/libs.nix
     ./system/network.nix
+    ./system/packages.nix
     ./system/virt.nix
   ];
-
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   nix = {
     package = pkgs.nixUnstable;
@@ -30,12 +29,14 @@
   };
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [ "ffmpeg-3.4.8" ];
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.groups.plugdev = { };
   users.users."${username}" = {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "libvirtd" "kvm" "plugdev" ];
   };
+
   # Passwordless sudo
   security.sudo.extraRules = [{
     users = [ "${username}" ];
@@ -47,31 +48,6 @@
 
   programs.java = { enable = true; };
   programs.steam.enable = true;
-  environment.systemPackages = with pkgs; [
-    # The basics
-    git
-    bash
-    zip
-    gcc
-    gnumake
-    htop
-    curl
-    wget
-    cachix
-    glxinfo
-    nixfmt
-    (python39Full.withPackages (p: with p; [ pip setuptools ]))
-    tree
-    vim
-    firefox-wayland
-    lynx
-    hdparm
-    usbutils
-    pciutils
-    libva-utils
-    noise-suppression-for-voice
-    evo4-udev # Temporary
-  ];
   environment.pathsToLink =
     [ "/usr" "/share" "/lib" "/bin" "/etc" "/libexec" "/var" ];
 

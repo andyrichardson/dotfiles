@@ -108,51 +108,63 @@
       url = "github:velitasali/gtktitlebar";
       flake = false;
     };
-    flake-utils.url = "github:numtide/flake-utils";
+    # figma = {
+    #   url = "github:Figma-Linux/figma-linux";
+    #   flake = false;
+    # };
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;
     };
-    home-manager.url = "github:nix-community/home-manager/release-21.05";
-    nix-node.url = "github:andyrichardson/nix-node";
-    nur.url = "github:nix-community/NUR";
+    nix-node = {
+      url = "github:andyrichardson/nix-node";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-21.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-21.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nur.url = "github:nix-community/NUR";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
 
-  outputs = { nixpkgs, nixos-hardware, home-manager, ... }@inputs:
-    let system = "x86_64-linux";
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, ... }@inputs:
+    let
+      system = "x86_64-linux";
+      specialArgs = {
+        inherit inputs;
+        inherit system;
+        username = "andy";
+      };
     in {
       # OS configuration
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem rec {
         inherit system;
-        specialArgs = {
-          inherit inputs;
-          pkgs-stable = nixpkgs.legacyPackages.${system};
-          username = "andy";
-        };
+        inherit specialArgs;
         modules = [
-          nixos-hardware.nixosModules.dell-xps-15-9500
-          ./overlays
+          (args: { nixpkgs.overlays = import ./overlays args; })
           ./configuration.nix
+          nixos-hardware.nixosModules.dell-xps-15-9500
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {
-              inherit inputs;
-              username = specialArgs.username;
-            };
+            home-manager.extraSpecialArgs = specialArgs;
             home-manager.users.${specialArgs.username} =
               import ./home/default.nix;
           }
         ];
       };
 
-      packages.x86_64-linux.devEnv = (import ./envs {
-        inherit inputs;
-        pkgs = nixpkgs.legacyPackages.${system};
-      }).devEnv.env;
+      pkgs = import nixpkgs {
+        inherit system;
+        inherit specialArgs;
+        overlays = (import ./overlays specialArgs);
+      };
+
+      packages.${system} = self.pkgs;
     };
 }
 
