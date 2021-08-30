@@ -15,6 +15,7 @@ with pkgs; {
     gnupg
     hdparm
     htop
+    iperf
     libva-utils
     lynx
     nixfmt
@@ -22,6 +23,7 @@ with pkgs; {
     openssl
     p7zip
     pciutils
+    traceroute
     tree
     udev
     unzip
@@ -40,6 +42,7 @@ with pkgs; {
 
     # Audio drivers
     alsaLib
+    libopenaptx
     libpulseaudio
     pipewire
   ];
