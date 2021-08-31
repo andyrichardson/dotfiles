@@ -1,32 +1,33 @@
-prev:
+# sourced from - https://github.com/NixOS/nixpkgs/issues/76928" # issuecomment-734687106
+{ pkgs, ... }:
 let
   data = {
-    "dlib_face_recognition_resnet_model_v1.dat" = prev.fetchurl {
+    "dlib_face_recognition_resnet_model_v1.dat" = pkgs.fetchurl {
       url =
         "https://github.com/davisking/dlib-models/raw/master/dlib_face_recognition_resnet_model_v1.dat.bz2";
       sha256 = "0fjm265l1fz5zdzx5n5yphl0v0vfajyw50ffamc4cd74848gdcdb";
     };
-    "mmod_human_face_detector.dat" = prev.fetchurl {
+    "mmod_human_face_detector.dat" = pkgs.fetchurl {
       url =
         "https://github.com/davisking/dlib-models/raw/master/mmod_human_face_detector.dat.bz2";
       sha256 = "117wv582nsn585am2n9mg5q830qnn8skjr1yxgaiihcjy109x7nv";
     };
-    "shape_predictor_5_face_landmarks.dat" = prev.fetchurl {
+    "shape_predictor_5_face_landmarks.dat" = pkgs.fetchurl {
       url =
         "https://github.com/davisking/dlib-models/raw/master/shape_predictor_5_face_landmarks.dat.bz2";
       sha256 = "0wm4bbwnja7ik7r28pv00qrl3i1h6811zkgnjfvzv7jwpyz7ny3f";
     };
   };
 
-  pythonInUse = prev.python3.withPackages
+  pythonInUse = pkgs.python3.withPackages
     (p: [ p.face_recognition (p.opencv4.override { enableGtk3 = true; }) ]);
 
   outPath = placeholder "out";
-in prev.stdenv.mkDerivation rec {
+in pkgs.stdenv.mkDerivation rec {
   pname = "howdy";
   version = "2.5.1";
-  nativeBuildInputs = [ prev.bzip2 ];
-  src = prev.fetchurl {
+  nativeBuildInputs = [ pkgs.bzip2 ];
+  src = pkgs.fetchurl {
     url = "https://github.com/boltgolt/howdy/archive/v${version}.tar.gz";
     sha256 = "10mz8shndkn62d4k5qa7qrpim4xglh0gk137fhcx9ri2fja8sv2r";
   };
@@ -34,7 +35,7 @@ in prev.stdenv.mkDerivation rec {
   buildInputs = [ pythonInUse ];
   postPatch = ''
     substituteInPlace src/pam.py --replace '/usr/bin/python3' ${pythonInUse}/bin/python
-    substituteInPlace src/cli/config.py --replace '/bin/nano' ${prev.nano}/bin/nano
+    substituteInPlace src/cli/config.py --replace '/bin/nano' ${pkgs.nano}/bin/nano
   '';
 
   dontBuild = true;
@@ -47,7 +48,7 @@ in prev.stdenv.mkDerivation rec {
        rm -rf ${libDir}/pam-config
        rm -f ${libDir}/dlib-data/*
        ${
-         prev.lib.concatStrings (prev.lib.mapAttrsToList (n: v: ''
+         pkgs.lib.concatStrings (pkgs.lib.mapAttrsToList (n: v: ''
            bzip2 -dc ${v} > ${libDir}/dlib-data/${n}
          '') data)
        }

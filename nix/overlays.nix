@@ -11,6 +11,9 @@
       envs = { dev = (callPackage ./packages/envs-dev.nix { }); };
       evo4 = callPackage ./packages/evo4 { };
       gtk-title-bar = callPackage ./packages/gtk-title-bar.nix { };
+      howdy = callPackage ./packages/howdy/howdy.nix { };
+      ir_toggle = callPackage ./packages/howdy/ir-toggle.nix { };
+      pam_python = callPackage ./packages/howdy/pam-python.nix { };
       parsec = callPackage ./packages/parsec.nix { };
       pop-os-shell = callPackage ./packages/pop-os-shell.nix { };
       shade-inactive-windows =

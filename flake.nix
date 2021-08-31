@@ -151,6 +151,8 @@
         inherit specialArgs;
         modules = [
           { nixpkgs.overlays = (callPackage ./nix/overlays.nix { }); }
+          ./nix/packages/howdy/howdy-module.nix
+          ./nix/packages/howdy/ir-toggle-module.nix
           ./nix/configuration.nix
           nixos-hardware.nixosModules.dell-xps-15-9500
           home-manager.nixosModules.home-manager

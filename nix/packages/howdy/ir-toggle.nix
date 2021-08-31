@@ -1,5 +1,5 @@
-{ stdenv, fetchFromGitHub, cmake }:
-
+{ pkgs }:
+with pkgs;
 stdenv.mkDerivation rec {
   name = "chicony-ir-toggle";
 
