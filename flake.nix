@@ -150,7 +150,7 @@
         inherit system;
         inherit specialArgs;
         modules = [
-          { nixpkgs.overlays = (callPackage ./nix/overlays { }); }
+          { nixpkgs.overlays = (callPackage ./nix/overlays.nix { }); }
           ./nix/configuration.nix
           nixos-hardware.nixosModules.dell-xps-15-9500
           home-manager.nixosModules.home-manager
@@ -164,13 +164,13 @@
         ];
       };
 
-      # pkgs = import nixpkgs {
-      #   inherit system;
-      #   inherit specialArgs;
-      #   overlays = (callPackage ./nix/overlays { });
-      # };
+      pkgs = import nixpkgs {
+        inherit system;
+        inherit specialArgs;
+        overlays = (callPackage ./nix/overlays.nix { });
+      };
 
-      # packages.${system} = self.pkgs;
+      packages.${system} = self.pkgs;
     };
 }
 
