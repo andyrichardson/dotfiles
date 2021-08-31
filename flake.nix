@@ -112,6 +112,10 @@
     #   url = "github:Figma-Linux/figma-linux";
     #   flake = false;
     # };
+    howdy = {
+      url = "github:Th0rgal/horus-nix-system";
+      flake = false;
+    };
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;
@@ -133,18 +137,20 @@
   outputs = { self, nixpkgs, nixos-hardware, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
+      username = "andy";
       specialArgs = {
-        inherit inputs;
         inherit system;
-        username = "andy";
+        inherit inputs;
+        inherit username;
       };
+      callPackage = nixpkgs.lib.callPackageWith specialArgs;
     in {
       # OS configuration
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem rec {
         inherit system;
         inherit specialArgs;
         modules = [
-          (args: { nixpkgs.overlays = import ./nix/overlays args; })
+          { nixpkgs.overlays = (callPackage ./nix/overlays { }); }
           ./nix/configuration.nix
           nixos-hardware.nixosModules.dell-xps-15-9500
           home-manager.nixosModules.home-manager
@@ -158,13 +164,13 @@
         ];
       };
 
-      pkgs = import nixpkgs {
-        inherit system;
-        inherit specialArgs;
-        overlays = (import ./nix/overlays specialArgs);
-      };
+      # pkgs = import nixpkgs {
+      #   inherit system;
+      #   inherit specialArgs;
+      #   overlays = (callPackage ./nix/overlays { });
+      # };
 
-      packages.${system} = self.pkgs;
+      # packages.${system} = self.pkgs;
     };
 }
 

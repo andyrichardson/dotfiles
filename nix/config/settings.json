@@ -66,5 +66,6 @@
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "window.zoomLevel": 1
+    "javascript.updateImportsOnFileMove.enabled": "never",
+    "window.zoomLevel": -1
 }

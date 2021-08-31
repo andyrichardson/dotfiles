@@ -1,9 +1,0 @@
-diff --git a/scripts/update-translations.sh b/scripts/update-translations.sh
-index b6ddf86..ad11f7a 100755
---- a/scripts/update-translations.sh
-+++ b/scripts/update-translations.sh
-@@ -1,4 +1,4 @@
--#!/bin/bash
-+#!/usr/bin/env bash
- 
- set -e

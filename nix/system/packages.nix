@@ -3,6 +3,7 @@
 with pkgs; {
   # System packages used by all profiles (including root)
   environment.systemPackages = [
+    # howdy
     bash
     binutils
     cachix

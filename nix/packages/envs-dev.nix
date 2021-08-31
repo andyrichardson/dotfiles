@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs }:
 let
   # Monolithic dev env
   env = (pkgs.buildFHSUserEnv {
@@ -93,12 +93,3 @@ in derivation.overrideAttrs (oldAttrs: {
     };
   };
 })
-#   passthru = {
-#     # Passthrough env
-#     inherit env;
-
-#     # Passthrough shell with env
-
-#   };
-# }
-
