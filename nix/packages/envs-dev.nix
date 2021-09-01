@@ -6,6 +6,7 @@ let
     targetPkgs = pkgs:
       with pkgs; [
         # Libs and shizz
+        appimagekit
         atk
         at_spi2_atk
         at_spi2_core
@@ -18,6 +19,7 @@ let
         udev
         expat
         freetype
+        gcc
         gdk_pixbuf
         git
         glib
@@ -69,6 +71,12 @@ let
         xorg.libXrandr
         xorg.libxshmfence
         xorg.xauth
+
+        # Languages
+        cargo
+        rustc
+        (python2Full.withPackages (p: with p; [ pip setuptools ]))
+        (python39Full.withPackages (p: with p; [ pip setuptools ]))
       ];
     runScript = "zsh";
   });
