@@ -29,6 +29,15 @@
     enable = false;
     coreOffset = -80;
   };
+  systemd.targets.sleep.enable = true;
+  systemd.sleep.extraConfig = ''
+    AllowSuspend=yes
+    AllowHibernate=yes
+    AllowSuspendThenHibernate=yes
+    HibernateDelaySec=15min
+  '';
+  services.logind.lidSwitch = "suspend-then-hibernate";
+  services.logind.lidSwitchExternalPower = "suspend-then-hibernate";
 
   hardware.cpu.intel.updateMicrocode = true;
   hardware.opengl = {

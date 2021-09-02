@@ -40,6 +40,7 @@
   services.printing.enable = true;
 
   security.pam.services.login.enableGnomeKeyring = true;
+  services.gnome.gnome-keyring.enable = true;
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -54,6 +55,7 @@
           "RobotoMono"
           "Hack"
           "SourceCodePro"
+          "Terminus"
         ];
       })
     ];
