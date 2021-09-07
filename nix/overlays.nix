@@ -8,9 +8,23 @@
         inherit system;
       };
     in {
+      unstable =
+        callPackage inputs.nixpkgs-unstable { config.allowUnfree = true; };
+    })
+  (final: prev:
+    let
+      callPackage = inputs.nixpkgs.lib.callPackageWith {
+        pkgs = prev;
+        inherit inputs;
+        inherit system;
+      };
+    in {
       envs = { dev = (callPackage ./packages/envs-dev.nix { }); };
       evo4 = callPackage ./packages/evo4 { };
-      figma = callPackage ./packages/figma.nix { };
+      figma = (callPackage ./packages/figma.nix { }).override {
+        fonts = [ (prev.nerdfonts.override { fonts = [ "Iosevka" ]; }) ];
+      };
+      fonts = callPackage ./packages/fonts.nix { };
       gtk-title-bar = callPackage ./packages/gtk-title-bar.nix { };
       howdy = callPackage ./packages/howdy/howdy.nix { };
       ir_toggle = callPackage ./packages/howdy/ir-toggle.nix { };
@@ -20,8 +34,7 @@
       shade-inactive-windows =
         callPackage ./packages/shade-inactive-windows { };
       simply-workspaces = inputs.simply-workspaces.defaultPackage.${system};
-      unstable =
-        callPackage inputs.nixpkgs-unstable { config.allowUnfree = true; };
+
     })
 ]
 

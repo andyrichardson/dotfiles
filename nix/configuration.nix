@@ -26,6 +26,12 @@
     registry.self.flake = inputs.self;
     binaryCaches =
       [ "https://cache.nixos.org/" "https://nix-node.cachix.org/" ];
+    autoOptimiseStore = true;
+    gc = {
+      automatic = true;
+      dates = "daily";
+      options = "--delete-older-than 60d";
+    };
   };
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [ "ffmpeg-3.4.8" ];

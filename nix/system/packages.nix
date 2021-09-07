@@ -3,8 +3,6 @@
 with pkgs; {
   # System packages used by all profiles (including root)
   environment.systemPackages = [
-    figma
-    howdy
     bash
     binutils
     cachix
@@ -15,10 +13,13 @@ with pkgs; {
     git
     glxinfo
     gnupg
+    howdy
     hdparm
     htop
     iperf
     libva-utils
+    lm_sensors
+    lsof
     lynx
     nixfmt
     neovim
@@ -34,6 +35,7 @@ with pkgs; {
     which
     zip
     zsh
+    xorg.xbacklight
 
     # Video drivers
     mesa

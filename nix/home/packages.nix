@@ -1,6 +1,8 @@
 { pkgs, ... }: {
   # User profile packages
   home.packages = with pkgs; [
+    figma
+    unstable.easyeffects
     aws-vault
     awscli
     docker-compose

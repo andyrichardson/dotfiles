@@ -44,7 +44,7 @@ in {
   hardware.bluetooth.settings = {
     General = { Enable = "Source,Sink,Media,Socket"; };
   };
-  environment.systemPackages = with pkgs; [ pulseeffects-pw ];
+  environment.systemPackages = with pkgs; [ unstable.easyeffects ];
 
   ## Pulseaudio (disabled)
   hardware.pulseaudio = {
