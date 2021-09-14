@@ -1,3 +1,2 @@
 secrets.nix
-result/**
-result
+result*

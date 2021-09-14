@@ -1,4 +1,5 @@
 { config, pkgs, ... }: {
+  services.acpid.enable = true;
   hardware.enableRedistributableFirmware = true;
   hardware.enableAllFirmware = true;
   services.fwupd.enable = true;

@@ -40,7 +40,7 @@
   users.groups.plugdev = { };
   users.users."${username}" = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "libvirtd" "kvm" "plugdev" ];
+    extraGroups = [ "wheel" "docker" "libvirtd" "kvm" "plugdev" "adbusers" ];
   };
 
   # Passwordless sudo
@@ -52,6 +52,7 @@
     }];
   }];
 
+  programs.adb.enable = true;
   programs.java = { enable = true; };
   programs.steam.enable = true;
   environment.pathsToLink =
