@@ -10,8 +10,39 @@ let
   };
   # Command to run
   evo4-script = pkgs.writeShellScriptBin "evo4" ''
+    ALSA_INPUT="alsa_input.usb-Audient_EVO4-00"
+    ALSA_OUTPUT="alsa_output.usb-Audient_EVO4-00"
+
     if [[ "$1" == "start" ]]; then
-      ${pkgs.pulseaudioFull}/bin/pactl load-module module-remap-source source_name=alsa_input.usb-Audient_EVO4-00.mic1 source_properties="device.description=EVO4Mic1" master=alsa_input.usb-Audient_EVO4-00.multichannel-input master_channel_map=front-left channel_map=mono remix=no
+      # Add single channel source (mic1)
+      ${pkgs.pulseaudioFull}/bin/pactl load-module module-remap-source \
+        master=$ALSA_INPUT.multichannel-input \
+        master_channel_map=front-left \
+        source_name=$ALSA_INPUT.mic1 \
+        source_properties='node.description="Audient Evo 4 - Mic 1"' \
+        channel_map=mono \
+        remix=no
+
+      # Add single channel source (mic2)
+      ${pkgs.pulseaudioFull}/bin/pactl load-module module-remap-source \
+        master=$ALSA_INPUT.multichannel-input \
+        master_channel_map=front-right \
+        source_name=$ALSA_INPUT.mic2 \
+        source_properties="node.description='Audient\ Evo\ 4\ -\ Mic\ 2" \
+        channel_map=mono \
+        remix=no
+
+      # Add 2 channel output (main output)
+      ${pkgs.pulseaudioFull}/bin/pactl load-module module-remap-sink \
+        master=$ALSA_OUTPUT.analog-surround-40 \
+        master_channel_map=front-left,front-right \
+        sink_name=ALSA_OUTPUT.main-output \
+        sink_properties="node.description='Audient'" \
+        channel_map=stereo \
+        remix=no
+
+      # Set default input
+      ${pkgs.pulseaudioFull}/bin/pactl set-default-source alsa_input.usb-Audient_EVO4-00.mic1
     fi
 
     if [[ "$1" == "stop" ]]; then
