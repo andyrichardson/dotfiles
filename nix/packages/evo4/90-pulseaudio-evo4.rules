@@ -1,1 +1,1 @@
-ACTION=="add", RUN+="RUN_TARGET"
+ACTION=="add", RUN+="RUN_TARGET" ENV{SYSTEMD_USER_WANTS}+="evo4.service"

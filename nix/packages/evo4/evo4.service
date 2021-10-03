@@ -1,0 +1,10 @@
+[Unit]
+Description=Add evo4
+
+[Service]
+Type=simple
+ExecStart=/bin/evo4
+RemainAfterExit=no
+
+[Install]
+WantedBy=default.target
