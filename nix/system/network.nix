@@ -18,5 +18,8 @@
     # replicates the default behaviour.
     useDHCP = false;
     interfaces.wlp0s20f3.useDHCP = true;
+    extraHosts = ''
+      192.168.8.1 hirouter.net
+    '';
   };
 }

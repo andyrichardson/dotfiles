@@ -19,6 +19,7 @@
         inherit system;
       };
     in {
+      doppler = callPackage ./packages/doppler.nix { };
       envs = { dev = (callPackage ./packages/envs-dev.nix { }); };
       evo4 = callPackage ./packages/evo4 { };
       figma = (callPackage ./packages/figma.nix { }).override {

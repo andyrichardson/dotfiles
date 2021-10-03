@@ -5,26 +5,45 @@ let
     name = "dev";
     targetPkgs = pkgs:
       with pkgs; [
+        # Prisma is ignoring binary target env vars
+        (pkgs.stdenv.mkDerivation {
+          name = "prisma-workaround";
+          src = builtins.path { path = ./.; };
+          installPhase = ''
+            mkdir -p $out/etc
+            touch $out/etc/alpine-release
+          '';
+        })
         # Libs and shizz
         appimagekit
         atk
         at_spi2_atk
         at_spi2_core
-        binutils
         cairo
+        cmake
         cups
         dbus
         openssl
-        stdenv.cc.cc
+        #stdenv.cc.cc
         udev
         expat
         freetype
-        gcc
+        brotli
+        gcc-unwrapped
+        binutils-unwrapped
         gdk_pixbuf
         git
         glib
         glibc
+
+        # GJS packages
+        graphene
         gtk3
+        gtk4
+        harfbuzz
+        gobject-introspection
+        gjs
+
         gnumake
         gnupg
         http-parser
@@ -35,7 +54,7 @@ let
         nss
         pango
         pkg-config
-        stdenv.cc.cc.lib
+        #stdenv.cc.cc.lib
         unzip
         which
         zip
@@ -85,7 +104,7 @@ let
     name = "fhs-dev-env";
     version = "3";
     src = builtins.path { path = ./.; };
-    nativeBuldInputs = [ env ];
+    nativeBuldInputs = [ env pkgs.wrapGAppsHook ];
     installPhase = ''
       mkdir -p $out/bin
       cp -r ${env}/bin/dev $out/bin/dev

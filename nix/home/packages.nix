@@ -1,7 +1,9 @@
 { pkgs, ... }: {
   # User profile packages
   home.packages = with pkgs; [
+    doppler
     figma
+    reaper
     unstable.easyeffects
     aws-vault
     awscli

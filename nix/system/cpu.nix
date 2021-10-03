@@ -12,6 +12,7 @@
       "i915.enable_guc=3"
       "i915.enable_dc=4"
       "i915.edp_vswing=2"
+      "i915.enable_gvt=1"
       "acpi=force"
       "reboot=acpi"
     ];

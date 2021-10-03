@@ -15,6 +15,9 @@
     package = pkgs.nixUnstable;
     extraOptions = ''
       experimental-features = nix-command flakes ca-references
+      # Offline rebuilds
+      keep-outputs = true
+      keep-derivations = true
     '';
     trustedUsers = [ "${username}" ];
     useSandbox = false; # May improve build perf
