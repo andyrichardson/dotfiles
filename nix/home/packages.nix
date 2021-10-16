@@ -2,7 +2,8 @@
   # User profile packages
   home.packages = with pkgs; [
     doppler
-    figma
+    dive
+    (figma.override { fonts = [ gotham-fonts ]; })
     reaper
     unstable.easyeffects
     aws-vault

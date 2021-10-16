@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, fonts ? [ ], ... }:
 with pkgs;
 let
   desktop-item = makeDesktopItem {
@@ -18,6 +18,7 @@ let
     };
     dontStrip = true;
     buildInputs = [
+      fonts
       unzip
       nodejs-14_x
       rustc
@@ -65,47 +66,48 @@ let
   };
   figma-fhs = buildFHSUserEnv {
     name = "figma-fhs";
-    targetPkgs = pkgs: [
-      figma-exec
-      alsaLib
-      at_spi2_atk
-      at_spi2_core
-      atk
-      avahi
-      brotli
-      cairo
-      cups
-      dbus
-      expat
-      freetype
-      pango
-      gcc
-      glib
-      glibc
-      gdk_pixbuf
-      gtk3
-      icu
-      libxkbcommon
-      mesa
-      ffmpeg
-      libdrm
-      libGL
-      nss_3_53
-      nspr
-      udev
-      xorg.libXdamage
-      xorg.libXext
-      xorg.libX11
-      xorg.libXau
-      xorg.libxcb
-      xorg.libXcomposite
-      xorg.libXdmcp
-      xorg.libXfixes
-      xorg.libXrender
-      xorg.libXrandr
-      xorg.libxshmfence
-      wayland
-    ];
+    targetPkgs = pkgs:
+      [
+        figma-exec
+        alsaLib
+        at_spi2_atk
+        at_spi2_core
+        atk
+        avahi
+        brotli
+        cairo
+        cups
+        dbus
+        expat
+        freetype
+        pango
+        gcc
+        glib
+        glibc
+        gdk_pixbuf
+        gtk3
+        icu
+        libxkbcommon
+        mesa
+        ffmpeg
+        libdrm
+        libGL
+        nss_3_53
+        nspr
+        udev
+        xorg.libXdamage
+        xorg.libXext
+        xorg.libX11
+        xorg.libXau
+        xorg.libxcb
+        xorg.libXcomposite
+        xorg.libXdmcp
+        xorg.libXfixes
+        xorg.libXrender
+        xorg.libXrandr
+        xorg.libxshmfence
+        wayland
+      ] ++ fonts;
     runScript = "figma";
   };
 

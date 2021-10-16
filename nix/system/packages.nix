@@ -30,6 +30,7 @@ with pkgs; {
     tree
     udev
     unzip
+    unrar
     usbutils
     wget
     which

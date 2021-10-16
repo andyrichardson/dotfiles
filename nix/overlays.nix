@@ -18,14 +18,12 @@
         inherit inputs;
         inherit system;
       };
-    in {
+    in rec {
       doppler = callPackage ./packages/doppler.nix { };
       envs = { dev = (callPackage ./packages/envs-dev.nix { }); };
       evo4 = callPackage ./packages/evo4 { };
-      figma = (callPackage ./packages/figma.nix { }).override {
-        fonts = [ (prev.nerdfonts.override { fonts = [ "Iosevka" ]; }) ];
-      };
-      fonts = callPackage ./packages/fonts.nix { };
+      figma = (callPackage ./packages/figma.nix { });
+      gotham-fonts = callPackage ./packages/gotham-fonts.nix { };
       gtk-title-bar = callPackage ./packages/gtk-title-bar.nix { };
       howdy = callPackage ./packages/howdy/howdy.nix { };
       ir_toggle = callPackage ./packages/howdy/ir-toggle.nix { };
