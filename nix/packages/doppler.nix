@@ -10,8 +10,9 @@ pkgs.stdenv.mkDerivation rec {
   };
   installPhase = ''
     cd ../
-    mkdir -p $out/bin
+    mkdir -p $out/bin $out/completions
     cp doppler $out/bin/doppler
     chmod +x $out/bin/doppler
+    cp -r completions/doppler.zsh $out/completions/_doppler
   '';
 }

@@ -12,6 +12,15 @@
       # . /Users/andyrichardson/.nix-profile/etc/profile.d/nix.sh
       # Temporary for macOS
       # . /etc/static/bashrc
+
+      export NVM_LAZY_LOAD=true
+      export NVM_COMPLETION=true
+
+      # Additional completions  
+      fpath+=${pkgs.pulseaudioFull}/share/zsh/site-functions
+      fpath+=${pkgs.doppler}/completions
+      fpath+=~/.nvm/bash_completion
+
       if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
         source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
       fi 
@@ -22,8 +31,13 @@
       bindkey "$terminfo[kcud1]" history-substring-search-down
 
       export NIX_BUILD_SHELL=zsh
-      export NVM_LAZY_LOAD=true
       export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=red,fg=white,bold"
+
+      # Here so I don't forget
+      # Get sinks with pactl list short sinks 
+      # Change slaves to desired outputs
+      # Boom - multi device output
+      alias dual-output="pactl load-module module-combine-sink sink_name=combination-sink sink_properties=device.description=myCombinationSink slaves=bluez_output.64_03_7F_71_15_B1.a2dp-sink,alsa_output.pci-0000_00_1f.3.analog-stereo channels=2"
     '';
 
     plugins = [

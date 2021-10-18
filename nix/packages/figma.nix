@@ -1,20 +1,15 @@
 { inputs, pkgs, fonts ? [ ], ... }:
 with pkgs;
 let
-  desktop-item = makeDesktopItem {
-    name = "Figma";
-    desktopName = "Figma";
-    exec = "figma";
-    icon = "figma-linux";
-  };
+  version = "0.9.1";
   # Figma executable (can't run outside of FHS)
   figma-exec = stdenv.mkDerivation rec {
     pname = "figma-exec";
-    version = "0.8.1";
+    inherit version;
     src = pkgs.fetchurl {
       url =
-        "https://github.com/Figma-Linux/figma-linux/releases/download/v0.8.1/figma-linux_0.8.1_linux_amd64.zip";
-      sha256 = "sha256-LqcjFLQeEQx/3HFy0mPoIynFy704omYVxv42IsY7s8k=";
+        "https://github.com/Figma-Linux/figma-linux/releases/download/v${version}/figma-linux_${version}_linux_amd64.zip";
+      sha256 = "00ybq9871wz7vsx8lcn6bf5fg6d0i0zqbjjy1z4fyibr5si70g8l";
     };
     dontStrip = true;
     buildInputs = [
@@ -60,8 +55,8 @@ let
       ln -s $out/etc/figma-linux/figma-linux $out/bin/figma
 
       # Link desktop item
-      mkdir -p $out/share/applications
-      ln -s ${desktop-item}/share/applications/* $out/share/applications
+      # mkdir -p $out/share/applications
+      # ln -s {desktop-item}/share/applications/* $out/share/applications
     '';
   };
   figma-fhs = buildFHSUserEnv {
@@ -110,10 +105,22 @@ let
       ] ++ fonts;
     runScript = "figma";
   };
+  desktop-item = makeDesktopItem {
+    name = "Figma";
+    exec = "${figma-fhs}/bin/figma";
+    icon = "figma-linux";
+    desktopName = "Figma";
+    genericName = "Vector Graphics Designer";
+    comment = "Unofficial desktop application for linux";
+    type = "Application";
+    categories = "Graphics;";
+    mimeType = "application/figma;x-scheme-handler/figma;";
+    extraDesktopEntries = { StartupWMClass = "figma-linux"; };
+  };
 
 in stdenv.mkDerivation {
   name = "figma";
-  version = "0.8.1";
+  version = "${version}";
   src = builtins.path { path = ./.; };
   nativeBuildInputs = [ figma-fhs ];
   installPhase = ''
